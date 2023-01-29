@@ -1,2 +1,12 @@
-package PACKAGE_NAME;public class Boat {
+public abstract class Boat {
+
+    protected int lenght;
+    public boolean isDestroyed(){
+        lenght--;
+        if(lenght<=0){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
