@@ -5,16 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/FiveBoat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FourBoat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ThreeBoat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TwoBoat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/BoatThings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/BoatType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Boat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Feld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Feld.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FiveBoat.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FourBoat.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Gui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OneBoat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OneBoat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OneBoat.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Steuerung.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Steuerung.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ThreeBoat.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TwoBoat.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +26,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -36,6 +39,9 @@
     &quot;state&quot;: &quot;OPEN&quot;
   }
 }</component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
+  </component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -96,6 +102,10 @@
       <workItem from="1674827154712" duration="13199000" />
       <workItem from="1674849424632" duration="5453000" />
       <workItem from="1674854987752" duration="692000" />
+      <workItem from="1675103276484" duration="53000" />
+      <workItem from="1675106394845" duration="5904000" />
+      <workItem from="1675798899409" duration="4783000" />
+      <workItem from="1676122216831" duration="161000" />
     </task>
     <servers />
   </component>

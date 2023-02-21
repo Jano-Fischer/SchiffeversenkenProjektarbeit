@@ -135,7 +135,12 @@ public class Gui {
         playerFieldPlayer1 = generateFields();
         playerFieldPlayer2 = generateFields();
         showPlayerField(true);
-        playerFieldPlayer1[1][1].setBoat(new FiveBoat()); //Testboot TODO Testboat für Test
+        Boat testBoat = new Boat(BoatType.FIVEBOOAT);
+        playerFieldPlayer1[1][1].setBoat(testBoat); //Testboot TODO Testboat für Test
+        playerFieldPlayer1[1][2].setBoat(testBoat);
+        playerFieldPlayer1[1][3].setBoat(testBoat);
+        playerFieldPlayer1[1][4].setBoat(testBoat);
+        playerFieldPlayer1[1][5].setBoat(testBoat);
     }   ////Elemente und Knöpfe werden, mit entsprechender Position, aufs Spielfeld gesetzt
     public Feld[][] generateFields(){
         Feld[][] felder = new Feld[10][10];

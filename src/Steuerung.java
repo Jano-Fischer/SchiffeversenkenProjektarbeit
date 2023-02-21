@@ -1,14 +1,14 @@
 public class Steuerung {
     private final Gui gui;
-    private boolean lock =false;
+    private BoatThings theBoatThing;
+    private boolean lock = false;
     private boolean player1 = true;
-    private int fieldHight=50;
-    private int fieldWidth=50;
-    private final int boatNummber = 1;
-    private int placedShips;
-    private boolean shipsPlaced;
-    private int player1DestroyedBoats =0;
-    private int player2DestroyedBoats =0;
+    private int fieldHight = 50;
+    private int fieldWidth = 50;
+    private final int boatNummber = 6;
+    private int placedShips = 0;
+    private int player1DestroyedBoats = 0;
+    private int player2DestroyedBoats = 0;
 
     public Gui getGui() {
         return gui;
@@ -29,44 +29,43 @@ public class Steuerung {
     }
     public Steuerung(Gui gui) {
         this.gui = gui;
+        theBoatThing = new BoatThings(this);
     }
-
-    public int getFieldHeight(){
+    public int getBoatNummber() {
+        return boatNummber;
+    }
+    public int getFieldHeight() {
         return fieldHight;
     }
     public int getFieldWidth() {
         return fieldWidth;
     }
-    public void pregame(boolean spieler1){
-        boolean schiffeSetzten =false;
+    public void pregame(boolean spieler1) {
+        boolean schiffeSetzten = false;
 
     }
-    public void click(int x,int y){
+    public void click(int x, int y) {
         if (lock) return;
-        System.out.println("Feld geklickt: "+x+":"+y+" Spieler:"+((player1) ? 1 : 2));     //Ausgabe zur Kontrolle des geklickten feldes mit Koordinaten und Spieler
-        boolean hit = gui.attack(x,y, player1);
-        if (hit){
-            boolean destroyed =gui.hitAtIsDestroyed(x,y, player1);
-            if (destroyed){
+        System.out.println("Feld geklickt: " + x + ":" + y + " Spieler:" + ((player1) ? 1 : 2));     //Ausgabe zur Kontrolle des geklickten feldes mit Koordinaten und Spieler
+        boolean hit = gui.attack(x, y, player1);
+        if (hit) {
+            boolean destroyed = gui.hitAtIsDestroyed(x, y, player1);
+            if (destroyed) {
                 winChecker();
             }
-        }else{
-            gui.missAt(x,y, player1);
+        } else {
+            gui.missAt(x, y, player1);
         }
         lock = true;
     }
-
-
     public void goOne() {
 
         player1 = !player1;
         gui.showPlayerField(player1);
-        gui.setActivePlayerText("Spieler "+((player1) ? 1 : 2));
+        gui.setActivePlayerText("Spieler " + ((player1) ? 1 : 2));
         lock = false;
     }   //Wechseln des Spielfeldes und entsperren des Schiessens
-
-
-    public void winChecker(){
+    public void winChecker() {
         if (player1) {
             player2DestroyedBoats++;
             if (player2DestroyedBoats == boatNummber) {
@@ -81,24 +80,12 @@ public class Steuerung {
             }
         }
     }   //Methode zur erkennung welcher Spieler gewonnen hat
-
-    public boolean allBoatsPlaced(){
-        if (boatNummber!=placedShips){
-            placeShip();
+  /*  public void allBoatsPlaced() {           //Was macht das?
+        if (boatNummber != placedShips) {
+            placeShips();
         } else {
 
         }
-    }
+    }*/
 
-    public void placeShip(Boat boat){
-
-        if (player1){
-            while(1==0){
-               gui.playerFieldPlayer1[shipX][shipY];
-            }
-        }else{
-
-        }
-    }
 }
-

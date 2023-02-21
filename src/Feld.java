@@ -7,7 +7,7 @@ public class Feld extends JComponent {
     private int y;
     private char status;
 
-    public Feld(int x, int y, char status) {
+    public Feld(int x, int y, char status) {        //Das ist ein Feld.
         this.x=x;
         this.y=y;
         this.status =status;
