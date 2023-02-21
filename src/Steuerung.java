@@ -5,11 +5,10 @@ public class Steuerung {
     private boolean player1 = true;
     private int fieldHight = 50;
     private int fieldWidth = 50;
-    private final int boatNummber = 6;
-    private int placedShips = 0;
+    private final int boatNummber = 1;
+    private int placedShips = 1;
     private int player1DestroyedBoats = 0;
     private int player2DestroyedBoats = 0;
-
     public Gui getGui() {
         return gui;
     }
@@ -49,14 +48,17 @@ public class Steuerung {
         System.out.println("Feld geklickt: " + x + ":" + y + " Spieler:" + ((player1) ? 1 : 2));     //Ausgabe zur Kontrolle des geklickten feldes mit Koordinaten und Spieler
         boolean hit = gui.attack(x, y, player1);
         if (hit) {
+            System.out.println("Treffer bei:"+x+":"+y+" Spieler:" + ((player1) ? 1 : 2));
             boolean destroyed = gui.hitAtIsDestroyed(x, y, player1);
             if (destroyed) {
                 winChecker();
             }
         } else {
+            System.out.println("Nicht getroffen bei: "+x+":"+y+" Spieler:" + ((player1) ? 1 : 2));
             gui.missAt(x, y, player1);
+            lock = true;
+            System.out.println("Nächster Spieler");
         }
-        lock = true;
     }
     public void goOne() {
 
@@ -71,21 +73,16 @@ public class Steuerung {
             if (player2DestroyedBoats == boatNummber) {
                 System.out.println("Spieler 1 Gewonnen");
                 gui.setActivePlayerText("Spieler 1 hat gewonnen");
+                lock = true;
             }
         } else {
             player1DestroyedBoats++;
             if (player1DestroyedBoats == boatNummber) {
                 System.out.println("Spieler 2 Gewonnen");
                 gui.setActivePlayerText("Spieler 2 hat gewonnen");
+                lock = true;
+
             }
         }
     }   //Methode zur erkennung welcher Spieler gewonnen hat
-  /*  public void allBoatsPlaced() {           //Was macht das?
-        if (boatNummber != placedShips) {
-            placeShips();
-        } else {
-
-        }
-    }*/
-
 }

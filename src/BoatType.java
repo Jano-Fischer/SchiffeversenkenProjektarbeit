@@ -4,8 +4,6 @@ public enum BoatType {
     THREEBOAT (3),
     FOURBOAT (4),
     FIVEBOOAT (5);
-
-
     private int value;
    private BoatType(int value){
        this.value = value;

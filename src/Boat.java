@@ -1,5 +1,4 @@
 public class Boat {
-
     public int lenght;
     public BoatType boatType;
     public Boat(BoatType boatType){
@@ -9,7 +8,6 @@ public class Boat {
     public BoatType getBoatType(){
         return boatType;
     }
-
     public boolean isDestroyed(){
         lenght--;
         if(lenght<=0){
