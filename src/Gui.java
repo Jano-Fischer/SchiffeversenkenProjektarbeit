@@ -8,11 +8,13 @@ import java.awt.event.MouseEvent;
 //TODO Klick auf bereits beschossenes Feld Möglich
 //TODO Weiter knopf locken
 public class Gui {
+    boolean shipPlaced=true;
     private Steuerung strg; //Verknüpfung mit der Steuerung
     public Feld[][] playerFieldPlayer1 = new Feld[10][10];  //Feld für Spieler 1 der Größe 10x10 TODO Private
     public Feld[][] playerFieldPlayer2 = new Feld[10][10]; //Feld für Spieler 2 der Größe 10x10  TODO Private
     private JFrame frame;
     private Container cp;
+    private JButton shipPlace;
     private JButton weiter;     //Knopf für Weiter
     private JButton upS;       //Knopf für Schiff nach oben verschieben
     private JButton downS;       //Knopf für Schiff nach unten verschieben
@@ -67,6 +69,20 @@ public class Gui {
         activePlayer = new JLabel();
         activePlayer.setBounds(550,0,150,100);
         activePlayer.setText("Spieler 1");
+
+
+
+        shipPlace = new JButton();
+        shipPlace.setText("Schiff Bestätigen");
+        shipPlace.setBounds(550,85,120,50);
+        shipPlace.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                shipPlaced= false;
+            }
+        });
+
+
 
         weiter = new JButton();
         weiter.setText("Weiter");
@@ -123,7 +139,7 @@ public class Gui {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int x =strg.getShipX();
-                strg.setShipX(x+1);
+                strg.setShipX(x-1);
             }
         });
 //Aktiver Spieler Anzeigen
