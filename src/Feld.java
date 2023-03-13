@@ -5,10 +5,10 @@ public class Feld extends JComponent {
     private int x;
     private Boat boat;
     private int y;
-    private char status;
+    private char status;                        //was macht der ststus?
 
     public Feld(int x, int y, char status) {        //Das ist ein Feld.
-        this.x=x;
+        this.x=x;                                   //art der methode?? Eingabe(void methode?)?
         this.y=y;
         this.status =status;
     }
@@ -31,7 +31,7 @@ public class Feld extends JComponent {
                 g.drawLine(this.getWidth(), 0, 0, this.getWidth());
                 break;
         }
-    }
+    }               //Bitte auskommentieren!
 
     public int getXFeldNumber() {
         return x;

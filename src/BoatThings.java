@@ -1,4 +1,4 @@
-public class BoatThings {
+public class BoatThings {                                           //Sinn der Klasse??
 
     private final Steuerung strg;
 

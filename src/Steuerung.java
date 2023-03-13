@@ -1,45 +1,46 @@
 public class Steuerung {
-    private final Gui gui;
+    private final Gui gui;                          //Bekannt machen mit der GUI
     private BoatThings theBoatThing;
-    private boolean lock = false;
-    private boolean player1 = true;
-    private int fieldHight = 50;
-    private int fieldWidth = 50;
-    private final int boatNummber = 1;
-    private int placedShips = 1;
-    private int player1DestroyedBoats = 0;
-    private int player2DestroyedBoats = 0;
+    private boolean lock = false;                  //Aufgabe ??
+    private boolean player1 = true;                //speichert welcher Spieler dran ist
+    private int fieldHight = 50;                   //feldhöhe einstellen
+    private int fieldWidth = 50;                    //feldbreite einstellen
+    private final int boatNummber = 1;              //? (Anzahl der Boote?)
+    private int placedShips = 1;                    //speichert anzahl an Schiffen auf dem Feld (Spieler1, o. 2??)
+    private int player1DestroyedBoats = 0;          //Zerstörte Schiffe Player 1
+    private int player2DestroyedBoats = 0;          //Zerstörte Schiffe Player 1
     public Gui getGui() {
         return gui;
-    }
+    }              //?
     private int shipX;
     private int shipY;
     public int getShipY() {
         return shipY;
-    }
+    }          //gibt y-koordinate von Schiff aus (int), (was für ein Schiff?)
     public int getShipX() {
         return shipX;
-    }
+    }          //gibt x-koordinate von Schiff aus (int), (was für ein Schiff?)
+
     public void setShipX(int shipX) {
         this.shipX = shipX;
-    }
+    }                   //setzen des x-Wertes
     public void setShipY(int shipY) {
         this.shipY = shipY;
-    }
+    }                   //setzen des y-Wertes
     public Steuerung(Gui gui) {
         this.gui = gui;
         theBoatThing = new BoatThings(this);
     }
     public int getBoatNummber() {
         return boatNummber;
-    }
+    }                       //gibt die Anzahl an Booten aus?
     public int getFieldHeight() {
         return fieldHight;
-    }
+    }                        //gibt die Feldhöhe aus
     public int getFieldWidth() {
         return fieldWidth;
-    }
-    public void pregame(boolean spieler1) {
+    }                         //gibt die Feldbreite aus
+    public void pregame(boolean spieler1) {                                    //?
         boolean schiffeSetzten = false;
 
     }
