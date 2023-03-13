@@ -14,7 +14,7 @@ public class Gui {
     public Feld[][] playerFieldPlayer2 = new Feld[10][10]; //Feld für Spieler 2 der Größe 10x10  TODO Private
     private JFrame frame;
     private Container cp;
-    private JButton shipPlace;
+    private JButton shipPlaceButton;  //Knopf für Bestätigen des Schiffs zum Platzieren
     private JButton weiter;     //Knopf für Weiter
     private JButton upS;       //Knopf für Schiff nach oben verschieben
     private JButton downS;       //Knopf für Schiff nach unten verschieben
@@ -69,21 +69,18 @@ public class Gui {
         activePlayer = new JLabel();
         activePlayer.setBounds(550,0,150,100);
         activePlayer.setText("Spieler 1");
-
-
-
-        shipPlace = new JButton();
-        shipPlace.setText("Schiff Bestätigen");
-        shipPlace.setBounds(550,85,120,50);
-        shipPlace.addActionListener(new ActionListener(){
+//Boat Position Set
+        shipPlaceButton = new JButton();
+        shipPlaceButton.setText("Schiff Bestätigen");
+        shipPlaceButton.setBounds(700,75,120,50);
+        shipPlaceButton.addActionListener(new ActionListener(){
             @Override
-            public void actionPerformed(ActionEvent e) {
+             public void actionPerformed(ActionEvent e) {
                 shipPlaced= false;
             }
         });
-
-
-
+        shipPlaceButton.setVisible(true);
+//Button weiter
         weiter = new JButton();
         weiter.setText("Weiter");
         weiter.setBounds(550,75,100,50);
@@ -162,7 +159,7 @@ public class Gui {
         Feld[][] felder = new Feld[10][10];
         for (int x=0;x<10;x++){
             for (int y=0;y<10;y++){
-                Feld feld = new Feld(x,y,' ');
+                Feld feld = new Feld(x,y,'w');
                 feld.setBounds(x*strg.getFieldHeight()+30,y*strg.getFieldWidth()+30,strg.getFieldWidth(),strg.getFieldHeight());
                 feld.addMouseListener(new  MouseAdapter(){
                     @Override
@@ -190,6 +187,7 @@ public class Gui {
         cp.add(downS);
         cp.add(leftS);
         cp.add(rightS);
+        cp.add(shipPlaceButton);
 
         Feld[][] felder;
         if (spieler1){

@@ -18,17 +18,19 @@ public class Feld extends JComponent {
         super.paintComponent(g);
         g.drawRect(0,0,this.getWidth()-1,this.getWidth()-1);
         switch(status) {
-            case 'h':
+            case 'h':       //Hit
                 g.setColor(Color.red);
                 g.drawLine(0, 0, this.getWidth(), this.getWidth());
                 g.drawLine(this.getWidth(), 0, 0, this.getWidth());
                 break;
-            case 'm':
+            case 'm':       //Miss
                 g.drawOval(0, 0, this.getWidth(), this.getWidth());
                 break;
-            case 'p':
+            case 'p':       //Placed
                 g.drawLine(0, 0, this.getWidth(), this.getWidth());
                 g.drawLine(this.getWidth(), 0, 0, this.getWidth());
+                break;
+            case 'w':
                 break;
         }
     }
