@@ -62,7 +62,7 @@ public class Steuerung {
         while(!placed) {
             placeBattleship();
         }
-        if(gui.shipPlaced) {
+        if(gui.shipPlaced) {                //shipPlaced = button
            pregame=false;
         }
 
