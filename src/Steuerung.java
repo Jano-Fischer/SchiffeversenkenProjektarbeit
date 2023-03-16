@@ -31,6 +31,23 @@ public class Steuerung {
         this.gui = gui;
         theBoatThing = new BoatThings(this);
     }
+
+    public void placeShips(){
+
+        placeBattleship();
+        //placeCruiser();
+        //placeCruiser();
+
+
+       /* Boat destroyer1 = new Boat(BoatType.THREEBOAT);
+        Boat destroyer2 = new Boat(BoatType.THREEBOAT);
+        Boat destroyer3 = new Boat(BoatType.THREEBOAT);
+
+        Boat submarines1 = new Boat(BoatType.TWOBOAT);
+        Boat submarines2 = new Boat(BoatType.TWOBOAT);
+        Boat submarines3 = new Boat(BoatType.TWOBOAT);
+        Boat submarines4 = new Boat(BoatType.TWOBOAT);*/
+    }   //Platzieren aller Schiffe (Feste Anzahl)
     public int getBoatNummber() {
         return boatNummber;
     }                       //gibt die Anzahl an Booten aus?
@@ -62,7 +79,6 @@ public class Steuerung {
         }
     }
     public void goOne() {
-
         player1 = !player1;
         gui.showPlayerField(player1);
         gui.setActivePlayerText("Spieler " + ((player1) ? 1 : 2));
@@ -86,6 +102,30 @@ public class Steuerung {
             }
         }
     }   //Methode zur erkennung welcher Spieler gewonnen hat
+    boolean placed = false;
+
+    int temp = 1;
+    public void placeBattleship(){
+        Boat  battelship = new Boat(BoatType.FIVEBOOAT);
+        while(!placed){
+
+            gui.playerFieldPlayer1[shipX][shipY].setBoat(battelship);
+            gui.playerFieldPlayer1[shipX][shipY+1].setBoat(battelship);
+            gui.playerFieldPlayer1[shipX][shipY+2].setBoat(battelship);
+            gui.playerFieldPlayer1[shipX][shipY+3].setBoat(battelship);
+            gui.playerFieldPlayer1[shipX][shipY+4].setBoat(battelship);
+        }
+    }
+
+    /*public void placeCruiser(){
+        Boat cruiser1 = new Boat(BoatType.FOURBOAT);
+        Boat cruiser2 = new Boat(BoatType.FOURBOAT);
+        while(!placed){
+            gui.playerFieldPlayer1[1][2].setBoat(cruiser1);
+            gui.playerFieldPlayer1[1][3].setBoat(cruiser1);
+            gui.playerFieldPlayer1[1][4].setBoat(cruiser1);
+            gui.playerFieldPlayer1[1][5].setBoat(cruiser1);
+
+
+        }*/
 }
-
-
