@@ -1,14 +1,14 @@
 public class Steuerung {
     private final Gui gui;                          //Bekannt machen mit der GUI
     private BoatThings theBoatThing;
-    private boolean lock = false;                  //Aufgabe ??
-    private boolean player1 = true;                //speichert welcher Spieler dran ist
+    private boolean lock = false;                  //Boolean damit nicht mehrmals geschossen werden kann
+    private boolean player1 = true;                //Auswahl des aktuellen Spielers
     private int fieldHight = 50;                   //feldhöhe einstellen
     private int fieldWidth = 50;                    //feldbreite einstellen
     private final int boatNummber = 1;              //? (Anzahl der Boote?)
     private int placedShips = 1;                    //speichert anzahl an Schiffen auf dem Feld (Spieler1, o. 2??)
     private int player1DestroyedBoats = 0;          //Zerstörte Schiffe Player 1
-    private int player2DestroyedBoats = 0;          //Zerstörte Schiffe Player 1
+    private int player2DestroyedBoats = 0;          //Zerstörte Schiffe Player 2
     public Gui getGui() {
         return gui;
     }              //?
@@ -26,12 +26,15 @@ public class Steuerung {
     }                   //setzen des x-Wertes
     public void setShipY(int shipY) {
         this.shipY = shipY;
-    }                   //setzen des y-Wertes
+    }                   //setzen des y-Wertes (Warum solche Kommentare Semjon?)
     public Steuerung(Gui gui) {
         this.gui = gui;
         theBoatThing = new BoatThings(this);
     }
 
+    /**
+     * Platzieren aller Schiffe(Temp)
+     */
     public void placeShips(){
 
         placeBattleship();
@@ -61,9 +64,14 @@ public class Steuerung {
         boolean schiffeSetzten = false;
 
     }
+    /**
+     * Schaut, ob ein Schiff getroffen wurde und ob dieses Zerstört wurde.
+     * @param x Koordinate des Feldes welches geklickt wurde
+     * @param y Koordinate des Feldes welches geklickt wurde
+     */
     public void click(int x, int y) {
         if (lock) return;
-        System.out.println("Feld geklickt: " + x + ":" + y + " Spieler:" + ((player1) ? 1 : 2));     //Ausgabe zur Kontrolle des geklickten feldes mit Koordinaten und Spieler
+        System.out.println("Feld geklickt: " + x + ":" + y + " Spieler:" + ((player1) ? 1 : 2));
         boolean hit = gui.attack(x, y, player1);
         if (hit) {
             System.out.println("Treffer bei:"+x+":"+y+" Spieler:" + ((player1) ? 1 : 2));
@@ -84,6 +92,10 @@ public class Steuerung {
         gui.setActivePlayerText("Spieler " + ((player1) ? 1 : 2));
         lock = false;
     }   //Wechseln des Spielfeldes und entsperren des Schiessens
+
+    /**
+     * Schaut, ob die Anzahl zerstörter Schiffe genauso groß ist wie die der gesamten Schiffe
+     */
     public void winChecker() {
         if (player1) {
             player2DestroyedBoats++;
@@ -105,6 +117,10 @@ public class Steuerung {
     boolean placed = false;
 
     int temp = 1;
+
+    /**
+     * Nur temporär? Platzieren des 5er-Schiffes
+     */
     public void placeBattleship(){
         Boat  battelship = new Boat(BoatType.FIVEBOOAT);
         while(!placed){

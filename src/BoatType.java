@@ -1,3 +1,6 @@
+/**
+ * Enum Klasse zum Speichern der Länge des Schiffes
+ */
 public enum BoatType {
     ONEBOAT (1),
     TWOBOAT (2),

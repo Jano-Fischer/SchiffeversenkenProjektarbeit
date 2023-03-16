@@ -8,6 +8,11 @@ public class Boat {
     public BoatType getBoatType(){
         return boatType;
     }
+
+    /**
+     * Kontrolliert, ob das Schiff zerstört ist, nachdem die Länge um eins abgezogen wurde.
+     * @return Abhängig davon, ob die Länge gleich, oder größer 0
+     */
     public boolean isDestroyed(){
         lenght--;
         if(lenght<=0){

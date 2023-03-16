@@ -7,12 +7,22 @@ public class Feld extends JComponent {
     private int y;
     private char status;
 
+    /**
+     * Status des Feldes setzten
+     * @param x Koordinate
+     * @param y Koordinate
+     * @param status Getroffen, Wasser, Nicht Getroffen...
+     */
     public Feld(int x, int y, char status) {        //Das ist ein Feld.
         this.x=x;
         this.y=y;
         this.status =status;
     }
 
+    /**
+     * Malen in Gui
+     * @param g
+     */
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -30,7 +40,10 @@ public class Feld extends JComponent {
                 g.drawLine(0, 0, this.getWidth(), this.getWidth());
                 g.drawLine(this.getWidth(), 0, 0, this.getWidth());
                 break;
-            case 'w':
+            case 'w': //TODO Entfernen(Nur als Hilfe!)
+                g.setColor(Color.blue);
+                g.drawLine(0, 0, this.getWidth(), this.getWidth());
+                g.drawLine(this.getWidth(), 0, 0, this.getWidth());
                 break;
         }
     }

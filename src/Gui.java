@@ -5,27 +5,33 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-//TODO Klick auf bereits beschossenes Feld Möglich
-//TODO Weiter knopf locken
 public class Gui {
     boolean shipPlaced=true;
     private Steuerung strg; //Verknüpfung mit der Steuerung
-    public Feld[][] playerFieldPlayer1 = new Feld[10][10];  //Feld für Spieler 1 der Größe 10x10 TODO Private
-    public Feld[][] playerFieldPlayer2 = new Feld[10][10]; //Feld für Spieler 2 der Größe 10x10  TODO Private
+    public Feld[][] playerFieldPlayer1 = new Feld[10][10];  //Feld für Spieler 1 der Größe 10x10 TODO Private?
+    public Feld[][] playerFieldPlayer2 = new Feld[10][10]; //Feld für Spieler 2 der Größe 10x10  TODO Private?
     private JFrame frame;
     private Container cp;
-    private JButton shipPlaceButton;  //Knopf für Bestätigen des Schiffs zum Platzieren
-    private JButton weiter;     //Knopf für Weiter
-    private JButton upS;       //Knopf für Schiff nach oben verschieben
-    private JButton downS;       //Knopf für Schiff nach unten verschieben
-    private JButton rightS;       //Knopf für Schiff nach rechts verschieben
-    private JButton leftS;       //Knopf für Schiff nach links verschieben
-    private JButton turnRightS;       //Knopf um das Schiff nach rechts zu drehen
-    private JButton turnLeftS;       //Knopf um das Schiff nach links zu drehen
-    private JLabel activePlayer;    //Anzeige für Aktiven Spieler
+    private JButton shipPlaceButton;
+    private JButton weiter;
+    private JButton upS;
+    private JButton downS;
+    private JButton rightS;
+    private JButton leftS;
+    private JButton turnRightS;
+    private JButton turnLeftS;
+    private JLabel activePlayer;
     public Gui() {
         initialize();
-    }   //Konstruktor
+    }
+
+    /**
+     * Greift das Feld bei X und Y an. Wenn kein Boot getroffen wurde, ist attack false
+     * @param x Beschossene Stelle
+     * @param y Beschossene Stelle
+     * @param spieler1  Aktueller Spieler
+     * @return
+     */
     public boolean attack(int x, int y, boolean spieler1) {
         Boat boat;
          if (spieler1){
@@ -38,7 +44,17 @@ public class Gui {
          } else {
              return true;
          }
-    }   //Methode für einen Angriff, mit rückgabe Typ Boolean
+    }
+
+    /**
+     * Wird ausgeführt bei Treffer.
+     * Auswahl des aktuellen Spielers und setzt den Status des Feldes auf hit. Danach Repaint des Feldes.
+     * Abfrage, ob das Schiff durch den Treffer zerstört wurde. Wenn Ja, dann rückgabewert true.
+     * @param x Beschossene Stelle
+     * @param y Beschossene Stelle
+     * @param spieler1  Auswahl des Spielers
+     * @return
+     */
     public boolean hitAtIsDestroyed(int x, int y, boolean spieler1) {
         Feld feld;
         if (spieler1){
@@ -49,7 +65,14 @@ public class Gui {
         feld.setStatus('h');
         feld.repaint();
         return feld.getBoat().isDestroyed();
-    }   //Wird aufgerufen, wenn ein Schiff getroffen wurde und abgefragt, ob es Zerstört wurde
+    }
+    /**
+     * Ausgabe an welcher Stelle man nicht getroffen hat, sowie zustandsänderung des Feldes auf miss
+     * @param x Beschossene Stelle
+     * @param y Beschossene Stelle
+     * @param spieler1 Aktueller Spieler
+     */
+    //TODO In Steuerung auslagern
     public void missAt(int x, int y, boolean spieler1) {
         Feld feld;
         if (spieler1){
@@ -59,7 +82,10 @@ public class Gui {
         }
         feld.setStatus('m');
         feld.repaint();
-    }   //Wird aufgerufen, wenn nichts getroffen wurde
+    }
+    /**
+     * Platzieren der Grafikelemente7
+     */
     private void initialize(){
         strg = new Steuerung(this); //Erstellen der Steuerung mit dem Namen strg
         frame = new JFrame();
@@ -154,7 +180,13 @@ public class Gui {
         playerFieldPlayer1[1][3].setBoat(testBoat);
         playerFieldPlayer1[1][4].setBoat(testBoat);
         playerFieldPlayer1[1][5].setBoat(testBoat);
-    }   ////Elemente und Knöpfe werden, mit entsprechender Position, aufs Spielfeld gesetzt
+    }
+
+    /**
+     * Erstellen eines Spielfeldes mit der Festen Größe von 10·10 und jedem Feld den Zustand water geben.
+     *Jedes Feld erhält einen Mouse Listener
+     * @return
+     */
     public Feld[][] generateFields(){
         Feld[][] felder = new Feld[10][10];
         for (int x=0;x<10;x++){
@@ -179,6 +211,11 @@ public class Gui {
         }
         return felder;
     }   //Array mit Feldern befüllen und an die richtige position, abhängig des Feldes setzten. Außerdem wird ein MouseListener zu jedem Feld hinzufügen
+
+    /**
+     * Anzeigen des Spielfeldes welches beschossen wird
+     * @param spieler1
+     */
     public void showPlayerField(boolean spieler1){
         cp.removeAll();
         cp.add(weiter);
@@ -201,10 +238,15 @@ public class Gui {
                 felder[x][y].repaint();
             }
         }
-    }   //Anzeigen des Spielfeldes, welches beschossen wird
+    }
+
+    /**
+     * Ausgabe des Spielers der am Zug ist
+     * @param text
+     */
     public void setActivePlayerText(String text){
         activePlayer.setText(text);
-    }   //Anzeige zur Information des Aktiven Spielers
+    }
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
