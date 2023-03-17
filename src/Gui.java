@@ -6,7 +6,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class Gui {
-    boolean shipPlaced=true;
     private Steuerung strg; //Verknüpfung mit der Steuerung
     public Feld[][] playerFieldPlayer1 = new Feld[10][10];  //Feld für Spieler 1 der Größe 10x10 TODO Private?
     public Feld[][] playerFieldPlayer2 = new Feld[10][10]; //Feld für Spieler 2 der Größe 10x10  TODO Private?
@@ -18,8 +17,8 @@ public class Gui {
     private JButton downS;
     private JButton rightS;
     private JButton leftS;
-    private JButton turnRightS;
-    private JButton turnLeftS;
+    private JButton turnVertikalS;
+    private JButton turnHorizontalS;
     private JLabel activePlayer;
     public Gui() {
         initialize();
@@ -101,8 +100,10 @@ public class Gui {
         shipPlaceButton.setBounds(700,75,120,50);
         shipPlaceButton.addActionListener(new ActionListener(){
             @Override
-             public void actionPerformed(ActionEvent e) {
-                shipPlaced= false;
+            public void actionPerformed(ActionEvent e) {
+                strg.placeBoat(shipX,shipY,BoatType.FIVEBOOAT); //TODO Schiffstyp auswahl
+                shipX = 0;
+                shipY = 0;
             }
         });
         shipPlaceButton.setVisible(true);
@@ -165,8 +166,29 @@ public class Gui {
                 strg.setShipX(x-1);
             }
         });
+//Vertikal Rotieren
+        turnVertikalS = new JButton();
+        turnVertikalS.setText("Vertikal Drehen");
+        turnVertikalS.setBounds(750,270,100,100);
+        turnVertikalS.setVisible(true);
+        turnVertikalS.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                    strg.setHorizontalDirection(false);
+            }
+        });
+//Horizontal Rotieren
+        turnHorizontalS = new JButton();
+        turnHorizontalS.setText("Horizontal Drehen");
+        turnHorizontalS.setBounds(750,370,100,100);
+        turnHorizontalS.setVisible(true);
+        turnHorizontalS.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                strg.setHorizontalDirection(false);
+            }
+        });
 //Aktiver Spieler Anzeigen
-        activePlayer.setVisible(true);
         cp = frame.getContentPane();
         frame.add(weiter);
         frame.add(activePlayer);
@@ -180,6 +202,8 @@ public class Gui {
         playerFieldPlayer1[1][3].setBoat(testBoat);
         playerFieldPlayer1[1][4].setBoat(testBoat);
         playerFieldPlayer1[1][5].setBoat(testBoat);
+        setButtonsPregame();
+        activePlayer.setVisible(true);
     }
 
     /**
@@ -211,7 +235,18 @@ public class Gui {
         }
         return felder;
     }   //Array mit Feldern befüllen und an die richtige position, abhängig des Feldes setzten. Außerdem wird ein MouseListener zu jedem Feld hinzufügen
-
+    /**
+     * Knöpfe zum Platzieren der Schiffe auf den Frame setzten
+     */
+    public void setButtonsPregame(){
+        cp.add(upS);
+        cp.add(downS);
+        cp.add(leftS);
+        cp.add(rightS);
+        cp.add(shipPlaceButton);
+        cp.add(turnHorizontalS);
+        cp.add(turnVertikalS);
+    }
     /**
      * Anzeigen des Spielfeldes welches beschossen wird
      * @param spieler1
@@ -220,12 +255,6 @@ public class Gui {
         cp.removeAll();
         cp.add(weiter);
         cp.add(activePlayer);
-        cp.add(upS);
-        cp.add(downS);
-        cp.add(leftS);
-        cp.add(rightS);
-        cp.add(shipPlaceButton);
-
         Feld[][] felder;
         if (spieler1){
            felder= playerFieldPlayer2;
@@ -253,7 +282,6 @@ public class Gui {
                 try {
                     Gui window = new Gui();
                     window.frame.setVisible(true);
-
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
