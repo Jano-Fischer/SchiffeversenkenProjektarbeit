@@ -1,6 +1,8 @@
 public class Boat {
-    public int lenght;
+    public int lenght;                          //warum public??
     public BoatType boatType;
+
+    private boolean isVertical;                 //speichert ob das Boot waagerecht oder senkrecht steht, wird fuer ueberpruefung benoetigt
     public Boat(BoatType boatType){
         this.boatType = boatType;
         this.lenght = boatType.getValue();
@@ -13,7 +15,7 @@ public class Boat {
      * Kontrolliert, ob das Schiff zerstört ist, nachdem die Länge um eins abgezogen wurde.
      * @return Abhängig davon, ob die Länge gleich, oder größer 0
      */
-    public boolean isDestroyed(){
+    public boolean isDestroyed(){           //name sehr verwirrend
         lenght--;
         if(lenght<=0){
             return true;

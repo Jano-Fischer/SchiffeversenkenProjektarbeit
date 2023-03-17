@@ -4,16 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" name="Changes" comment="Schiffe Platzieren Testen mit Semjon(Erfolglos)">
+    <list default="true" id="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" name="Changes" comment="Update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Boat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Feld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Feld.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Gui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Steuerung.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Steuerung.java" afterDir="false" />
     </list>
     <list id="b3ac3013-bd47-4ba7-b558-bdab3c757a2b" name="Changes by Kai" comment="" />
-    <list id="6f5b2e4b-1533-4b6b-8248-db223c6e6566" name="Changes by semjon" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Steuerung.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Steuerung.java" afterDir="false" />
-    </list>
+    <list id="6f5b2e4b-1533-4b6b-8248-db223c6e6566" name="Changes by semjon" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,6 +26,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="testSemjon12345" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -46,19 +49,11 @@
       </UrlAndAccount>
     </option>
   </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/Steuerung.java">
-      <ranges>
-        <range start1="64" end1="65" start2="64" end2="65" changelist="6f5b2e4b-1533-4b6b-8248-db223c6e6566" />
-        <range start1="138" end1="144" start2="138" end2="139" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
-      </ranges>
-    </file>
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2JlrDEYJogvnHvppWnKI0sPMbSG" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -145,7 +140,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678727621261</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Update">
+      <created>1678736048867</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1678736048867</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,10 +165,10 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Update" />
     <MESSAGE value="Bugfixing und Logik Update" />
     <MESSAGE value="Schiffe Platzieren Testen mit Semjon(Erfolglos)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Schiffe Platzieren Testen mit Semjon(Erfolglos)" />
+    <MESSAGE value="Update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

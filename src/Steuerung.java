@@ -14,6 +14,8 @@ public class Steuerung {
     }              //?
     private int shipX;
     private int shipY;
+
+
     public int getShipY() {
         return shipY;
     }          //gibt y-koordinate von Schiff aus (int), (was für ein Schiff?)
@@ -35,9 +37,9 @@ public class Steuerung {
     /**
      * Platzieren aller Schiffe(Temp)
      */
-    public void placeShips(){
+    public void placeShips(){                   //kann nicht alles in eine Methode?
 
-        placeBattleship();
+        placeBattleship();                      //braucht man das ueberhaupt fuer jede Schiffsart?
         //placeCruiser();
         //placeCruiser();
 
@@ -125,13 +127,54 @@ public class Steuerung {
         Boat  battelship = new Boat(BoatType.FIVEBOOAT);
         while(!placed){
 
-            gui.playerFieldPlayer1[shipX][shipY].setBoat(battelship);
-            gui.playerFieldPlayer1[shipX][shipY+1].setBoat(battelship);
-            gui.playerFieldPlayer1[shipX][shipY+2].setBoat(battelship);
-            gui.playerFieldPlayer1[shipX][shipY+3].setBoat(battelship);
-            gui.playerFieldPlayer1[shipX][shipY+4].setBoat(battelship);
+            for (int i = 0; i<5; i++) {                                             //never use magic numbers! (muss noch ausgetauscht werden)
+                gui.playerFieldPlayer1[shipX +i][shipY].setBoat(battelship);
+
+            }
         }
+
     }
+
+    public boolean isPositionPossible(int x, int y, int boatLenght, boolean vrtcl) {              //soll ueberpruefen, ob auf dem Feld, auf dem das Boot platziert werden soll, schon ein anderes steh
+        boolean possible = true;
+        if(player1) {
+            for (int i = 0; i< boatLenght; i++){
+                if (vrtcl) {
+                    if (gui.playerFieldPlayer1[x][y+i].getStatus() == 'p'){
+                        possible = false;
+                        break;                                                                  //KA wie das funktioniert, soll aber aus allen schleifen raus
+                    }
+                }else {
+                    if (gui.playerFieldPlayer1[x+i][y].getStatus() == 'p') {
+                        possible = false;
+                        break;
+                    }
+                }
+
+            }
+
+        }else{
+            for (int i = 0; i< boatLenght; i++){
+                if (vrtcl) {
+                    if (gui.playerFieldPlayer2[x][y+i].getStatus() == 'p'){
+                        possible = false;
+                        break;                                                                  //KA wie das funktioniert, soll aber aus allen schleifen raus
+                    }
+                }else {
+                    if (gui.playerFieldPlayer2[x+i][y].getStatus() == 'p') {
+                        possible = false;
+                        break;
+                    }
+                }
+
+            }
+        }
+        return possible;
+    }
+
+/*benoetigt als input den Start-Wert, auf dem das Schiff platziert werden soll, sowie die Laenge des Boots und die Ausrichtung
+ ,fragt dann alle Werte des Bootes im Feld ab und checkt, ob die Felder frei sind, gibt den boolean 'possible' aus, der true ist, wenn die benoetigten Felder frei sind
+ */
 
     /*public void placeCruiser(){
         Boat cruiser1 = new Boat(BoatType.FOURBOAT);
