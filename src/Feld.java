@@ -40,11 +40,11 @@ public class Feld extends JComponent {
                 g.drawLine(0, 0, this.getWidth(), this.getWidth());
                 g.drawLine(this.getWidth(), 0, 0, this.getWidth());
                 break;
-            case 'w': //TODO Entfernen(Nur als Hilfe!)
+            /*case 'w': //TODO Entfernen(Nur als Hilfe!)
                 g.setColor(Color.blue);
                 g.drawLine(0, 0, this.getWidth(), this.getWidth());
                 g.drawLine(this.getWidth(), 0, 0, this.getWidth());
-                break;
+                break;*/
         }
     }
 
@@ -64,8 +64,12 @@ public class Feld extends JComponent {
 
     public void setBoat(Boat boat) {
         this.boat = boat;
-        status = 'p';                               //hinzugefügt
+        status = 'p';
+    }
 
+    public void removeBoat(){
+        this.boat =null;
+        status='w';
     }
 
     public Boat getBoat() {

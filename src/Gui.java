@@ -18,8 +18,9 @@ public class Gui {
     private JButton rightS;
     private JButton leftS;
     private JButton turnVertikalS;
-    private JButton turnHorizontalS;
     private JLabel activePlayer;
+
+
     public Gui() {
         initialize();
     }
@@ -31,7 +32,7 @@ public class Gui {
      * @param spieler1  Aktueller Spieler
      * @return
      */
-    public boolean attack(int x, int y, boolean spieler1) {
+    public boolean boatExists(int x, int y, boolean spieler1) {
         Boat boat;
          if (spieler1){
             boat = playerFieldPlayer2[x][y].getBoat();
@@ -52,7 +53,7 @@ public class Gui {
      * @param x Beschossene Stelle
      * @param y Beschossene Stelle
      * @param spieler1  Auswahl des Spielers
-     * @return
+     * @return ob das Schiff zerstört wurde
      */
     public boolean hitAtIsDestroyed(int x, int y, boolean spieler1) {
         Feld feld;
@@ -65,6 +66,7 @@ public class Gui {
         feld.repaint();
         return feld.getBoat().isDestroyed();
     }
+
     /**
      * Ausgabe an welcher Stelle man nicht getroffen hat, sowie zustandsänderung des Feldes auf miss
      * @param x Beschossene Stelle
@@ -101,9 +103,7 @@ public class Gui {
         shipPlaceButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                strg.placeBoat(shipX,shipY,BoatType.FIVEBOOAT); //TODO Schiffstyp auswahl
-                shipX = 0;
-                shipY = 0;
+                strg.placeBoat();
             }
         });
         shipPlaceButton.setVisible(true);
@@ -126,8 +126,7 @@ public class Gui {
         upS.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int y =strg.getShipY();
-                strg.setShipY(y+1);
+                strg.move(0,-1);
             }
         });
 //Button Runter
@@ -138,8 +137,7 @@ public class Gui {
         downS.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int y =strg.getShipY();
-                strg.setShipY(y-1);
+                strg.move(0,1);
             }
         });
 //Button Rechts
@@ -150,8 +148,7 @@ public class Gui {
         rightS.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int x =strg.getShipX();
-                strg.setShipX(x+1);
+                strg.move(1,0);
             }
         });
 //Button Links
@@ -162,30 +159,18 @@ public class Gui {
         leftS.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int x =strg.getShipX();
-                strg.setShipX(x-1);
+                strg.move(-1,0);
             }
         });
 //Vertikal Rotieren
         turnVertikalS = new JButton();
-        turnVertikalS.setText("Vertikal Drehen");
+        turnVertikalS.setText("Drehen");
         turnVertikalS.setBounds(750,270,100,100);
         turnVertikalS.setVisible(true);
         turnVertikalS.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                    strg.setHorizontalDirection(false);
-            }
-        });
-//Horizontal Rotieren
-        turnHorizontalS = new JButton();
-        turnHorizontalS.setText("Horizontal Drehen");
-        turnHorizontalS.setBounds(750,370,100,100);
-        turnHorizontalS.setVisible(true);
-        turnHorizontalS.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                strg.setHorizontalDirection(false);
+                    strg.switchDirection();
             }
         });
 //Aktiver Spieler Anzeigen
@@ -195,13 +180,7 @@ public class Gui {
 //Erstellen der Spielfelder für 2 Spieler
         playerFieldPlayer1 = generateFields();
         playerFieldPlayer2 = generateFields();
-        showPlayerField(true);
-        Boat testBoat = new Boat(BoatType.FIVEBOOAT);
-        playerFieldPlayer1[1][1].setBoat(testBoat); //Testboot TODO Testboat für Test
-        playerFieldPlayer1[1][2].setBoat(testBoat);
-        playerFieldPlayer1[1][3].setBoat(testBoat);
-        playerFieldPlayer1[1][4].setBoat(testBoat);
-        playerFieldPlayer1[1][5].setBoat(testBoat);
+        showPlayerField(false);
         setButtonsPregame();
         activePlayer.setVisible(true);
     }
@@ -244,7 +223,6 @@ public class Gui {
         cp.add(leftS);
         cp.add(rightS);
         cp.add(shipPlaceButton);
-        cp.add(turnHorizontalS);
         cp.add(turnVertikalS);
     }
     /**
@@ -261,7 +239,7 @@ public class Gui {
         }else{
             felder= playerFieldPlayer1;
         }
-        for (int x=0;x<10;x++) {                                 //
+        for (int x=0;x<10;x++) {
             for (int y = 0; y < 10; y++) {
                 cp.add(felder[x][y]);
                 felder[x][y].repaint();

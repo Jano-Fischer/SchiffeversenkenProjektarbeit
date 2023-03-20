@@ -2,7 +2,7 @@ public class Boat {
     public int lenght;                          //warum public??
     public BoatType boatType;
 
-    private boolean isVertical;                 //speichert ob das Boot waagerecht oder senkrecht steht, wird fuer ueberpruefung benoetigt
+
     public Boat(BoatType boatType){
         this.boatType = boatType;
         this.lenght = boatType.getValue();
