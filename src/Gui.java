@@ -33,9 +33,9 @@ public class Gui {
     public boolean boatExists(int x, int y, boolean spieler1) {
         Boat boat;
          if (spieler1){
-            boat = playerFieldPlayer2[x][y].getBoat();
+            boat = strg.playerFieldPlayer2[x][y].getBoat();
          }else{
-           boat = playerFieldPlayer1[x][y].getBoat();
+           boat = strg.playerFieldPlayer1[x][y].getBoat();
          }
          if (boat==null){
              return false;
@@ -56,9 +56,9 @@ public class Gui {
     public boolean hitAtIsDestroyed(int x, int y, boolean spieler1) {
         Feld feld;
         if (spieler1){
-            feld= playerFieldPlayer2[x][y];
+            feld= strg.playerFieldPlayer2[x][y];
         } else{
-            feld= playerFieldPlayer1[x][y];
+            feld= strg.playerFieldPlayer1[x][y];
         }
         feld.setStatus('h');
         feld.repaint();
@@ -75,9 +75,9 @@ public class Gui {
     public void missAt(int x, int y, boolean spieler1) {
         Feld feld;
         if (spieler1){
-            feld= playerFieldPlayer2[x][y];
+            feld= strg.playerFieldPlayer2[x][y];
         } else{
-            feld= playerFieldPlayer1[x][y];
+            feld= strg.playerFieldPlayer1[x][y];
         }
         feld.setStatus('m');
         feld.repaint();
@@ -176,10 +176,15 @@ public class Gui {
         frame.add(weiter);
         frame.add(activePlayer);
 //Erstellen der Spielfelder für 2 Spieler
-        playerFieldPlayer1 = generateFields();
-        playerFieldPlayer2 = generateFields();
+        strg.playerFieldPlayer1 = generateFields();
+        strg.playerFieldPlayer2 = generateFields();
         showPlayerField(false);
-        setButtonsPregame();
+        cp.add(upS);
+        cp.add(downS);
+        cp.add(leftS);
+        cp.add(rightS);
+        cp.add(shipPlaceButton);
+        cp.add(turnVertikalS);
         activePlayer.setVisible(true);
     }
 
@@ -213,17 +218,6 @@ public class Gui {
         return felder;
     }   //Array mit Feldern befüllen und an die richtige position, abhängig des Feldes setzten. Außerdem wird ein MouseListener zu jedem Feld hinzufügen
     /**
-     * Knöpfe zum Platzieren der Schiffe auf den Frame setzten
-     */
-    public void setButtonsPregame(){
-        cp.add(upS);
-        cp.add(downS);
-        cp.add(leftS);
-        cp.add(rightS);
-        cp.add(shipPlaceButton);
-        cp.add(turnVertikalS);
-    }
-    /**
      * Anzeigen des Spielfeldes welches beschossen wird
      * @param spieler1
      */
@@ -233,9 +227,10 @@ public class Gui {
         cp.add(activePlayer);
         Feld[][] felder;
         if (spieler1){
-           felder= playerFieldPlayer2;
+           felder= strg.playerFieldPlayer2;
         }else{
-            felder= playerFieldPlayer1;
+            setActivePlayerText("Spieler " + ((strg.isPlayer1()) ? 1 : 2));
+            felder= strg.playerFieldPlayer1;
         }
         for (int x=0;x<10;x++) {
             for (int y = 0; y < 10; y++) {

@@ -6,11 +6,10 @@ public class Steuerung {
     private boolean horizontalDirection =true;      //Speichert die Ausrichtung des Schiffes
     private int fieldHight = 50;                   //feldhöhe einstellen
     private int fieldWidth = 50;                    //feldbreite einstellen
-    private final int boatNummber = 8;              //? (Anzahl der Boote?) //TODO anzahl bei ändern der schiffanzahl anpassen
-    private int placedShips = 0;                    //speichert anzahl an Schiffen auf dem Feld (Spieler1, o. 2??)
     private int player1DestroyedBoats = 0;          //Zerstörte Schiffe Player 1
     private int player2DestroyedBoats = 0;          //Zerstörte Schiffe Player 2
-    private final BoatType[] shiptypes = {BoatType.TWOBOAT,BoatType.FOURBOAT,BoatType.THREEBOAT,BoatType.TWOBOAT,BoatType.TWOBOAT,BoatType.ONEBOAT,BoatType.ONEBOAT,BoatType.ONEBOAT};
+    private final BoatType[] shipsToPlace = {BoatType.ONEBOAT,BoatType.THREEBOAT};
+    private final int boatNummber = shipsToPlace.length-1;    // Anzahl der zu platzierenden Boote, muss mit anzahl der Boote in shipsToPlace uebereinstimmen //TODO anzahl bei ändern der schiffanzahl anpassen
     private int arrayPosition=0;
     private int posX =0;
     private int posY =0;
@@ -30,13 +29,6 @@ public class Steuerung {
         this.gui = gui;
         theBoatThing = new BoatThings(this);
     }
-
-    public int getFieldHeight() {
-        return fieldHight;
-    }                        //gibt die Feldhöhe aus
-    public int getFieldWidth() {
-        return fieldWidth;
-    }                         //gibt die Feldbreite aus
 
     /**
      * Schaut, ob ein Schiff getroffen wurde und ob dieses Zerstört wurde.
@@ -98,18 +90,33 @@ public class Steuerung {
      * @param y Koordinate des Boots
      */
     private void placeBoat(int x,int y){
-        Boat boat = new Boat(shiptypes[arrayPosition]);
+        Boat boat = new Boat(shipsToPlace[arrayPosition]);
         System.out.println("Boot auswahl anerkannt");       //TODO weg
-        if (horizontalDirection){
-            for (int i=x;i<x+boat.getBoatType().getValue();i++){
-                gui.playerFieldPlayer1[i][y].setBoat(boat);
-                gui.playerFieldPlayer1[i][y].repaint();
+        if(player1) {
+            if (horizontalDirection){
+                for (int i=x;i<x+boat.getBoatType().getValue();i++){
+                    playerFieldPlayer1[i][y].setBoat(boat);
+                    playerFieldPlayer1[i][y].repaint();
+                }
+            } else {
+                for (int i=y;i<y+boat.getBoatType().getValue();i++){
+                    playerFieldPlayer1[x][i].setBoat(boat);
+                    playerFieldPlayer1[x][i].repaint();
+                }
             }
-        } else {
-            for (int i=y;i<y+boat.getBoatType().getValue();i++){
-                gui.playerFieldPlayer1[x][i].setBoat(boat);
-                gui.playerFieldPlayer1[x][i].repaint();
+        }else {
+            if (horizontalDirection){
+                for (int i=x;i<x+boat.getBoatType().getValue();i++){
+                    playerFieldPlayer2[i][y].setBoat(boat);
+                    playerFieldPlayer2[i][y].repaint();
+                }
+            } else {
+                for (int i=y;i<y+boat.getBoatType().getValue();i++){
+                    playerFieldPlayer2[x][i].setBoat(boat);
+                    playerFieldPlayer2[x][i].repaint();
+                }
             }
+
         }
     }
 
@@ -119,15 +126,29 @@ public class Steuerung {
      * @param y Koordinate
      */
     public void deleteBoat(int x,int y){
-        if (horizontalDirection){
-            for (int i=x;i<x+shiptypes[arrayPosition].getValue();i++){
-                gui.playerFieldPlayer1[i][y].removeBoat();
-                gui.playerFieldPlayer1[i][y].repaint();
+        if(player1){
+            if (horizontalDirection){
+                for (int i = x; i<x+ shipsToPlace[arrayPosition].getValue(); i++){
+                    playerFieldPlayer1[i][y].removeBoat();
+                    playerFieldPlayer1[i][y].repaint();
+                }
+            } else {
+                for (int i = y; i<y+ shipsToPlace[arrayPosition].getValue(); i++){
+                    playerFieldPlayer1[x][i].removeBoat();
+                    playerFieldPlayer1[x][i].repaint();
+                }
             }
-        } else {
-            for (int i=y;i<y+shiptypes[arrayPosition].getValue();i++){
-                gui.playerFieldPlayer1[x][i].removeBoat();
-                gui.playerFieldPlayer1[x][i].repaint();
+        }else {
+            if (horizontalDirection){
+                for (int i = x; i<x+ shipsToPlace[arrayPosition].getValue(); i++){
+                    playerFieldPlayer2[i][y].removeBoat();
+                    playerFieldPlayer2[i][y].repaint();
+                }
+            } else {
+                for (int i = y; i<y+ shipsToPlace[arrayPosition].getValue(); i++){
+                    playerFieldPlayer2[x][i].removeBoat();
+                    playerFieldPlayer2[x][i].repaint();
+                }
             }
         }
     }
@@ -141,8 +162,8 @@ public class Steuerung {
         deleteBoat(posX,posY);
         posX = posX +x;
         posY = posY +y;
-        System.out.println(x +" " +y);
-        System.out.println(posX +" : " +posY +"Bot typ " +shiptypes[arrayPosition].getValue());
+        System.out.println("Wir bewegen uns um("+x +":" +y+")");
+        System.out.println(posX +" : " +posY +"Bot typ " + shipsToPlace[arrayPosition].getValue());
         if(posX<0||posY<0||!inField()||!isValid()){
             posX = posX -x;
             posY = posY -y;
@@ -157,9 +178,9 @@ public class Steuerung {
      */
     private boolean inField(){
         if(horizontalDirection){
-            return (posX + shiptypes[arrayPosition].getValue() <= 10 && posY<10);
+            return (posX + shipsToPlace[arrayPosition].getValue() <= 10 && posY<10);
         }else {
-            return (posY + shiptypes[arrayPosition].getValue() <= 10 && posX<10);
+            return (posY + shipsToPlace[arrayPosition].getValue() <= 10 && posX<10);
         }
     }
 
@@ -169,7 +190,7 @@ public class Steuerung {
      */
     public boolean isValid(){
         if(player1) {
-            for (int i = 0; i< shiptypes[arrayPosition].getValue(); i++){
+            for (int i = 0; i< shipsToPlace[arrayPosition].getValue(); i++){
                 if (horizontalDirection) {
                     if (playerFieldPlayer1[posX+i][posY].getStatus() == 'p'){
                         return false;
@@ -181,13 +202,13 @@ public class Steuerung {
                 }
             }
         }else {
-            for (int i = 0; i < shiptypes[arrayPosition].getValue(); i++) {
+            for (int i = 0; i < shipsToPlace[arrayPosition].getValue(); i++) {
                 if (horizontalDirection) {
-                    if (gui.playerFieldPlayer2[posX + i][posY].getStatus() == 'p') {
+                    if (playerFieldPlayer2[posX + i][posY].getStatus() == 'p') {
                         return false;
                     }
                 } else {
-                    if (gui.playerFieldPlayer2[posX][posY + i].getStatus() == 'p') {
+                    if (playerFieldPlayer2[posX][posY + i].getStatus() == 'p') {
                         return false;
                     }
                 }
@@ -202,16 +223,19 @@ public class Steuerung {
      * Wenn alle Schiffe aus dem Array platziert wurden, werden alle Schiffe des anderen Spielers platziert.
      */
     public void placeBoat() {
-        posX=0;
-        posY=0;
+        posX=5;     //Koordianten wo das Schiff spawned
+        posY=1;     //Koordianten wo das Schiff spawned
+        horizontalDirection=true;
         move(0,0);
-        if(arrayPosition==8) {
+        if(arrayPosition==boatNummber) {
             player1 = !player1;
-            if(player1){
+            System.out.println("Spieler 1 fertig");
+            if (player1) {
                 gui.showPlayerField(false);
-            }else {
+            } else {
+                arrayPosition = 0;
                 gui.showPlayerField(true);
-                arrayPosition=0;
+
             }
         }else {
             arrayPosition++;
