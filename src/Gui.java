@@ -7,8 +7,6 @@ import java.awt.event.MouseEvent;
 
 public class Gui {
     private Steuerung strg; //Verknüpfung mit der Steuerung
-    public Feld[][] playerFieldPlayer1 = new Feld[10][10];  //Feld für Spieler 1 der Größe 10x10 TODO Private?
-    public Feld[][] playerFieldPlayer2 = new Feld[10][10]; //Feld für Spieler 2 der Größe 10x10  TODO Private?
     private JFrame frame;
     private Container cp;
     private JButton shipPlaceButton;

@@ -14,7 +14,17 @@ public class Steuerung {
     private int arrayPosition=0;
     private int posX =0;
     private int posY =0;
-
+    public Feld[][] playerFieldPlayer1 = new Feld[10][10];  //Feld für Spieler 1 der Größe 10x10 TODO Private?
+    public Feld[][] playerFieldPlayer2 = new Feld[10][10]; //Feld für Spieler 2 der Größe 10x10  TODO Private?
+    public boolean isPlayer1() {
+        return player1;
+    }
+    public int getFieldHeight() {
+        return fieldHight;
+    }                        //gibt die Feldhöhe aus
+    public int getFieldWidth() {
+        return fieldWidth;
+    }                         //gibt die Feldbreite aus
 
     public Steuerung(Gui gui) {
         this.gui = gui;
@@ -83,7 +93,7 @@ public class Steuerung {
         }
     }
     /**
-     * Platziert ein Boot
+     * Platziert ein Boot, je nach ausrichtung. //TODO Spieler 2
      * @param x Koordinate des Boots
      * @param y Koordinate des Boots
      */
@@ -122,6 +132,11 @@ public class Steuerung {
         }
     }
 
+    /**
+     * Wird aufgerufen, wenn ein Knopf zum Verschieben gedrückt wurde. Ruft zuerst deleteBoat() auf, und Verschiebt das Boot je nach eingabe des Spielers.
+     * @param x Gibt an um wie viel das Boot in X-Richtung verschoben wird.
+     * @param y Gibt an um wie viel das Boot in Y-Richtung verschoben wird.
+     */
     public void move(int x, int y) {
         deleteBoat(posX,posY);
         posX = posX +x;
@@ -136,6 +151,10 @@ public class Steuerung {
         placeBoat(posX,posY);
     }
 
+    /**
+     * Kontrolliert, ob sich das Boot im Spielfeld befindet
+     * @return False, wenn das Boot nicht mehr im Spielfeld ist
+     */
     private boolean inField(){
         if(horizontalDirection){
             return (posX + shiptypes[arrayPosition].getValue() <= 10 && posY<10);
@@ -144,15 +163,19 @@ public class Steuerung {
         }
     }
 
+    /**
+     * Kontrolliert, ob auf der aktuellen Position schon ein Schiff steht
+     * @return False, wenn die aktuelle position schon von einem Schiff belegt ist
+     */
     public boolean isValid(){
         if(player1) {
             for (int i = 0; i< shiptypes[arrayPosition].getValue(); i++){
                 if (horizontalDirection) {
-                    if (gui.playerFieldPlayer1[posX+i][posY].getStatus() == 'p'){
+                    if (playerFieldPlayer1[posX+i][posY].getStatus() == 'p'){
                         return false;
                     }
                 }else {
-                    if (gui.playerFieldPlayer1[posX][posY+i].getStatus() == 'p') {
+                    if (playerFieldPlayer1[posX][posY+i].getStatus() == 'p') {
                         return false;
                     }
                 }
@@ -173,6 +196,11 @@ public class Steuerung {
         return true;
     }
 
+    /**
+     * Wird aufgerufen, wenn ein Spieler Schiff Platzieren drückt.
+     * Das Spielfeld wird gewechselt und das nächste Schiff aus dem Array wird ausgewählt.
+     * Wenn alle Schiffe aus dem Array platziert wurden, werden alle Schiffe des anderen Spielers platziert.
+     */
     public void placeBoat() {
         posX=0;
         posY=0;
@@ -185,9 +213,14 @@ public class Steuerung {
                 gui.showPlayerField(true);
                 arrayPosition=0;
             }
+        }else {
+            arrayPosition++;
         }
-        else arrayPosition++;
     }
+
+    /**
+     * Dreht ein Boot beim Drücken des Drehen-Knopfes. Wechselt dann den Zustand von zb Vertical zu Horizontal
+     */
     public void switchDirection(){
         deleteBoat(posX,posY);
         horizontalDirection = !horizontalDirection;

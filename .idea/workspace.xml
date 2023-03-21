@@ -4,24 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" name="Changes" comment="Schiffe Platzieren Fortschritt mit Semjon">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_13_03_2023_19_44__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_13_03_2023_19_44__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_13_03_2023_19_49__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_13_03_2023_19_49__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_16_03_2023_15_58__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_16_03_2023_15_58__Changes_.xml" afterDir="false" />
+    <list default="true" id="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" name="Changes" comment="started coding the method for checking if position is possible">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Feld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Feld.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Gui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Steuerung.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Steuerung.java" afterDir="false" />
     </list>
-    <list id="a0a5ed7e-c51c-4126-b1bf-f1085313cb05" name="Changes by finnp" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Feld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Feld.java" afterDir="false" />
+    <list id="a0a5ed7e-c51c-4126-b1bf-f1085313cb05" name="Changes by finnp" comment="" />
+    <list id="472a59f4-68e6-4e68-b087-902b122cc73a" name="Changes by jano5" comment="">
       <change beforePath="$PROJECT_DIR$/src/Gui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Steuerung.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Steuerung.java" afterDir="false" />
-    </list>
-    <list id="8804383d-b174-4f2c-9cf8-b1aa09e2305f" name="Changes by semjon" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Boat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Gui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,52 +78,55 @@
     <setting file="file://$PROJECT_DIR$/src/Steuerung.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/Steuerung.java">
-      <ranges>
-        <range start1="3" end1="4" start2="3" end2="4" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
-        <range start1="5" end1="9" start2="5" end2="6" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
-        <range start1="11" end1="12" start2="8" end2="9" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
-        <range start1="15" end1="15" start2="12" end2="17" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
-        <range start1="36" end1="37" start2="38" end2="39" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
-        <range start1="50" end1="50" start2="52" end2="56" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
-        <range start1="55" end1="56" start2="61" end2="62" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
-        <range start1="82" end1="83" start2="88" end2="88" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
-        <range start1="84" end1="86" start2="89" end2="92" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
-        <range start1="87" end1="88" start2="93" end2="94" changelist="a0a5ed7e-c51c-4126-b1bf-f1085313cb05" />
-        <range start1="89" end1="89" start2="95" end2="96" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
-        <range start1="91" end1="92" start2="98" end2="99" changelist="a0a5ed7e-c51c-4126-b1bf-f1085313cb05" />
-        <range start1="93" end1="93" start2="100" end2="101" changelist="a0a5ed7e-c51c-4126-b1bf-f1085313cb05" />
-        <range start1="97" end1="105" start2="105" end2="137" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
-        <range start1="106" end1="106" start2="138" end2="145" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
-        <range start1="107" end1="108" start2="146" end2="196" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
-      </ranges>
-    </file>
     <file path="$PROJECT_DIR$/src/Gui.java">
       <ranges>
-        <range start1="20" end1="21" start2="20" end2="20" changelist="a0a5ed7e-c51c-4126-b1bf-f1085313cb05" />
-        <range start1="22" end1="22" start2="21" end2="23" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
-        <range start1="33" end1="34" start2="34" end2="35" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
-        <range start1="54" end1="55" start2="55" end2="56" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
-        <range start1="67" end1="67" start2="68" end2="69" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
-        <range start1="103" end1="106" start2="105" end2="106" changelist="a0a5ed7e-c51c-4126-b1bf-f1085313cb05" />
-        <range start1="128" end1="130" start2="128" end2="129" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
-        <range start1="140" end1="142" start2="139" end2="140" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
-        <range start1="152" end1="154" start2="150" end2="151" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
-        <range start1="164" end1="166" start2="161" end2="162" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
-        <range start1="170" end1="171" start2="166" end2="167" changelist="8804383d-b174-4f2c-9cf8-b1aa09e2305f" />
-        <range start1="176" end1="177" start2="172" end2="173" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
-        <range start1="179" end1="190" start2="175" end2="175" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
-        <range start1="197" end1="204" start2="182" end2="183" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
-        <range start1="246" end1="247" start2="225" end2="225" changelist="a0a5ed7e-c51c-4126-b1bf-f1085313cb05" />
-        <range start1="263" end1="264" start2="241" end2="242" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
+        <range start1="9" end1="11" start2="9" end2="9" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
+        <range start1="37" end1="38" start2="35" end2="36" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
+        <range start1="39" end1="40" start2="37" end2="38" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
+        <range start1="60" end1="61" start2="58" end2="59" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
+        <range start1="62" end1="63" start2="60" end2="61" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
+        <range start1="79" end1="80" start2="77" end2="78" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
+        <range start1="81" end1="82" start2="79" end2="80" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
+        <range start1="180" end1="182" start2="178" end2="180" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
+        <range start1="183" end1="184" start2="181" end2="187" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
+        <range start1="217" end1="218" start2="220" end2="222" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
+        <range start1="219" end1="231" start2="223" end2="223" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
+        <range start1="237" end1="238" start2="229" end2="230" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
+        <range start1="239" end1="240" start2="231" end2="233" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
       </ranges>
     </file>
-    <file path="$PROJECT_DIR$/src/Feld.java">
+    <file path="$PROJECT_DIR$/src/Steuerung.java">
       <ranges>
-        <range start1="42" end1="43" start2="42" end2="43" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
-        <range start1="46" end1="47" start2="46" end2="47" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
-        <range start1="66" end1="68" start2="66" end2="67" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
-        <range start1="69" end1="69" start2="68" end2="73" changelist="a0a5ed7e-c51c-4126-b1bf-f1085313cb05" />
+        <range start1="8" end1="10" start2="8" end2="8" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
+        <range start1="12" end1="13" start2="10" end2="12" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
+        <range start1="16" end1="17" start2="15" end2="26" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
+        <range start1="23" end1="30" start2="32" end2="32" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
+        <range start1="85" end1="86" start2="87" end2="88" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
+        <range start1="90" end1="91" start2="92" end2="93" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
+        <range start1="92" end1="102" start2="94" end2="119" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
+        <range start1="111" end1="120" start2="128" end2="139" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
+        <range start1="121" end1="121" start2="140" end2="152" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
+        <range start1="124" end1="124" start2="155" end2="160" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
+        <range start1="128" end1="130" start2="164" end2="166" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
+        <range start1="138" end1="138" start2="174" end2="178" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
+        <range start1="140" end1="141" start2="180" end2="181" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
+        <range start1="142" end1="143" start2="182" end2="183" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
+        <range start1="146" end1="146" start2="186" end2="190" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
+        <range start1="148" end1="149" start2="192" end2="193" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
+        <range start1="150" end1="151" start2="194" end2="195" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
+        <range start1="154" end1="155" start2="198" end2="199" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
+        <range start1="160" end1="161" start2="204" end2="205" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
+        <range start1="162" end1="163" start2="206" end2="207" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
+        <range start1="166" end1="167" start2="210" end2="211" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
+        <range start1="175" end1="175" start2="219" end2="224" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
+        <range start1="176" end1="178" start2="225" end2="228" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
+        <range start1="179" end1="180" start2="229" end2="230" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
+        <range start1="181" end1="182" start2="231" end2="233" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
+        <range start1="183" end1="184" start2="234" end2="236" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
+        <range start1="185" end1="186" start2="237" end2="238" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
+        <range start1="187" end1="187" start2="239" end2="241" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
+        <range start1="188" end1="189" start2="242" end2="242" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
+        <range start1="190" end1="190" start2="243" end2="247" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
       </ranges>
     </file>
   </component>
@@ -140,7 +134,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2JlrDEYJogvnHvppWnKI0sPMbSG" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -154,7 +148,6 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -225,8 +218,6 @@
       <workItem from="1678988662724" duration="5000" />
       <workItem from="1679065220526" duration="5457000" />
       <workItem from="1679074656329" duration="5133000" />
-      <workItem from="1679319509058" duration="15741000" />
-      <workItem from="1679335757921" duration="507000" />
     </task>
     <task id="LOCAL-00001" summary="Update">
       <created>1677008707184</created>
@@ -286,8 +277,7 @@
     <MESSAGE value="Schiffe Platzieren Testen mit Semjon(Erfolglos)" />
     <MESSAGE value="Fixing Semjons mistakes" />
     <MESSAGE value="Kommentare schreiben" />
-    <MESSAGE value="Schiffe Platzieren Fortschritt mit Semjon" />
-    <option name="LAST_COMMIT_MESSAGE" value="Schiffe Platzieren Fortschritt mit Semjon" />
+    <option name="LAST_COMMIT_MESSAGE" value="Kommentare schreiben" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
