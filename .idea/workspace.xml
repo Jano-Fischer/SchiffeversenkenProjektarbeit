@@ -4,16 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" name="Changes" comment="started coding the method for checking if position is possible">
+    <list default="true" id="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" name="Changes" comment="place ships almost finnished">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Gui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Steuerung.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Steuerung.java" afterDir="false" />
     </list>
     <list id="a0a5ed7e-c51c-4126-b1bf-f1085313cb05" name="Changes by finnp" comment="" />
-    <list id="472a59f4-68e6-4e68-b087-902b122cc73a" name="Changes by jano5" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Gui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Steuerung.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Steuerung.java" afterDir="false" />
-    </list>
+    <list id="472a59f4-68e6-4e68-b087-902b122cc73a" name="Changes by jano5" comment="place ships almost finished" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,66 +65,13 @@
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
-        <option name="accountId" value="9196de1f-8bc2-4844-909f-17b1286a8c99" />
-        <option name="url" value="https://github.com/Jano-Fischer/SchiffeversenkenProjektarbeit.git" />
+        <option name="accountId" value="a5bf574c-fece-4637-932f-0b409e9a8fe6" />
+        <option name="url" value="https://github.com/Jano-Fischer/SchiffeversenkenProjektarbeit" />
       </UrlAndAccount>
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/Steuerung.java" root0="FORCE_HIGHLIGHTING" />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/Gui.java">
-      <ranges>
-        <range start1="9" end1="11" start2="9" end2="9" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
-        <range start1="37" end1="38" start2="35" end2="36" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
-        <range start1="39" end1="40" start2="37" end2="38" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
-        <range start1="60" end1="61" start2="58" end2="59" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
-        <range start1="62" end1="63" start2="60" end2="61" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
-        <range start1="79" end1="80" start2="77" end2="78" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
-        <range start1="81" end1="82" start2="79" end2="80" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
-        <range start1="180" end1="182" start2="178" end2="180" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
-        <range start1="183" end1="184" start2="181" end2="187" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
-        <range start1="217" end1="218" start2="220" end2="222" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
-        <range start1="219" end1="231" start2="223" end2="223" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
-        <range start1="237" end1="238" start2="229" end2="230" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
-        <range start1="239" end1="240" start2="231" end2="233" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/Steuerung.java">
-      <ranges>
-        <range start1="8" end1="10" start2="8" end2="8" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
-        <range start1="12" end1="13" start2="10" end2="12" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
-        <range start1="16" end1="17" start2="15" end2="26" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
-        <range start1="23" end1="30" start2="32" end2="32" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
-        <range start1="85" end1="86" start2="87" end2="88" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
-        <range start1="90" end1="91" start2="92" end2="93" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
-        <range start1="92" end1="102" start2="94" end2="119" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
-        <range start1="111" end1="120" start2="128" end2="139" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
-        <range start1="121" end1="121" start2="140" end2="152" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
-        <range start1="124" end1="124" start2="155" end2="160" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
-        <range start1="128" end1="130" start2="164" end2="166" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
-        <range start1="138" end1="138" start2="174" end2="178" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
-        <range start1="140" end1="141" start2="180" end2="181" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
-        <range start1="142" end1="143" start2="182" end2="183" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
-        <range start1="146" end1="146" start2="186" end2="190" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
-        <range start1="148" end1="149" start2="192" end2="193" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
-        <range start1="150" end1="151" start2="194" end2="195" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
-        <range start1="154" end1="155" start2="198" end2="199" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
-        <range start1="160" end1="161" start2="204" end2="205" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
-        <range start1="162" end1="163" start2="206" end2="207" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
-        <range start1="166" end1="167" start2="210" end2="211" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
-        <range start1="175" end1="175" start2="219" end2="224" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
-        <range start1="176" end1="178" start2="225" end2="228" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
-        <range start1="179" end1="180" start2="229" end2="230" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
-        <range start1="181" end1="182" start2="231" end2="233" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
-        <range start1="183" end1="184" start2="234" end2="236" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
-        <range start1="185" end1="186" start2="237" end2="238" changelist="472a59f4-68e6-4e68-b087-902b122cc73a" />
-        <range start1="187" end1="187" start2="239" end2="241" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
-        <range start1="188" end1="189" start2="242" end2="242" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
-        <range start1="190" end1="190" start2="243" end2="247" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
-      </ranges>
-    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -144,37 +87,51 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;CodeWithMe&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "jdk.selected.JAVA_MODULE": "18",
+    "last_opened_file_path": "/home/semjon/Dokumente/Projektarbeit_SV/src/Gui.java",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Gui">
     <configuration name="Gui" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Gui" />
-      <module name="Schiffeversenken" />
+      <module name="Projektarbeit_SV" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="public class gui" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="18" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="public class Gui" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.public class gui" />
+      <item itemvalue="Application.Gui" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Gui" />
@@ -254,7 +211,21 @@
       <option name="project" value="LOCAL" />
       <updated>1678986327407</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="place ships almost finnished">
+      <created>1679423567915</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1679423567915</updated>
+    </task>
+    <task id="LOCAL-00007" summary="place ships almost finished">
+      <created>1679423649622</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1679423649622</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -277,7 +248,9 @@
     <MESSAGE value="Schiffe Platzieren Testen mit Semjon(Erfolglos)" />
     <MESSAGE value="Fixing Semjons mistakes" />
     <MESSAGE value="Kommentare schreiben" />
-    <option name="LAST_COMMIT_MESSAGE" value="Kommentare schreiben" />
+    <MESSAGE value="place ships almost finnished" />
+    <MESSAGE value="place ships almost finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="place ships almost finished" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

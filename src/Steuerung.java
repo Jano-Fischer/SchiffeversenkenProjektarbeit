@@ -1,7 +1,7 @@
 public class Steuerung {
     private final Gui gui;                          //Bekannt machen mit der GUI
     private BoatThings theBoatThing;
-    private boolean lock = false;                  //Boolean damit nicht mehrmals geschossen werden kan n
+    private boolean lock = false;                  //Boolean damit nicht mehrmals geschossen werden kann
     private boolean player1 = true;                //Auswahl des aktuellen Spielers
     private boolean horizontalDirection =true;      //Speichert die Ausrichtung des Schiffes
     private int fieldHight = 50;                   //feldhöhe einstellen
@@ -189,33 +189,38 @@ public class Steuerung {
      * @return False, wenn die aktuelle position schon von einem Schiff belegt ist
      */
     public boolean isValid(){
-        if(player1) {
-            for (int i = 0; i< shipsToPlace[arrayPosition].getValue(); i++){
-                if (horizontalDirection) {
-                    if (playerFieldPlayer1[posX+i][posY].getStatus() == 'p'){
-                        return false;
-                    }
-                }else {
-                    if (playerFieldPlayer1[posX][posY+i].getStatus() == 'p') {
-                        return false;
+        if(player1) {                                                                       //player 1
+            for(int j = -1; j< posY+2; j++) {                                               //zaehler y richtung
+                for (int i = -1; i < shipsToPlace[arrayPosition].getValue() + 1; i++) {     //zaehler x richtung
+                    if (horizontalDirection) {
+                        if (playerFieldPlayer1[posX + i][posY+j].getStatus() == 'p') {      //if (playerFieldPlayer1[posX + i][posY+j].getStatus() == 'p') {
+                            return false;
+                        }
+                    } else {
+                        if (playerFieldPlayer1[posX+j][posY + i].getStatus() == 'p') {      //if (playerFieldPlayer1[posX+j][posY + i].getStatus() == 'p') {
+                            return false;
+                        }
                     }
                 }
             }
         }else {
-            for (int i = 0; i < shipsToPlace[arrayPosition].getValue(); i++) {
-                if (horizontalDirection) {
-                    if (playerFieldPlayer2[posX + i][posY].getStatus() == 'p') {
-                        return false;
-                    }
-                } else {
-                    if (playerFieldPlayer2[posX][posY + i].getStatus() == 'p') {
-                        return false;
+            for(int j = -1; j< posY+2; j++) {
+                for (int i = 0; i < shipsToPlace[arrayPosition].getValue(); i++) {         //same for player 2
+                    if (horizontalDirection) {
+                        if (playerFieldPlayer2[posX + i][posY+j].getStatus() == 'p') {      //if (playerFieldPlayer2[posX + i][posY+j].getStatus() == 'p') {
+                            return false;
+                        }
+                    } else {
+                        if (playerFieldPlayer2[posX+j][posY + i].getStatus() == 'p') {      //if (playerFieldPlayer2[posX+j][posY + i].getStatus() == 'p') {
+                            return false;
+                        }
                     }
                 }
             }
         }
         return true;
     }
+    //update: checkt jetzt ob das Schiff an andere Boote stoesst (immer ein Feld frei zwischen zwei Booten)
 
     /**
      * Wird aufgerufen, wenn ein Spieler Schiff Platzieren drückt.
@@ -223,8 +228,8 @@ public class Steuerung {
      * Wenn alle Schiffe aus dem Array platziert wurden, werden alle Schiffe des anderen Spielers platziert.
      */
     public void placeBoat() {
-        posX=5;     //Koordianten wo das Schiff spawned
-        posY=1;     //Koordianten wo das Schiff spawned
+        posX=0;     //Koordianten wo das Schiff spawned
+        posY=0;     //Koordianten wo das Schiff spawned
         horizontalDirection=true;
         move(0,0);
         if(arrayPosition==boatNummber) {
@@ -252,3 +257,5 @@ public class Steuerung {
         placeBoat(posX,posY);
     }
 }
+
+//Wo wird das Spielfeld neu gepainted??
