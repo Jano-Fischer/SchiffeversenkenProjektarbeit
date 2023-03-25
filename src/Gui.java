@@ -23,26 +23,6 @@ public class Gui {
         initialize();
     }
 
-    /**
-     * Greift das Feld bei X und Y an. Wenn kein Boot getroffen wurde, ist attack false
-     * @param x Beschossene Stelle
-     * @param y Beschossene Stelle
-     * @param spieler1  Aktueller Spieler
-     * @return
-     */
-    public boolean boatExists(int x, int y, boolean spieler1) {
-        Boat boat;
-         if (spieler1){
-            boat = strg.playerFieldPlayer2[x][y].getBoat();
-         }else{
-           boat = strg.playerFieldPlayer1[x][y].getBoat();
-         }
-         if (boat==null){
-             return false;
-         } else {
-             return true;
-         }
-    }
 
     /**
      * Wird ausgeführt bei Treffer.

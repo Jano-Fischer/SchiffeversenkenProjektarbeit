@@ -6,10 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" name="Changes" comment="place ships almost finnished">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BoatType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BoatType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Gui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Steuerung.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Steuerung.java" afterDir="false" />
     </list>
     <list id="a0a5ed7e-c51c-4126-b1bf-f1085313cb05" name="Changes by finnp" comment="" />
-    <list id="472a59f4-68e6-4e68-b087-902b122cc73a" name="Changes by jano5" comment="place ships almost finished" />
+    <list id="a5b1ceac-0b73-40a2-8426-d58fc6b04a33" name="Changes by jano5" comment="">
+      <change beforePath="$PROJECT_DIR$/src/Feld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Feld.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Gui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Steuerung.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Steuerung.java" afterDir="false" />
+    </list>
+    <list id="567c8ed4-6294-4967-895d-e33057726310" name="Changes by Thors" comment="">
+      <change beforePath="$PROJECT_DIR$/src/Steuerung.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Steuerung.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -73,6 +82,44 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/Steuerung.java" root0="FORCE_HIGHLIGHTING" />
   </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/Gui.java">
+      <ranges>
+        <range start1="18" end1="18" start2="18" end2="19" changelist="a5b1ceac-0b73-40a2-8426-d58fc6b04a33" />
+        <range start1="19" end1="19" start2="20" end2="21" changelist="a5b1ceac-0b73-40a2-8426-d58fc6b04a33" />
+        <range start1="25" end1="45" start2="27" end2="27" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
+        <range start1="172" end1="172" start2="154" end2="164" changelist="a5b1ceac-0b73-40a2-8426-d58fc6b04a33" />
+        <range start1="173" end1="173" start2="165" end2="166" changelist="a5b1ceac-0b73-40a2-8426-d58fc6b04a33" />
+        <range start1="187" end1="187" start2="180" end2="181" changelist="a5b1ceac-0b73-40a2-8426-d58fc6b04a33" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/Steuerung.java">
+      <ranges>
+        <range start1="10" end1="12" start2="10" end2="12" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
+        <range start1="32" end1="32" start2="32" end2="54" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
+        <range start1="40" end1="41" start2="62" end2="63" changelist="a5b1ceac-0b73-40a2-8426-d58fc6b04a33" />
+        <range start1="71" end1="72" start2="93" end2="94" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
+        <range start1="78" end1="79" start2="100" end2="101" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
+        <range start1="87" end1="88" start2="109" end2="110" changelist="567c8ed4-6294-4967-895d-e33057726310" />
+        <range start1="191" end1="191" start2="213" end2="214" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
+        <range start1="192" end1="194" start2="215" end2="217" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
+        <range start1="195" end1="196" start2="218" end2="219" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
+        <range start1="199" end1="200" start2="222" end2="223" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
+        <range start1="204" end1="205" start2="227" end2="228" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
+        <range start1="206" end1="207" start2="229" end2="230" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
+        <range start1="209" end1="210" start2="232" end2="233" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
+        <range start1="213" end1="214" start2="236" end2="237" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
+        <range start1="218" end1="219" start2="241" end2="242" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
+        <range start1="233" end1="235" start2="256" end2="258" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
+        <range start1="236" end1="240" start2="259" end2="261" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
+        <range start1="241" end1="243" start2="262" end2="267" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
+        <range start1="246" end1="246" start2="270" end2="272" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
+        <range start1="255" end1="256" start2="281" end2="282" changelist="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" />
+        <range start1="258" end1="258" start2="284" end2="307" changelist="a5b1ceac-0b73-40a2-8426-d58fc6b04a33" />
+        <range start1="260" end1="261" start2="309" end2="310" changelist="a5b1ceac-0b73-40a2-8426-d58fc6b04a33" />
+      </ranges>
+    </file>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -87,26 +134,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "jdk.selected.JAVA_MODULE": "18",
-    "last_opened_file_path": "/home/semjon/Dokumente/Projektarbeit_SV/src/Gui.java",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;18&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/semjon/Dokumente/Projektarbeit_SV/src/Gui.java&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="" />
@@ -225,7 +272,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679423649622</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="place ships almost finnished">
+      <created>1679694123025</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1679694123025</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -248,9 +302,29 @@
     <MESSAGE value="Schiffe Platzieren Testen mit Semjon(Erfolglos)" />
     <MESSAGE value="Fixing Semjons mistakes" />
     <MESSAGE value="Kommentare schreiben" />
-    <MESSAGE value="place ships almost finnished" />
     <MESSAGE value="place ships almost finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="place ships almost finished" />
+    <MESSAGE value="place ships almost finnished" />
+    <option name="LAST_COMMIT_MESSAGE" value="place ships almost finnished" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/Gui.java</url>
+          <line>84</line>
+          <properties method="actionPerformed">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Gui.java</url>
+          <line>85</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
