@@ -238,5 +238,5 @@ public class Gui {
                 }
             }
         });
-    }   //Main-methode
+    }
 }

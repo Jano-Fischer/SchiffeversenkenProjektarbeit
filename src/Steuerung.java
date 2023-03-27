@@ -1,6 +1,5 @@
 public class Steuerung {
     private final Gui gui;                          //Bekannt machen mit der GUI
-    private BoatThings theBoatThing;
     private boolean lock = false;                  //Boolean damit nicht mehrmals geschossen werden kann
     private boolean player1 = true;                //Auswahl des aktuellen Spielers
     private boolean horizontalDirection =true;      //Speichert die Ausrichtung des Schiffes
@@ -27,7 +26,6 @@ public class Steuerung {
 
     public Steuerung(Gui gui) {
         this.gui = gui;
-        theBoatThing = new BoatThings(this);
     }
 
     /**
@@ -60,7 +58,7 @@ public class Steuerung {
     public void click(int x, int y) {
         if (lock) return;
         System.out.println("Feld geklickt: " + x + ":" + y + " Spieler:" + ((player1) ? 1 : 2));
-        boolean hit = gui.boatExists(x, y, player1);
+        boolean hit = boatExists(x, y, player1);
         if (hit) {
             System.out.println("Treffer bei:"+x+":"+y+" Spieler:" + ((player1) ? 1 : 2));
             boolean destroyed = gui.hitAtIsDestroyed(x, y, player1);
@@ -243,7 +241,6 @@ public class Steuerung {
         }
         return true;
     }
-    //update: checkt jetzt ob das Schiff an andere Boote stoesst (immer ein Feld frei zwischen zwei Booten)
 
     /**
      * Wird aufgerufen, wenn ein Spieler Schiff Platzieren drückt.
@@ -283,5 +280,3 @@ public class Steuerung {
         placeBoat(posX,posY);
     }
 }
-
-//Wo wird das Spielfeld neu gepainted??
