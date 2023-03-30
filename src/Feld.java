@@ -1,7 +1,5 @@
-import java.awt.*;
-import javax.swing.*;
 
-public class Feld extends JComponent {
+public class Feld {
     private int x;
     private Boat boat;
     private int y;
@@ -17,35 +15,6 @@ public class Feld extends JComponent {
         this.x=x;                                   //der Konstruktor wird in initilize der GUI aufgerufen, dort wird für jedes Feld der Status water gesetzt
         this.y=y;
         this.status =status;
-    }
-
-    /**
-     * Malen in Gui
-     * @param g
-     */
-    @Override
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.drawRect(0,0,this.getWidth()-1,this.getWidth()-1);
-        switch(status) {
-            case 'h':       //Hit
-                g.setColor(Color.red);
-                g.drawLine(0, 0, this.getWidth(), this.getWidth());
-                g.drawLine(this.getWidth(), 0, 0, this.getWidth());
-                break;
-            case 'm':       //Miss
-                g.drawOval(0, 0, this.getWidth(), this.getWidth());
-                break;
-            case 'p':       //Placed
-                g.drawLine(0, 0, this.getWidth(), this.getWidth());
-                g.drawLine(this.getWidth(), 0, 0, this.getWidth());
-                break;
-            /*case 'w': //TODO Entfernen(Nur als Hilfe!)
-                g.setColor(Color.blue);
-                g.drawLine(0, 0, this.getWidth(), this.getWidth());
-                g.drawLine(this.getWidth(), 0, 0, this.getWidth());
-                break;*/
-        }
     }
 
     public int getXFeldNumber() {
