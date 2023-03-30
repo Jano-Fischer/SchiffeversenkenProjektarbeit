@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" name="Changes" comment="kleine KommentarUpdates">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_20_03_23,_19_25_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_20_03_23__19_25__Changes_.xml" beforeDir="false" />
+    <list default="true" id="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" name="Changes" comment="Umschreiben in MVC format.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Feld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Feld.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Gui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Steuerung.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Steuerung.java" afterDir="false" />
     </list>
     <list id="a5b1ceac-0b73-40a2-8426-d58fc6b04a33" name="Changes by jano5" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -186,7 +181,7 @@
       <workItem from="1679932200948" duration="1288000" />
       <workItem from="1679933512698" duration="556000" />
       <workItem from="1680185545792" duration="42000" />
-      <workItem from="1680185649731" duration="912000" />
+      <workItem from="1680185649731" duration="1556000" />
     </task>
     <task id="LOCAL-00001" summary="Update">
       <created>1677008707184</created>
@@ -251,7 +246,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679934070738</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Umschreiben in MVC format.">
+      <created>1680186645723</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1680186645723</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -277,7 +279,8 @@
     <MESSAGE value="place ships almost finished" />
     <MESSAGE value="place ships almost finnished" />
     <MESSAGE value="kleine KommentarUpdates" />
-    <option name="LAST_COMMIT_MESSAGE" value="kleine KommentarUpdates" />
+    <MESSAGE value="Umschreiben in MVC format." />
+    <option name="LAST_COMMIT_MESSAGE" value="Umschreiben in MVC format." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
