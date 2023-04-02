@@ -25,14 +25,11 @@ public class GuiFeld extends JComponent {
                 g.drawOval(0, 0, this.getWidth(), this.getWidth());
                 break;
             case 'p':       //Placed
-                g.drawLine(0, 0, this.getWidth(), this.getWidth());
-                g.drawLine(this.getWidth(), 0, 0, this.getWidth());
+                    g.drawLine(0, 0, this.getWidth(), this.getWidth());
+                    g.drawLine(this.getWidth(), 0, 0, this.getWidth());
                 break;
-            /*case 'w': //TODO Entfernen(Nur als Hilfe!)
-                g.setColor(Color.blue);
-                g.drawLine(0, 0, this.getWidth(), this.getWidth());
-                g.drawLine(this.getWidth(), 0, 0, this.getWidth());
-                break;*/
+            default:
+                break;
         }
     }
   

@@ -13,6 +13,12 @@ public class Steuerung {
     private int arrayPosition=0;
     private int posX =0;
     private int posY =0;
+    private boolean pregame =true;
+
+    public boolean isPregame() {
+        return pregame;
+    }
+    private int counter = 0;
     private Feld[][] playerFieldPlayer1 = new Feld[10][10];  //Feld für Spieler 1 der Größe 10x10 TODO Private?
     private Feld[][] playerFieldPlayer2 = new Feld[10][10]; //Feld für Spieler 2 der Größe 10x10  TODO Private?
   // Ende Attribute
@@ -27,6 +33,12 @@ public class Steuerung {
     public int getFieldWidth() {
         return fieldWidth;
     }                         //gibt die Feldbreite aus
+    public Feld[][] getPlayerFieldPlayer1() {
+        return this.playerFieldPlayer1;
+    }
+    public Feld[][] getPlayerFieldPlayer2() {
+        return this.playerFieldPlayer2;
+    }
   
     private Feld[][] createFelder() {
       Feld[][] felder = new Feld[10][10];
@@ -34,7 +46,7 @@ public class Steuerung {
             for (int y=0;y<10;y++){
                 // GuiFeld feld = new GuiFeld(x,y,'w');
                 Feld feld = new Feld(x,y,'w');
-                playerFieldPlayer1[x][y] = feld;
+                felder[x][y] = feld;
             }
       }
       return felder;
@@ -124,13 +136,12 @@ public class Steuerung {
         }
     }
     /**
-     * Platziert ein Boot, je nach ausrichtung. //TODO Spieler 2
+     * Platziert ein Boot, je nach ausrichtung.
      * @param x Koordinate des Boots
      * @param y Koordinate des Boots
      */
     private void placeBoat(int x,int y){
         Boat boat = new Boat(shipsToPlace[arrayPosition]);
-        System.out.println("Boot auswahl anerkannt");       //TODO weg
         if(player1) {
             if (horizontalDirection){
                 for (int i=x;i<x+boat.getBoatType().getValue();i++){
@@ -196,13 +207,10 @@ public class Steuerung {
         deleteBoat(posX,posY);
         posX = posX +x;
         posY = posY +y;
-        System.out.println("Wir bewegen uns um("+x +":" +y+")");
-        System.out.println(posX +" : " +posY +"Bot typ " + shipsToPlace[arrayPosition].getValue());
         if(posX<0||posY<0||!inField()||!isValid()){
             posX = posX -x;
             posY = posY -y;
         }
-        System.out.println("Place" +posX +" : " +posY);
         placeBoat(posX,posY);
     }
 
@@ -256,33 +264,35 @@ public class Steuerung {
         return true;
     }
 
+
+
     /**
      * Wird aufgerufen, wenn ein Spieler Schiff Platzieren drückt.
      * Das Spielfeld wird gewechselt und das nächste Schiff aus dem Array wird ausgewählt.
      * Wenn alle Schiffe aus dem Array platziert wurden, werden alle Schiffe des anderen Spielers platziert.
      */
     public void placeBoat() {
-        posX=0;     //Koordianten wo das Schiff spawned
-        posY=0;     //Koordianten wo das Schiff spawned
-        horizontalDirection=true;
+        posX = 0;     //Koordianten wo das Schiff spawned
+        posY = 0;     //Koordianten wo das Schiff spawned
+        horizontalDirection = true;
 
-        if(arrayPosition==boatNumber) {
+        if (arrayPosition == boatNumber-1) {
             player1 = !player1;
-            System.out.println("Spieler1: "+player1);
+            gui.setActivePlayerText("Spieler " + ((isPlayer1()) ? 1 : 2));
             if (!player1) {
                 arrayPosition = 0;
-                System.out.println("array auf 0 gesetzt");
-                move(0,0);
-                gui.showPlayerField(true);              //showplayerField zeigt Spielfeld an, das beschossen wird (Spielfeld des anderen Spielers)
+                gui.showOtherPlayerFieldPregame(player1);              //showplayerField zeigt Spielfeld an, das beschossen wird (Spielfeld des anderen Spielers)
+                move(0, 0);
             } else {
-                gui.showPlayerField(false);
+                gui.endPreGame();
+                goOne();
             }
-        }else {
+        } else {
             arrayPosition++;
-            System.out.println("array weiter gesetzt");
-            move(0,0);
+            move(0, 0);
         }
     }
+
 
     /**
      * Dreht ein Boot beim Drücken des Drehen-Knopfes. Wechselt dann den Zustand von zb Vertical zu Horizontal
@@ -293,13 +303,4 @@ public class Steuerung {
         if(!inField() || !isValid()) horizontalDirection = !horizontalDirection;
         placeBoat(posX,posY);
     }
-  
-    public Feld[][] getPlayerFieldPlayer1() {
-      return this.playerFieldPlayer1;
-    }
-
-    public Feld[][] getPlayerFieldPlayer2() {
-      return this.playerFieldPlayer2;
-    }
-  // Ende Methoden
 }

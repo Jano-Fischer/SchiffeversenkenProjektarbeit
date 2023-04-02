@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class Gui {
+public class Gui extends JFrame{
     private Steuerung strg; //Verknüpfung mit der Steuerung
     private JFrame frame;
     private Container cp;
@@ -25,7 +25,7 @@ public class Gui {
         initialize();
     }
 
-    void repaint() {
+    public void repaint() {
       frame.repaint();
     }
 
@@ -254,10 +254,36 @@ public class Gui {
         cp.add(activePlayer);
         GuiFeld[][] felder;
         if (spieler1){
-           felder= playerFieldPlayer2;
+            felder= playerFieldPlayer2;
         }else{
             setActivePlayerText("Spieler " + ((strg.isPlayer1()) ? 1 : 2));
             felder= playerFieldPlayer1;
+        }
+        for (int x=0;x<10;x++) {
+            for (int y = 0; y < 10; y++) {
+                cp.add(felder[x][y]);
+                felder[x][y].repaint();
+            }
+        }
+    }
+
+    public void showOtherPlayerFieldPregame(boolean spieler1){
+
+        cp.removeAll();
+        cp.add(weiter);
+        cp.add(activePlayer);
+        cp.add(shipPlaceButton);
+        cp.add(upS);
+        cp.add(downS);
+        cp.add(leftS);
+        cp.add(rightS);
+        cp.add(turnVertikalS);
+        GuiFeld[][] felder;
+        if (spieler1){
+            felder= playerFieldPlayer1;
+        }else{
+            setActivePlayerText("Spieler " + ((strg.isPlayer1()) ? 1 : 2));
+            felder= playerFieldPlayer2;
         }
         for (int x=0;x<10;x++) {
             for (int y = 0; y < 10; y++) {
@@ -285,5 +311,22 @@ public class Gui {
                 }
             }
         });
+    }
+
+    public void removePlaceButton() {
+        cp.remove(shipPlaceButton);
+    }
+
+    public void endPreGame() {
+        for (GuiFeld[] row : playerFieldPlayer1) {
+            for (GuiFeld feld : row) {
+                feld.setStatus('ü');
+            }
+        }
+        for (GuiFeld[] row : playerFieldPlayer2) {
+            for (GuiFeld feld : row) {
+                feld.setStatus('ü');
+            }
+        }
     }
 }
