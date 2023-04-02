@@ -9,7 +9,7 @@ public class Steuerung {
   private int player1DestroyedBoats = 0;
   private int player2DestroyedBoats = 0;
     private final BoatType[] shipsToPlace = {BoatType.FIVEBOAT,BoatType.FOURBOAT,BoatType.THREEBOAT};
-    private final int boatNumber = shipsToPlace.length-1;          //shipsToPlace.length-1;    // Anzahl der zu platzierenden Boote, muss mit anzahl der Boote in shipsToPlace uebereinstimmen //TODO anzahl bei ändern der schiffanzahl anpassen
+    private final int boatNumber = shipsToPlace.length;          //shipsToPlace.length-1;    // Anzahl der zu platzierenden Boote, muss mit anzahl der Boote in shipsToPlace uebereinstimmen //TODO anzahl bei ändern der schiffanzahl anpassen
     private int arrayPosition=0;
     private int posX =0;
     private int posY =0;
