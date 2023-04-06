@@ -1,13 +1,13 @@
 public class Steuerung {
-  // Anfang Attribute
+    // Anfang Attribute
     private final Gui gui;                          //Bekannt machen mit der GUI
     private boolean lock = false;                  //Boolean damit nicht mehrmals geschossen werden kann
     private boolean player1 = true;                //Auswahl des aktuellen Spielers
     private boolean horizontalDirection =true;      //Speichert die Ausrichtung des Schiffes
     private int fieldHight = 50;                   //feldhöhe einstellen
     private int fieldWidth = 50;                    //feldbreite einstellen
-  private int player1DestroyedBoats = 0;
-  private int player2DestroyedBoats = 0;
+    private int player1DestroyedBoats = 0;
+    private int player2DestroyedBoats = 0;
     private final BoatType[] shipsToPlace = {BoatType.FIVEBOAT,BoatType.FOURBOAT,BoatType.THREEBOAT};
     private final int boatNumber = shipsToPlace.length;          //shipsToPlace.length-1;    // Anzahl der zu platzierenden Boote, muss mit anzahl der Boote in shipsToPlace uebereinstimmen //TODO anzahl bei ändern der schiffanzahl anpassen
     private int arrayPosition=0;
@@ -19,11 +19,11 @@ public class Steuerung {
         return pregame;
     }
     private int counter = 0;
-    private Feld[][] playerFieldPlayer1 = new Feld[10][10];  //Feld für Spieler 1 der Größe 10x10 TODO Private?
-    private Feld[][] playerFieldPlayer2 = new Feld[10][10]; //Feld für Spieler 2 der Größe 10x10  TODO Private?
-  // Ende Attribute
-  
-  // Anfang Methoden
+    private Feld[][] playerFieldPlayer1 = new Feld[10][10];  //Feld für Spieler 1 der Größe 10x10
+    private Feld[][] playerFieldPlayer2 = new Feld[10][10]; //Feld für Spieler 2 der Größe 10x10
+    // Ende Attribute
+
+    // Anfang Methoden
     public boolean isPlayer1() {
         return player1;
     }
@@ -39,22 +39,22 @@ public class Steuerung {
     public Feld[][] getPlayerFieldPlayer2() {
         return this.playerFieldPlayer2;
     }
-  
+
     private Feld[][] createFelder() {
-      Feld[][] felder = new Feld[10][10];
-      for (int x=0;x<10;x++){
+        Feld[][] felder = new Feld[10][10];
+        for (int x=0;x<10;x++){
             for (int y=0;y<10;y++){
                 // GuiFeld feld = new GuiFeld(x,y,'w');
                 Feld feld = new Feld(x,y,'w');
                 felder[x][y] = feld;
             }
-      }
-      return felder;
-   }
+        }
+        return felder;
+    }
 
     public Steuerung(Gui gui) {
         this.gui = gui;
-    
+
         playerFieldPlayer1 = createFelder();
         playerFieldPlayer2 = createFelder();
     }
@@ -233,33 +233,41 @@ public class Steuerung {
     public boolean isValid(){
         int pY = posY;
         if(player1) {                                                                       //player 1
-           // for(int j = -1; j< pY+2; j++) {                                               //zaehler y richtung
-                for (int i = 0; i < shipsToPlace[arrayPosition].getValue(); i++) {     //zaehler x richtung,  for (int i = -1; i < shipsToPlace[arrayPosition].getValue() + 1; i++)
+            for(int j = -1; j < 2; j++) {                                               //zaehler y richtung
+                for (int i = -1; i < shipsToPlace[arrayPosition].getValue() + 1; i++) {     //zaehler x richtung,  for (int i = -1; i < shipsToPlace[arrayPosition].getValue() + 1; i++)
                     if (horizontalDirection) {
-                        if (playerFieldPlayer1[posX + i][posY].getStatus() == 'p') {      //if (playerFieldPlayer1[posX + i][posY+j].getStatus() == 'p') {
-                            return false;
+                        if (!(posX+i < 0 ||posY+j < 0 || posX+i > playerFieldPlayer1.length-1 || posY+j > playerFieldPlayer1.length-1)) {
+                            if (playerFieldPlayer1[posX + i][posY + j].getStatus() == 'p') {      //if (playerFieldPlayer1[posX + i][posY+j].getStatus() == 'p') {
+                                return false;
+                            }
                         }
                     } else {
-                        if (playerFieldPlayer1[posX][posY + i].getStatus() == 'p') {      //if (playerFieldPlayer1[posX+j][posY + i].getStatus() == 'p') {
-                            return false;
+                        if (!(posX+j < 0 ||posY+i < 0 || posX+j > playerFieldPlayer1.length-1 || posY+i > playerFieldPlayer1.length-1)){
+                            if (playerFieldPlayer1[posX + j][posY + i].getStatus() == 'p') {      //if (playerFieldPlayer1[posX+j][posY + i].getStatus() == 'p') {
+                                return false;
+                            }
                         }
                     }
                 }
-           // }
+            }
         }else {
-            // for(int j = -1; j< pY+2; j++) {
-                for (int i = 0; i < shipsToPlace[arrayPosition].getValue(); i++) {         //same for player 2
+            for(int j = -1; j < 2; j++) {
+                for (int i = -1; i < shipsToPlace[arrayPosition].getValue() +1; i++) {         //same for player 2
                     if (horizontalDirection) {
-                        if (playerFieldPlayer2[posX + i][posY].getStatus() == 'p') {      //if (playerFieldPlayer2[posX + i][posY+j].getStatus() == 'p') {
-                            return false;
+                        if (!(posX+i < 0 ||posY+j < 0 || posX+i > playerFieldPlayer2.length-1 || posY+j > playerFieldPlayer2.length-1)) {
+                            if (playerFieldPlayer2[posX + i][posY + j].getStatus() == 'p') {      //if (playerFieldPlayer2[posX + i][posY+j].getStatus() == 'p') {
+                                return false;
+                            }
                         }
                     } else {
-                        if (playerFieldPlayer2[posX][posY + i].getStatus() == 'p') {      //if (playerFieldPlayer2[posX+j][posY + i].getStatus() == 'p') {
-                            return false;
+                        if (!(posX+j < 0 ||posY+i < 0 || posX+j > playerFieldPlayer2.length-1 || posY+i > playerFieldPlayer2.length-1)) {
+                            if (playerFieldPlayer2[posX + j][posY + i].getStatus() == 'p') {      //if (playerFieldPlayer2[posX+j][posY + i].getStatus() == 'p') {
+                                return false;
+                            }
                         }
                     }
                 }
-            // }
+            }
         }
         return true;
     }
@@ -267,7 +275,7 @@ public class Steuerung {
 
 
     /**
-     * Wird aufgerufen, wenn ein Spieler Schiff Platzieren drückt.
+     * Wird aufgerufen,  wenn ein Spieler Schiff Platzieren drückt.
      * Das Spielfeld wird gewechselt und das nächste Schiff aus dem Array wird ausgewählt.
      * Wenn alle Schiffe aus dem Array platziert wurden, werden alle Schiffe des anderen Spielers platziert.
      */

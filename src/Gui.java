@@ -17,7 +17,7 @@ public class Gui extends JFrame{
     private JButton leftS;
     private JButton turnVertikalS;
     private JLabel activePlayer;
-  
+
     public GuiFeld[][] playerFieldPlayer1 = new GuiFeld[10][10];  //Feld für Spieler 1 der Größe 10x10 TODO Private?
     public GuiFeld[][] playerFieldPlayer2 = new GuiFeld[10][10]; //Feld für Spieler 2 der Größe 10x10  TODO Private? 
 
@@ -26,7 +26,7 @@ public class Gui extends JFrame{
     }
 
     public void repaint() {
-      frame.repaint();
+        frame.repaint();
     }
 
     /**
@@ -53,6 +53,8 @@ public class Gui extends JFrame{
     /**
      * Ausgabe an welcher Stelle man nicht getroffen hat, sowie zustandsänderung des Feldes auf miss
      * @param x Beschossene Stelle
+     *
+     *
      * @param y Beschossene Stelle
      * @param spieler1 Aktueller Spieler
      */
@@ -67,16 +69,16 @@ public class Gui extends JFrame{
         feld.setStatus('m');
         feld.repaint();
     }
-  
-    
-  
+
+
+
     /**
      * Platzieren der Grafikelemente7
      */
     private void initialize(){
         strg = new Steuerung(this); //Erstellen der Steuerung mit dem Namen strg
 
-    
+
         frame = new JFrame();
         frame.setBounds(100,100,1920,1080);       //Anzeige Position und Größe
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -109,7 +111,7 @@ public class Gui extends JFrame{
 //Button Hoch
         upS = new JButton();
         upS.setText("Hoch");
-        upS.setBounds(550,170,100,100);
+        upS.setBounds(650,170,100,100);
         upS.setVisible(true);       //TODO Nur sichtbar wenn Pregame
         upS.addActionListener(new ActionListener() {
             @Override
@@ -120,7 +122,7 @@ public class Gui extends JFrame{
 //Button Runter
         downS = new JButton();
         downS.setText("Runter");
-        downS.setBounds(550,270,100,100);
+        downS.setBounds(650,370,100,100);
         downS.setVisible(true);       //TODO Nur sichtbar wenn Pregame
         downS.addActionListener(new ActionListener() {
             @Override
@@ -131,7 +133,7 @@ public class Gui extends JFrame{
 //Button Rechts
         rightS = new JButton();
         rightS.setText("Rechts");
-        rightS.setBounds(650,170,100,100);
+        rightS.setBounds(750,270,100,100);
         rightS.setVisible(true);       //TODO Nur sichtbar wenn Pregame
         rightS.addActionListener(new ActionListener() {
             @Override
@@ -142,7 +144,7 @@ public class Gui extends JFrame{
 //Button Links
         leftS = new JButton();
         leftS.setText("Links");
-        leftS.setBounds(650,270,100,100);
+        leftS.setBounds(550,270,100,100);
         leftS.setVisible(true);       //TODO Nur sichtbar wenn Pregame
         leftS.addActionListener(new ActionListener() {
             @Override
@@ -153,14 +155,19 @@ public class Gui extends JFrame{
 //Vertikal Rotieren
         turnVertikalS = new JButton();
         turnVertikalS.setText("Drehen");
-        turnVertikalS.setBounds(750,270,100,100);
+        turnVertikalS.setBounds(650,270,100,100);
         turnVertikalS.setVisible(true);
         turnVertikalS.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                    strg.switchDirection();
+                strg.switchDirection();
             }
         });
+        /*
+         Positionierung der Buttons geändert
+         fuer rotieren, links, rechts, oben, unten
+        */
+
 //Aktiver Spieler Anzeigen
         cp = frame.getContentPane();
         frame.add(weiter);
@@ -169,7 +176,7 @@ public class Gui extends JFrame{
         Feld[][] fields1 = strg.getPlayerFieldPlayer1();
         Feld[][] fields2 = strg.getPlayerFieldPlayer2();
         playerFieldPlayer1 = createGuiFeld(fields1);
-        playerFieldPlayer2 = createGuiFeld(fields2);    
+        playerFieldPlayer2 = createGuiFeld(fields2);
         showPlayerField(false);
         cp.add(upS);
         cp.add(downS);
@@ -182,17 +189,17 @@ public class Gui extends JFrame{
 //platzieren des ersten Bootes    
         strg.move(0,0);
     }
-  
-      /**
+
+    /**
      * Erstellen eines Spielfeldes mit der Festen Größe von 10·10 und jedem Feld den Zustand water geben.
      *Jedes Feld erhält einen Mouse Listener
      * @return
      */
     private GuiFeld[][] createGuiFeld(Feld[][] strgFelder) {
-       GuiFeld[][] felder = new GuiFeld[10][10];
+        GuiFeld[][] felder = new GuiFeld[10][10];
         for (int x=0;x<10;x++){
             for (int y=0;y<10;y++){
-                
+
                 // GuiFeld feld = new GuiFeld(x,y,'w');
                 GuiFeld feld = new GuiFeld(strgFelder[x][y]);
                 feld.setBounds(x*strg.getFieldHeight()+30,y*strg.getFieldWidth()+30,strg.getFieldWidth(),strg.getFieldHeight());
