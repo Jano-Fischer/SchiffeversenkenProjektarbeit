@@ -170,7 +170,7 @@ public class Steuerung {
 
     /**
      * Löscht das Boot, wenn es verschoben wird vom alten Feld
-     * @param x Koordinate
+     * @param x Koordinate 
      * @param y Koordinate
      */
     public void deleteBoat(int x,int y){

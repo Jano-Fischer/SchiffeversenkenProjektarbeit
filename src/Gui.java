@@ -295,7 +295,7 @@ public class Gui extends JFrame{
 
     /**
      * Ausgabe des Spielers der am Zug ist
-     * @param text
+     * @param text 
      */
     public void setActivePlayerText(String text){
         activePlayer.setText(text);
