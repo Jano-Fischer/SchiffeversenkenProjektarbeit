@@ -1,3 +1,4 @@
+import javax.security.auth.login.Configuration;
 public class Steuerung {
     // Anfang Attribute
     private final Gui gui;                          //Bekannt machen mit der GUI
@@ -52,8 +53,9 @@ public class Steuerung {
         return felder;
     }
 
-    public Steuerung(Gui gui) {
+    public Steuerung(Gui gui,Configuration config) {
         this.gui = gui;
+        this.config = config;
 
         playerFieldPlayer1 = createFelder();
         playerFieldPlayer2 = createFelder();

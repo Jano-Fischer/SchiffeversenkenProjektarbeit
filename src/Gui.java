@@ -7,7 +7,6 @@ import java.awt.event.MouseEvent;
 
 public class Gui extends JFrame{
     private Steuerung strg; //Verknüpfung mit der Steuerung
-    private JFrame frame;
     private Container cp;
     private JButton shipPlaceButton;
     private JButton weiter;
@@ -22,11 +21,14 @@ public class Gui extends JFrame{
     public GuiFeld[][] playerFieldPlayer2 = new GuiFeld[10][10]; //Feld für Spieler 2 der Größe 10x10  TODO Private? 
 
     public Gui() {
-        initialize();
-    }
+    
+        Menu menu = new Menu(this,true);
+        //int wert = menu.getWert();
 
-    public void repaint() {
-        frame.repaint();
+        strg = new Steuerung(this,Configuration config); //Erstellen der Steuerung mit dem Namen strg
+        //strg.setWert(wert);
+    
+        initialize();
     }
 
     /**
@@ -76,13 +78,10 @@ public class Gui extends JFrame{
      * Platzieren der Grafikelemente7
      */
     private void initialize(){
-        strg = new Steuerung(this); //Erstellen der Steuerung mit dem Namen strg
-
-
-        frame = new JFrame();
-        frame.setBounds(100,100,1920,1080);       //Anzeige Position und Größe
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLayout(null);
+        
+        setBounds(100,100,1920,1080);       //Anzeige Position und Größe
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(null);
         activePlayer = new JLabel();
         activePlayer.setBounds(550,0,150,100);
         activePlayer.setText("Spieler 1");
@@ -169,9 +168,9 @@ public class Gui extends JFrame{
         */
 
 //Aktiver Spieler Anzeigen
-        cp = frame.getContentPane();
-        frame.add(weiter);
-        frame.add(activePlayer);
+        cp = getContentPane();
+        add(weiter);
+        add(activePlayer);
 //Erstellen der Spielfelder für 2 Spieler
         Feld[][] fields1 = strg.getPlayerFieldPlayer1();
         Feld[][] fields2 = strg.getPlayerFieldPlayer2();
@@ -184,7 +183,11 @@ public class Gui extends JFrame{
         cp.add(rightS);
         cp.add(shipPlaceButton);
         cp.add(turnVertikalS);
+    
+        
         activePlayer.setVisible(true);
+    
+        // setVisible(true);          // wird in der main() gemacht ...
 
 //platzieren des ersten Bootes    
         strg.move(0,0);
@@ -312,7 +315,7 @@ public class Gui extends JFrame{
             public void run() {
                 try {
                     Gui window = new Gui();
-                    window.frame.setVisible(true);
+                    window.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
