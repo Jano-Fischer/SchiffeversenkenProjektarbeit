@@ -1,4 +1,3 @@
-import javax.security.auth.login.Configuration;
 public class Steuerung {
     // Anfang Attribute
     private final Gui gui;                          //Bekannt machen mit der GUI
@@ -9,17 +8,13 @@ public class Steuerung {
     private int fieldWidth = 50;                    //feldbreite einstellen
     private int player1DestroyedBoats = 0;
     private int player2DestroyedBoats = 0;
-    private final BoatType[] shipsToPlace = {BoatType.FIVEBOAT,BoatType.FOURBOAT,BoatType.THREEBOAT};
-    private final int boatNumber = shipsToPlace.length;          //shipsToPlace.length-1;    // Anzahl der zu platzierenden Boote, muss mit anzahl der Boote in shipsToPlace uebereinstimmen //TODO anzahl bei ändern der schiffanzahl anpassen
+    private  BoatType[] shipsToPlace;
     private int arrayPosition=0;
     private int posX =0;
     private int posY =0;
-    private boolean pregame =true;
 
-    public boolean isPregame() {
-        return pregame;
-    }
-    private int counter = 0;
+    private Configuration config;
+    private boolean pregame =true;
     private Feld[][] playerFieldPlayer1 = new Feld[10][10];  //Feld für Spieler 1 der Größe 10x10
     private Feld[][] playerFieldPlayer2 = new Feld[10][10]; //Feld für Spieler 2 der Größe 10x10
     // Ende Attribute
@@ -53,12 +48,30 @@ public class Steuerung {
         return felder;
     }
 
-    public Steuerung(Gui gui) {
+    private void generateShipsToPlace() {
+        shipsToPlace = new BoatType[config.getGesamtBoote()];
+        for (int i = 0; i < config.getFiveBoats(); i++) {
+            shipsToPlace[i] = BoatType.FIVEBOAT;
+        }
+        for (int i = 0; i < config.getFourBoats(); i++) {
+            shipsToPlace[i] = BoatType.FOURBOAT;
+        }
+        for (int i = 0; i < config.getThreeBoats(); i++) {
+            shipsToPlace[i] = BoatType.THREEBOAT;
+        }
+        for (int i = 0; i < config.getTwoBoats(); i++) {
+            shipsToPlace[i] = BoatType.TWOBOAT;
+        }
+    }
+
+    public Steuerung(Gui gui, Configuration config) {
         this.gui = gui;
+        this.config = config;
        // this.config = config;
 
         playerFieldPlayer1 = createFelder();
         playerFieldPlayer2 = createFelder();
+        generateShipsToPlace();
     }
 
     /**
@@ -122,14 +135,14 @@ public class Steuerung {
     public void winChecker() {
         if (player1) {
             player2DestroyedBoats++;
-            if (player2DestroyedBoats == boatNumber) {
+            if (player2DestroyedBoats == shipsToPlace.length) {
                 System.out.println("Spieler 1 Gewonnen");
                 gui.setActivePlayerText("Spieler 1 hat gewonnen");
                 lock = true;
             }
         } else {
             player1DestroyedBoats++;
-            if (player1DestroyedBoats == boatNumber) {
+            if (player1DestroyedBoats == shipsToPlace.length) {
                 System.out.println("Spieler 2 Gewonnen");
                 gui.setActivePlayerText("Spieler 2 hat gewonnen");
                 lock = true;
@@ -286,7 +299,7 @@ public class Steuerung {
         posY = 0;     //Koordianten wo das Schiff spawned
         horizontalDirection = true;
 
-        if (arrayPosition == boatNumber-1) {
+        if (arrayPosition == shipsToPlace.length-1) {
             player1 = !player1;
             gui.setActivePlayerText("Spieler " + ((isPlayer1()) ? 1 : 2));
             if (!player1) {

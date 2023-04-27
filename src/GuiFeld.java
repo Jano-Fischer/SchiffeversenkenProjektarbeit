@@ -39,22 +39,9 @@ public class GuiFeld extends JComponent {
     public int getYFeldNumber() {
         return feld.getYFeldNumber();
     }
-    public char getStatus() {
-        return feld.getStatus();
-    }
-
     public void setStatus(char c) {
         feld.setStatus(c);
     }
-
-    public void setBoat(Boat boat) {
-        feld.setBoat(boat);
-    }
-
-    public void removeBoat(){
-        feld.removeBoat();
-    }
-
     public Boat getBoat() {
       return feld.getBoat();
     }

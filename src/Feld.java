@@ -26,7 +26,6 @@ public class Feld {
     public char getStatus() {
         return status;
     }
-
     public void setStatus(char c) {
         this.status = c;
     }
@@ -35,12 +34,10 @@ public class Feld {
         this.boat = boat;
         status = 'p';
     }
-
     public void removeBoat(){
         this.boat =null;
         status='w';
     }
-
     public Boat getBoat() {
             return boat;
     }

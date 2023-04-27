@@ -21,11 +21,11 @@ public class Gui extends JFrame{
     public GuiFeld[][] playerFieldPlayer2 = new GuiFeld[10][10]; //Feld für Spieler 2 der Größe 10x10  TODO Private? 
 
     public Gui() {
-    
-        Menu menu = new Menu(this,true);
+        Configuration config = new Configuration();
+        Menu menu = new Menu(this,true,config);
         //int wert = menu.getWert();
 
-        strg = new Steuerung(this); //Erstellen der Steuerung mit dem Namen strg
+        strg = new Steuerung(this,config); //Erstellen der Steuerung mit dem Namen strg
         //strg.setWert(wert);
     
         initialize();
@@ -55,8 +55,6 @@ public class Gui extends JFrame{
     /**
      * Ausgabe an welcher Stelle man nicht getroffen hat, sowie zustandsänderung des Feldes auf miss
      * @param x Beschossene Stelle
-     *
-     *
      * @param y Beschossene Stelle
      * @param spieler1 Aktueller Spieler
      */
@@ -106,7 +104,7 @@ public class Gui extends JFrame{
                 strg.goOne();
             }
         });
-        weiter.setVisible(true);
+        weiter.setVisible(false);
 //Button Hoch
         upS = new JButton();
         upS.setText("Hoch");
@@ -169,7 +167,6 @@ public class Gui extends JFrame{
 
 //Aktiver Spieler Anzeigen
         cp = getContentPane();
-        add(weiter);
         add(activePlayer);
 //Erstellen der Spielfelder für 2 Spieler
         Feld[][] fields1 = strg.getPlayerFieldPlayer1();
@@ -224,37 +221,6 @@ public class Gui extends JFrame{
     }
 
     /**
-     * Erstellen eines Spielfeldes mit der Festen Größe von 10·10 und jedem Feld den Zustand water geben.
-     *Jedes Feld erhält einen Mouse Listener
-     * @return
-     */
-  /*
-    public Feld[][] generateFields(){
-        Feld[][] felder = new Feld[10][10];
-        for (int x=0;x<10;x++){
-            for (int y=0;y<10;y++){
-                Feld feld = new Feld(x,y,'w');
-                feld.setBounds(x*strg.getFieldHeight()+30,y*strg.getFieldWidth()+30,strg.getFieldWidth(),strg.getFieldHeight());
-                feld.addMouseListener(new  MouseAdapter(){
-                    @Override
-                    public void mousePressed(MouseEvent e) {
-                        Component comp =e.getComponent();
-                        if(comp instanceof Feld) {
-                            Feld fe = (Feld) comp;            //Typcast
-                            strg.click(fe.getXFeldNumber(),fe.getYFeldNumber());
-                        }
-
-                    }
-                });
-
-
-                felder[x][y] = feld;
-            }
-        }
-        return felder;
-    }   //Array mit Feldern befüllen und an die richtige position, abhängig des Feldes setzten. Außerdem wird ein MouseListener zu jedem Feld hinzufügen
-  */
-    /**
      * Anzeigen des Spielfeldes welches beschossen wird
      * @param spieler1
      */
@@ -276,11 +242,9 @@ public class Gui extends JFrame{
             }
         }
     }
-
     public void showOtherPlayerFieldPregame(boolean spieler1){
 
         cp.removeAll();
-        cp.add(weiter);
         cp.add(activePlayer);
         cp.add(shipPlaceButton);
         cp.add(upS);
@@ -322,12 +286,14 @@ public class Gui extends JFrame{
             }
         });
     }
-
-    public void removePlaceButton() {
-        cp.remove(shipPlaceButton);
-    }
-
     public void endPreGame() {
+        shipPlaceButton.setVisible(false);
+        upS.setVisible(false);
+        downS.setVisible(false);
+        leftS.setVisible(false);
+        rightS.setVisible(false);
+        turnVertikalS.setVisible(false);
+        weiter.setVisible(true);
         for (GuiFeld[] row : playerFieldPlayer1) {
             for (GuiFeld feld : row) {
                 feld.setStatus('ü');
