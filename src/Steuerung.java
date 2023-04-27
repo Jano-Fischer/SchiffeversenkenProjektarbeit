@@ -53,9 +53,9 @@ public class Steuerung {
         return felder;
     }
 
-    public Steuerung(Gui gui,Configuration config) {
+    public Steuerung(Gui gui) {
         this.gui = gui;
-        this.config = config;
+       // this.config = config;
 
         playerFieldPlayer1 = createFelder();
         playerFieldPlayer2 = createFelder();

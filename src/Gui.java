@@ -25,7 +25,7 @@ public class Gui extends JFrame{
         Menu menu = new Menu(this,true);
         //int wert = menu.getWert();
 
-        strg = new Steuerung(this,Configuration config); //Erstellen der Steuerung mit dem Namen strg
+        strg = new Steuerung(this); //Erstellen der Steuerung mit dem Namen strg
         //strg.setWert(wert);
     
         initialize();
