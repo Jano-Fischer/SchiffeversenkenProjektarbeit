@@ -90,7 +90,8 @@ public class Gui extends JFrame{
         shipPlaceButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                strg.placeBoat();
+
+                    strg.placeBoat();
             }
         });
         shipPlaceButton.setVisible(true);

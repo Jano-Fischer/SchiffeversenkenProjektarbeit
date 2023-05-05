@@ -1,6 +1,8 @@
 public class Steuerung {
     // Anfang Attribute
     private final Gui gui;                          //Bekannt machen mit der GUI
+
+
     private boolean lock = false;                  //Boolean damit nicht mehrmals geschossen werden kann
     private boolean player1 = true;                //Auswahl des aktuellen Spielers
     private boolean horizontalDirection =true;      //Speichert die Ausrichtung des Schiffes
@@ -35,6 +37,10 @@ public class Steuerung {
     public Feld[][] getPlayerFieldPlayer2() {
         return this.playerFieldPlayer2;
     }
+    public boolean isLock() {
+        return lock;
+    }
+
 
     private Feld[][] createFelder() {
         Feld[][] felder = new Feld[10][10];
@@ -93,7 +99,29 @@ public class Steuerung {
         } else {
             return true;
         }
+    }public boolean boatAt() {
+        for (int i=0; i==shipsToPlace[arrayPosition].getValue(); i++) {
+            if (player1){
+                if (horizontalDirection) {
+                    if(playerFieldPlayer1[i][posY].getStatus()=='p')
+                        return true;
+                }else{
+                    if(playerFieldPlayer1[posX][i].getStatus()=='p')
+                        return true;
+                }
+            }else{
+                if (horizontalDirection) {
+                    if (playerFieldPlayer2[i][posY].getStatus() == 'p')
+                        return true;
+                }else{
+                    if(playerFieldPlayer2[posX][i].getStatus()=='p')
+                        return true;
+                }
+            }
+        }
+        return false;
     }
+
 
 
     /**
@@ -155,27 +183,27 @@ public class Steuerung {
      * @param x Koordinate des Boots
      * @param y Koordinate des Boots
      */
-    private void placeBoat(int x,int y){
+    private void placeBoat(int x,int y, boolean valid){
         Boat boat = new Boat(shipsToPlace[arrayPosition]);
-        if(player1) {
-            if (horizontalDirection){
-                for (int i=x;i<x+boat.getBoatType().getValue();i++){
-                    playerFieldPlayer1[i][y].setBoat(boat);
+        if (player1) {
+            if (horizontalDirection) {
+                for (int i = x; i < x + boat.getBoatType().getValue(); i++) {
+                    playerFieldPlayer1[i][y].setBoat(boat,valid);
                     // gui.repaint(i,y);
                 }
             } else {
-                for (int i=y;i<y+boat.getBoatType().getValue();i++){
-                    playerFieldPlayer1[x][i].setBoat(boat);
+                for (int i = y; i < y + boat.getBoatType().getValue(); i++) {
+                    playerFieldPlayer1[x][i].setBoat(boat,valid);
                 }
             }
-        }else {
-            if (horizontalDirection){
-                for (int i=x;i<x+boat.getBoatType().getValue();i++){
-                    playerFieldPlayer2[i][y].setBoat(boat);
+        } else {
+            if (horizontalDirection) {
+                for (int i = x; i < x + boat.getBoatType().getValue(); i++) {
+                    playerFieldPlayer2[i][y].setBoat(boat,valid);
                 }
             } else {
-                for (int i=y;i<y+boat.getBoatType().getValue();i++){
-                    playerFieldPlayer2[x][i].setBoat(boat);
+                for (int i = y; i < y + boat.getBoatType().getValue(); i++) {
+                    playerFieldPlayer2[x][i].setBoat(boat,valid);
                 }
             }
 
@@ -192,6 +220,7 @@ public class Steuerung {
         if(player1){
             if (horizontalDirection){
                 for (int i = x; i<x+ shipsToPlace[arrayPosition].getValue(); i++){
+
                     playerFieldPlayer1[i][y].removeBoat();
                 }
             } else {
@@ -209,7 +238,7 @@ public class Steuerung {
                     playerFieldPlayer2[x][i].removeBoat();
                 }
             }
-        }
+         }
         gui.repaint();
     }
 
@@ -222,11 +251,17 @@ public class Steuerung {
         deleteBoat(posX,posY);
         posX = posX +x;
         posY = posY +y;
-        if(posX<0||posY<0||!inField()||!isValid()){
+        if(posX<0||posY<0||!inField()){                 //if(posX<0||posY<0||!inField()||!isValid()){
             posX = posX -x;
             posY = posY -y;
         }
-        placeBoat(posX,posY);
+        if (isValid()) {
+            placeBoat(posX, posY, true);
+        }else{
+            placeBoat(posX,posY, false);
+
+        }
+
     }
 
     /**
@@ -247,18 +282,22 @@ public class Steuerung {
      */
     public boolean isValid(){
         int pY = posY;
+        lock = false;
+
         if(player1) {                                                                       //player 1
             for(int j = -1; j < 2; j++) {                                               //zaehler y richtung
                 for (int i = -1; i < shipsToPlace[arrayPosition].getValue() + 1; i++) {     //zaehler x richtung,  for (int i = -1; i < shipsToPlace[arrayPosition].getValue() + 1; i++)
                     if (horizontalDirection) {
                         if (!(posX+i < 0 ||posY+j < 0 || posX+i > playerFieldPlayer1.length-1 || posY+j > playerFieldPlayer1.length-1)) {
                             if (playerFieldPlayer1[posX + i][posY + j].getStatus() == 'p') {      //if (playerFieldPlayer1[posX + i][posY+j].getStatus() == 'p') {
+                                lock = true;                                                      //sperrt den Bestaetigen Knopf
                                 return false;
                             }
                         }
                     } else {
                         if (!(posX+j < 0 ||posY+i < 0 || posX+j > playerFieldPlayer1.length-1 || posY+i > playerFieldPlayer1.length-1)){
                             if (playerFieldPlayer1[posX + j][posY + i].getStatus() == 'p') {      //if (playerFieldPlayer1[posX+j][posY + i].getStatus() == 'p') {
+                                lock = true;
                                 return false;
                             }
                         }
@@ -271,12 +310,14 @@ public class Steuerung {
                     if (horizontalDirection) {
                         if (!(posX+i < 0 ||posY+j < 0 || posX+i > playerFieldPlayer2.length-1 || posY+j > playerFieldPlayer2.length-1)) {
                             if (playerFieldPlayer2[posX + i][posY + j].getStatus() == 'p') {      //if (playerFieldPlayer2[posX + i][posY+j].getStatus() == 'p') {
+                                lock = true;
                                 return false;
                             }
                         }
                     } else {
                         if (!(posX+j < 0 ||posY+i < 0 || posX+j > playerFieldPlayer2.length-1 || posY+i > playerFieldPlayer2.length-1)) {
                             if (playerFieldPlayer2[posX + j][posY + i].getStatus() == 'p') {      //if (playerFieldPlayer2[posX+j][posY + i].getStatus() == 'p') {
+                                lock = true;
                                 return false;
                             }
                         }
@@ -324,6 +365,6 @@ public class Steuerung {
         deleteBoat(posX,posY);
         horizontalDirection = !horizontalDirection;
         if(!inField() || !isValid()) horizontalDirection = !horizontalDirection;
-        placeBoat(posX,posY);
+        placeBoat(posX,posY,true);
     }
 }

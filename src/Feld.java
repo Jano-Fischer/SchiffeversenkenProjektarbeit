@@ -1,7 +1,7 @@
 
 public class Feld {
     private int x;
-    private Boat boat;
+    private Boat[] boat = new Boat[2];
     private int y;
     private char status;
 
@@ -30,16 +30,36 @@ public class Feld {
         this.status = c;
     }
 
-    public void setBoat(Boat boat) {
-        this.boat = boat;
-        status = 'p';
+    public void setBoat(Boat boat, boolean valid) {
+        if (status=='p') {
+           this.boat[1] = boat;
+           status = '2';
+        }else {
+            if (valid) {
+                this.boat[0] = boat;
+                status = 'p';
+            }else{
+                this.boat[0] = boat;
+                status = 'i';
+            }
+        }
     }
     public void removeBoat(){
-        this.boat =null;
-        status='w';
+        if (status == '2') {
+           status='p';
+           this.boat[1] = null;
+        }else {
+            this.boat[0] = null;
+            status = 'w';
+        }
     }
+
     public Boat getBoat() {
-            return boat;
+        if (status == '2') {
+            return boat[1];
+        }else{
+            return boat[0];
+        }
     }
 
 }
