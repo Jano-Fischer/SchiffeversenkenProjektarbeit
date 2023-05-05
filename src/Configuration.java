@@ -1,10 +1,10 @@
 public class Configuration {
     private int size = 50;
-    private int gesamtBoote = 10;
-    private int fiveBoats = 1;
-    private int fourBoats = 2;
-    private int threeBoats = 3;
-    private int twoBoats = 4;
+    private int totalNumber = 10;
+    private int fiveBoats = 0;
+    private int fourBoats = 0;
+    private int threeBoats = 0;
+    private int twoBoats = 0;
 
     public int getSize() {
         return size;
@@ -14,12 +14,12 @@ public class Configuration {
         this.size = size;
     }
 
-    public int getGesamtBoote() {
-        return gesamtBoote;
+    public int getTotalNumber() {
+        return totalNumber;
     }
 
-    public void setGesamtBoote(int gesamtBoote) {
-        this.gesamtBoote = gesamtBoote;
+    public void setTotalNumber(int totalNumber) {
+        this.totalNumber = totalNumber;
     }
 
     public int getFiveBoats() {
@@ -53,4 +53,37 @@ public class Configuration {
     public void setTwoBoats(int twoBoats) {
         this.twoBoats = twoBoats;
     }
+
+
+    public void preset(){
+        switch (totalNumber){
+
+            case 5:
+                fiveBoats=0;fourBoats=0;threeBoats=2;twoBoats=3;
+                break;
+            case 6:
+                fiveBoats=0;fourBoats=1;threeBoats=2;twoBoats=3;
+                break;
+            case 7:
+                fiveBoats=1;fourBoats=1;threeBoats=2;twoBoats=3;
+                break;
+            case 8:
+                fiveBoats=1;fourBoats=1;threeBoats=2;twoBoats=4;
+                break;
+            case 9:
+                fiveBoats=1;fourBoats=1;threeBoats=3;twoBoats=4;
+                break;
+            case 10:
+                fiveBoats=1;fourBoats=2;threeBoats=3;twoBoats=4;
+                break;
+           // default: fiveBoats=1;fourBoats=2;threeBoats=3;twoBoats=4;
+        }
+
+    }
+
+    public int calcTotal(){
+        totalNumber= fiveBoats+fourBoats+threeBoats+twoBoats;
+        return totalNumber;
+    }
+
 }

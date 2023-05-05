@@ -1,31 +1,32 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Menu extends JDialog {
     // Anfang Attribute
-
+    private JButton fertig = new JButton();
     private JTextField jNumberField1 = new JTextField();
-    private JSpinner jSpinner1 = new JSpinner();
-    private SpinnerNumberModel jSpinner1Model = new SpinnerNumberModel(0, 0, 10, 1);
-    private JSpinner jSpinner2 = new JSpinner();
-    private SpinnerNumberModel jSpinner2Model = new SpinnerNumberModel(0, 0, 10, 1);
-    private JSpinner jSpinner3 = new JSpinner();
-    private SpinnerNumberModel jSpinner3Model = new SpinnerNumberModel(0, 0, 10, 1);
-    private JSpinner jSpinner4 = new JSpinner();
-    private SpinnerNumberModel jSpinner4Model = new SpinnerNumberModel(0, 0, 10, 1);
-    private JSpinner jSpinner5 = new JSpinner();
-    private SpinnerNumberModel jSpinner5Model = new SpinnerNumberModel(0, 0, 10, 1);
-    private JLabel jLabel1 = new JLabel();
+    private JSpinner jSpinnerTotalBoats = new JSpinner();
+    private SpinnerNumberModel jSpinnerBoatTotal = new SpinnerNumberModel(0, 0, 10, 1);
+    private JSpinner jSpinnerFiveBoats = new JSpinner();
+    private SpinnerNumberModel jSpinnerBoat5 = new SpinnerNumberModel(0, 0, 10, 1);
+    private JSpinner jSpinnerFourBoats = new JSpinner();
+    private SpinnerNumberModel jSpinnerBoat4 = new SpinnerNumberModel(0, 0, 10, 1);
+    private JSpinner jSpinnerThreeBoats = new JSpinner();
+    private SpinnerNumberModel jSpinnerBoat3 = new SpinnerNumberModel(0, 0, 10, 1);
+    private JSpinner jSpinnerTwoBoats = new JSpinner();
+    private SpinnerNumberModel jSpinnerBoat2 = new SpinnerNumberModel(0, 0, 10, 1);
+    private JLabel jLabelText1 = new JLabel();
     private JSpinner jSpinner6 = new JSpinner();
-    private JLabel jLabel2 = new JLabel();
+    private JLabel jLabelPlayFieldSize = new JLabel();
     private JLabel jLabel3 = new JLabel();
-    private JLabel jLabel4 = new JLabel();
-    private JLabel jLabel5 = new JLabel();
-    private JLabel jLabel6 = new JLabel();
-    private JLabel jLabel7 = new JLabel();
-    private JLabel jLabel8 = new JLabel();
+    private JLabel jLabel2Boat = new JLabel();
+    private JLabel jLabel3Boat = new JLabel();
+    private JLabel jLabel4Boat = new JLabel();
+    private JLabel jLabel5Boat = new JLabel();
+    private JLabel jLabelTotalShips = new JLabel();
     // Ende Attribute
-
     public Menu(JFrame owner, boolean modal,Configuration config) {
         // Dialog-Initialisierung
         super(owner, modal);
@@ -44,74 +45,102 @@ public class Menu extends JDialog {
         jNumberField1.setBounds(72, 72, 113, 49);
         jNumberField1.setText(String.valueOf(config.getSize()));
         cp.add(jNumberField1);
-        jSpinner1.setModel(jSpinner1Model);
-        jSpinner1.setValue(config.getGesamtBoote());
-        jSpinner1.setBounds(288, 64, 64, 80);
-        cp.add(jSpinner1);
-        jSpinner2.setBounds(288, 160, 64, 80);
-        jSpinner2.setModel(jSpinner2Model);
-        jSpinner2.setValue(config.getFiveBoats());
-        cp.add(jSpinner2);
-        jSpinner3.setBounds(288, 256, 64, 80);
-        jSpinner3.setModel(jSpinner3Model);
-        jSpinner3.setValue(config.getFourBoats());
-        cp.add(jSpinner3);
-        jSpinner4.setBounds(288, 352, 64, 80);
-        jSpinner4.setModel(jSpinner4Model);
-        jSpinner4.setValue(config.getThreeBoats());
-        cp.add(jSpinner4);
-        jSpinner5.setBounds(288, 448, 64, 80);
-        jSpinner5.setModel(jSpinner5Model);
-        jSpinner5.setValue(config.getTwoBoats());
-        cp.add(jSpinner5);
-        jLabel1.setBounds(280, 24, 73, 33);
-        jLabel1.setText("Schiffarten auswaehlen, oder feste Antzahl benutzen ");
+        jSpinnerTotalBoats.setModel(jSpinnerBoatTotal);
+        jSpinnerTotalBoats.setValue(config.getTotalNumber());
+        jSpinnerTotalBoats.setBounds(288, 64, 64, 80);
+        cp.add(jSpinnerTotalBoats);
+        jSpinnerFiveBoats.setBounds(288, 160, 64, 80);
+        jSpinnerFiveBoats.setModel(jSpinnerBoat5);
+        jSpinnerFiveBoats.setValue(config.getFiveBoats());
+        cp.add(jSpinnerFiveBoats);
+        jSpinnerFourBoats.setBounds(288, 256, 64, 80);
+        jSpinnerFourBoats.setModel(jSpinnerBoat4);
+        jSpinnerFourBoats.setValue(config.getFourBoats());
+        cp.add(jSpinnerFourBoats);
+        jSpinnerThreeBoats.setBounds(288, 352, 64, 80);
+        jSpinnerThreeBoats.setModel(jSpinnerBoat3);
+        jSpinnerThreeBoats.setValue(config.getThreeBoats());
+        cp.add(jSpinnerThreeBoats);
+        jSpinnerTwoBoats.setBounds(288, 448, 64, 80);
+        jSpinnerTwoBoats.setModel(jSpinnerBoat2);
+        jSpinnerTwoBoats.setValue(config.getTwoBoats());
+        cp.add(jSpinnerTwoBoats);
+        jLabelText1.setBounds(280, 24, 73, 33);
+        jLabelText1.setText("Schiffarten auswaehlen, oder feste Antzahl benutzen ");
         cp.add(jSpinner6);
-        jLabel2.setBounds(88, 24, 96, 41);
-        jLabel2.setText("Spielfeldgroeße veraendern:");
-        cp.add(jLabel2);
-        jLabel4.setBounds(208, 472, 65, 41);
-        jLabel4.setText("2er Boot:");
-        cp.add(jLabel4);
-        jLabel5.setBounds(208, 376, 65, 41);
-        jLabel5.setText("3er Boot:");
-        cp.add(jLabel5);
-        jLabel6.setBounds(208, 280, 65, 41);
-        jLabel6.setText("4er Boot:");
-        cp.add(jLabel6);
-        jLabel7.setBounds(216, 176, 65, 41);
-        jLabel7.setText("5er Boot:");
-        cp.add(jLabel7);
-        jLabel8.setBounds(208, 80, 65, 41);
-        jLabel8.setText("Gesamtanzahl:");
-        cp.add(jLabel8);
+        jLabelPlayFieldSize.setBounds(88, 24, 200, 41);
+        jLabelPlayFieldSize.setText("Spielfeldgroeße veraendern:");
+        cp.add(jLabelPlayFieldSize);
+        jLabel2Boat.setBounds(208, 472, 65, 41);
+        jLabel2Boat.setText("2er Boot:");
+        cp.add(jLabel2Boat);
+        jLabel3Boat.setBounds(208, 376, 65, 41);
+        jLabel3Boat.setText("3er Boot:");
+        cp.add(jLabel3Boat);
+        jLabel4Boat.setBounds(208, 280, 65, 41);
+        jLabel4Boat.setText("4er Boot:");
+        cp.add(jLabel4Boat);
+        jLabel5Boat.setBounds(216, 176, 65, 41);
+        jLabel5Boat.setText("5er Boot:");
+        cp.add(jLabel5Boat);
+        jLabelTotalShips.setBounds(208, 80, 150, 41);
+        jLabelTotalShips.setText("Gesamtanzahl:");
+        cp.add(jLabelTotalShips);
 
-        jSpinner1.addChangeListener(e -> {
-            config.setGesamtBoote((int) jSpinner1.getValue());
+        fertig.setBounds(400,75,100,50);
+        fertig.addActionListener((e ->
+        {
+                this.dispose();
+        }));
+        cp.add(fertig);
+        fertig.setText("Fertig");
+        fertig.setVisible(true);
+
+        jSpinnerTotalBoats.addChangeListener(e -> {
+            config.setTotalNumber((int) jSpinnerTotalBoats.getValue());
+            config.preset();
+            update(config);
         });
-        jSpinner2.addChangeListener(e -> {
-            config.setFiveBoats((int) jSpinner2.getValue());
+        jSpinnerFiveBoats.addChangeListener(e -> {
+            config.setFiveBoats((int) jSpinnerFiveBoats.getValue());
+            jSpinnerTotalBoats.setValue(config.getTotalNumber());
+            update(config);
         });
-        jSpinner3.addChangeListener(e -> {
-            config.setFourBoats((int) jSpinner3.getValue());
+        jSpinnerFourBoats.addChangeListener(e -> {
+            config.setFourBoats((int) jSpinnerFourBoats.getValue());
+            jSpinnerTotalBoats.setValue(config.getTotalNumber());
+            update(config);
         });
-        jSpinner4.addChangeListener(e -> {
-            config.setThreeBoats((int) jSpinner4.getValue());
+        jSpinnerThreeBoats.addChangeListener(e -> {
+            config.setThreeBoats((int) jSpinnerThreeBoats.getValue());
+            jSpinnerTotalBoats.setValue(config.getTotalNumber());
+            update(config);
         });
-        jSpinner5.addChangeListener(e -> {
-            config.setTwoBoats((int) jSpinner5.getValue());
+        jSpinnerTwoBoats.addChangeListener(e -> {
+            config.setTwoBoats((int) jSpinnerTwoBoats.getValue());
+            jSpinnerTotalBoats.setValue(config.getTotalNumber());
+            update(config);
         });
         jNumberField1.addActionListener(e -> {
             config.setSize(Integer.parseInt(jNumberField1.getText()));
+            jSpinnerTotalBoats.setValue(config.getTotalNumber());
+            update(config);
         });
-        // Ende Komponenten
 
+
+        // Ende Komponenten
         setResizable(false);
         setVisible(true);
     } // end of public Menu
 
     // Anfang Methoden
-
+    public void update(Configuration config){
+        jSpinnerFiveBoats.setValue(config.getFiveBoats());
+        jSpinnerFourBoats.setValue(config.getFourBoats());
+        jSpinnerThreeBoats.setValue(config.getThreeBoats());
+        jSpinnerTwoBoats.setValue(config.getTwoBoats());
+        jSpinnerTotalBoats.setValue(config.calcTotal());
+    }
 
     // Ende Methoden
 

@@ -55,7 +55,7 @@ public class Steuerung {
     }
 
     private void generateShipsToPlace() {
-        shipsToPlace = new BoatType[config.getGesamtBoote()];
+        shipsToPlace = new BoatType[config.getTotalNumber()];
         for (int i = 0; i < config.getFiveBoats(); i++) {
             shipsToPlace[i] = BoatType.FIVEBOAT;
         }
