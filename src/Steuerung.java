@@ -1,3 +1,5 @@
+import java.awt.*;
+
 public class Steuerung {
     // Anfang Attribute
     private final Gui gui;                          //Bekannt machen mit der GUI
@@ -99,7 +101,17 @@ public class Steuerung {
         } else {
             return true;
         }
-    }public boolean boatAt() {
+    }
+
+    public void positionIsInvalid(){
+        gui.disable_shipPlace();
+        gui.setPlayerText("Position ist ungültig","Bitte verschiebe das Boot auf eine gültige Position",Color.red,Color.gray);
+    }
+
+    public void positionIsValid() {
+        gui.setPlayerText("platziere das Boot","ziehe das Boot auf eine beliebige position \n und bestätige dann mit 'Schiff bestätigen' ", Color.black,Color.gray);
+    }
+    public boolean boatAt() {
         for (int i=0; i==shipsToPlace[arrayPosition].getValue(); i++) {
             if (player1){
                 if (horizontalDirection) {
@@ -222,20 +234,28 @@ public class Steuerung {
                 for (int i = x; i<x+ shipsToPlace[arrayPosition].getValue(); i++){
 
                     playerFieldPlayer1[i][y].removeBoat();
+                    if ((shipsToPlace.length-1) == arrayPosition)
+                        break;
                 }
             } else {
                 for (int i = y; i<y+ shipsToPlace[arrayPosition].getValue(); i++){
                     playerFieldPlayer1[x][i].removeBoat();
+                    if ((shipsToPlace.length-1) == arrayPosition)
+                        break;
                 }
             }
         }else {
             if (horizontalDirection){
                 for (int i = x; i<x+ shipsToPlace[arrayPosition].getValue(); i++){
                     playerFieldPlayer2[i][y].removeBoat();
+                    if ((shipsToPlace.length-1) == arrayPosition)
+                        break;
                 }
             } else {
                 for (int i = y; i<y+ shipsToPlace[arrayPosition].getValue(); i++){
                     playerFieldPlayer2[x][i].removeBoat();
+                    if ((shipsToPlace.length-1) == arrayPosition)
+                        break;
                 }
             }
          }
@@ -257,7 +277,9 @@ public class Steuerung {
         }
         if (isValid()) {
             placeBoat(posX, posY, true);
+            positionIsValid();
         }else{
+            positionIsInvalid();
             placeBoat(posX,posY, false);
 
         }
@@ -325,6 +347,9 @@ public class Steuerung {
                 }
             }
         }
+        if (!lock) {
+            gui.enable_shipPlace();
+        }
         return true;
     }
 
@@ -343,6 +368,7 @@ public class Steuerung {
         if (arrayPosition == shipsToPlace.length-1) {
             player1 = !player1;
             gui.setActivePlayerText("Spieler " + ((isPlayer1()) ? 1 : 2));
+            gui.clearPlayerTexts();
             if (!player1) {
                 arrayPosition = 0;
                 gui.showOtherPlayerFieldPregame(player1);              //showplayerField zeigt Spielfeld an, das beschossen wird (Spielfeld des anderen Spielers)

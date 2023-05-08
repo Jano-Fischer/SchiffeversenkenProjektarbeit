@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" name="Changes" comment="Umschreiben in MVC format.">
+    <list default="true" id="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" name="Changes" comment="Boote koennen jetzt uebereinander geschoben werden!!">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Feld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Feld.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Gui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GuiFeld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GuiFeld.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Steuerung.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Steuerung.java" afterDir="false" />
     </list>
     <list id="a5b1ceac-0b73-40a2-8426-d58fc6b04a33" name="Changes by jano5" comment="" />
@@ -96,7 +95,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;18&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/semjon/Dokumente/Projektarbeit/NO-GIT&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/semjon/Dokumente/Projektarbeit/SchiffeversenkenProjektarbeit&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -270,7 +269,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680187232874</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Boote koennen jetzt uebereinander geschoben werden!!">
+      <created>1683312751014</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1683312751014</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -297,7 +303,8 @@
     <MESSAGE value="place ships almost finnished" />
     <MESSAGE value="kleine KommentarUpdates" />
     <MESSAGE value="Umschreiben in MVC format." />
-    <option name="LAST_COMMIT_MESSAGE" value="Umschreiben in MVC format." />
+    <MESSAGE value="Boote koennen jetzt uebereinander geschoben werden!!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Boote koennen jetzt uebereinander geschoben werden!!" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

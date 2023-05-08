@@ -39,8 +39,12 @@ public class Feld {
                 this.boat[0] = boat;
                 status = 'p';
             }else{
-                this.boat[0] = boat;
-                status = 'i';
+                if (!valid) {
+                    this.boat[0] = boat;
+                    status = 'i';
+                }else {
+                    System.err.println("kein Zulaessiger Wert");
+                }
             }
         }
     }

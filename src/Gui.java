@@ -16,6 +16,9 @@ public class Gui extends JFrame{
     private JButton leftS;
     private JButton turnVertikalS;
     private JLabel activePlayer;
+    private JLabel playerText;
+    private JLabel playerSubText;
+
 
     public GuiFeld[][] playerFieldPlayer1 = new GuiFeld[10][10];  //Feld für Spieler 1 der Größe 10x10 TODO Private?
     public GuiFeld[][] playerFieldPlayer2 = new GuiFeld[10][10]; //Feld für Spieler 2 der Größe 10x10  TODO Private? 
@@ -80,9 +83,23 @@ public class Gui extends JFrame{
         setBounds(100,100,1920,1080);       //Anzeige Position und Größe
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
+//active player label
         activePlayer = new JLabel();
-        activePlayer.setBounds(550,0,150,100);
+        activePlayer.setBounds(550,0,200,150);
+        activePlayer.setFont(new Font("title",1,22));
         activePlayer.setText("Spieler 1");
+//playerText label                                                        //gibt aktuelle informationen an den Spieler weiter
+        playerText = new JLabel();
+        playerText.setBounds(1000,0,300,250);
+        playerText.setFont(new Font("plTxt1",1,15));
+        playerText.setForeground(Color.RED);
+        playerText.setText("Willkommen zu Schiffe versenken");
+//playerSubText Label
+        playerSubText = new JLabel();
+        playerSubText.setBounds(1005,30,300,250);
+        playerSubText.setFont(new Font("plTxt2",3,12));
+        playerSubText.setForeground(Color.GRAY);
+        playerSubText.setText("Bitte platzieren Sie ihre Schiffe");
 //Boat Position Set
         shipPlaceButton = new JButton();
         shipPlaceButton.setText("Schiff Bestätigen");
@@ -181,9 +198,12 @@ public class Gui extends JFrame{
         cp.add(rightS);
         cp.add(shipPlaceButton);
         cp.add(turnVertikalS);
-    
+        cp.add(playerText);
+        cp.add(playerSubText);
         
         activePlayer.setVisible(true);
+        playerText.setVisible(true);
+        playerSubText.setVisible(true);
     
         // setVisible(true);          // wird in der main() gemacht ...
 
@@ -219,6 +239,37 @@ public class Gui extends JFrame{
             }
         }
         return felder;
+    }
+
+    public void disable_shipPlace(){
+        shipPlaceButton.setEnabled(false);
+    }
+    public void enable_shipPlace() {
+        shipPlaceButton.setEnabled(true);
+    }
+    public void setPlayerText(String pMessage) {
+        playerText.setText(pMessage);
+    }
+    public void setPlayerText(String playerTxt,String subTxt) {
+        playerText.setText(playerTxt);
+        playerSubText.setText(subTxt);
+    }
+    public void setPlayerText(String playerTxt,String subTxt,Color Txt,Color SubTxt) {
+        playerText.setText(playerTxt);
+        playerText.setForeground(Txt);
+
+        playerSubText.setText(subTxt);
+        playerSubText.setForeground(SubTxt);
+
+
+    }
+    public void setPlayerSubText(String pMessage) {
+        playerSubText.setText(pMessage);
+    }
+
+    public void clearPlayerTexts() {
+        playerText.setText("");
+        playerSubText.setText("");
     }
 
     /**
