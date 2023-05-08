@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" name="Changes" comment="Boote koennen jetzt uebereinander geschoben werden!!">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Feld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Feld.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Gui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui.java" afterDir="false" />
+    <list default="true" id="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" name="Changes" comment="Schiffe platzieren fertiggestellt, PlayerTexts eingeführt, Labels verbessert">
       <change beforePath="$PROJECT_DIR$/src/Steuerung.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Steuerung.java" afterDir="false" />
     </list>
     <list id="a5b1ceac-0b73-40a2-8426-d58fc6b04a33" name="Changes by jano5" comment="" />
@@ -276,7 +273,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683312751014</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Schiffe platzieren fertiggestellt, PlayerTexts eingeführt, Labels verbessert">
+      <created>1683575051143</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1683575051143</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -304,7 +308,8 @@
     <MESSAGE value="kleine KommentarUpdates" />
     <MESSAGE value="Umschreiben in MVC format." />
     <MESSAGE value="Boote koennen jetzt uebereinander geschoben werden!!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Boote koennen jetzt uebereinander geschoben werden!!" />
+    <MESSAGE value="Schiffe platzieren fertiggestellt, PlayerTexts eingeführt, Labels verbessert" />
+    <option name="LAST_COMMIT_MESSAGE" value="Schiffe platzieren fertiggestellt, PlayerTexts eingeführt, Labels verbessert" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

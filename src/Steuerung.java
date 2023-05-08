@@ -390,7 +390,18 @@ public class Steuerung {
     public void switchDirection(){
         deleteBoat(posX,posY);
         horizontalDirection = !horizontalDirection;
-        if(!inField() || !isValid()) horizontalDirection = !horizontalDirection;
-        placeBoat(posX,posY,true);
+        if(!inField()) {
+            horizontalDirection = !horizontalDirection;
+        }
+
+        if (isValid()) {
+            placeBoat(posX,posY,true);
+        }else{
+            placeBoat(posX,posY,false);
+        }
+
+
+
+
     }
 }
