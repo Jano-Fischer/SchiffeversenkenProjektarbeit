@@ -84,7 +84,7 @@ public class Menu extends JDialog {
         jLabel5Boat.setText("5er Boot:");
         cp.add(jLabel5Boat);
         jLabelTotalShips.setBounds(208, 80, 150, 41);
-        jLabelTotalShips.setText("Gesamtanzahl:");
+        jLabelTotalShips.setText("Voreingestellte Größen:");
         cp.add(jLabelTotalShips);
 
         fertig.setBounds(400,75,100,50);
@@ -139,7 +139,7 @@ public class Menu extends JDialog {
         jSpinnerFourBoats.setValue(config.getFourBoats());
         jSpinnerThreeBoats.setValue(config.getThreeBoats());
         jSpinnerTwoBoats.setValue(config.getTwoBoats());
-        jSpinnerTotalBoats.setValue(config.calcTotal());
+        //jSpinnerTotalBoats.setValue(config.calcTotal());
     }
 
     // Ende Methoden

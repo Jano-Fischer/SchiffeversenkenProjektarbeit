@@ -6,6 +6,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class Gui extends JFrame{
+    Configuration config = new Configuration();
     private Steuerung strg; //Verknüpfung mit der Steuerung
     private Container cp;
     private JButton shipPlaceButton;
@@ -19,18 +20,14 @@ public class Gui extends JFrame{
     private JLabel playerText;
     private JLabel playerSubText;
 
-
     public GuiFeld[][] playerFieldPlayer1 = new GuiFeld[10][10];  //Feld für Spieler 1 der Größe 10x10 TODO Private?
     public GuiFeld[][] playerFieldPlayer2 = new GuiFeld[10][10]; //Feld für Spieler 2 der Größe 10x10  TODO Private? 
 
     public Gui() {
-        Configuration config = new Configuration();
         Menu menu = new Menu(this,true,config);
         //int wert = menu.getWert();
-
         strg = new Steuerung(this,config); //Erstellen der Steuerung mit dem Namen strg
         //strg.setWert(wert);
-    
         initialize();
     }
 
@@ -85,7 +82,7 @@ public class Gui extends JFrame{
         setLayout(null);
 //active player label
         activePlayer = new JLabel();
-        activePlayer.setBounds(550,0,200,150);
+        activePlayer.setBounds(30+10*config.getSize(),config.getSize()-5,5* config.getSize(),2* config.getSize());
         activePlayer.setFont(new Font("title",1,22));
         activePlayer.setText("Spieler 1");
 //playerText label                                                        //gibt aktuelle informationen an den Spieler weiter
@@ -103,7 +100,7 @@ public class Gui extends JFrame{
 //Boat Position Set
         shipPlaceButton = new JButton();
         shipPlaceButton.setText("Schiff Bestätigen");
-        shipPlaceButton.setBounds(700,75,120,50);
+        shipPlaceButton.setBounds(15*config.getSize(),config.getSize(),5* config.getSize(),2* config.getSize());
         shipPlaceButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -126,7 +123,7 @@ public class Gui extends JFrame{
 //Button Hoch
         upS = new JButton();
         upS.setText("Hoch");
-        upS.setBounds(650,170,100,100);
+        upS.setBounds(30+13*config.getSize()+10,30+2*config.getSize(),3*config.getSize(),3*config.getSize());
         upS.setVisible(true);       //TODO Nur sichtbar wenn Pregame
         upS.addActionListener(new ActionListener() {
             @Override
@@ -137,7 +134,7 @@ public class Gui extends JFrame{
 //Button Runter
         downS = new JButton();
         downS.setText("Runter");
-        downS.setBounds(650,370,100,100);
+        downS.setBounds(30+13*config.getSize()+10,30+8*config.getSize(),3*config.getSize(),3*config.getSize());
         downS.setVisible(true);       //TODO Nur sichtbar wenn Pregame
         downS.addActionListener(new ActionListener() {
             @Override
@@ -148,7 +145,7 @@ public class Gui extends JFrame{
 //Button Rechts
         rightS = new JButton();
         rightS.setText("Rechts");
-        rightS.setBounds(750,270,100,100);
+        rightS.setBounds(30+16*config.getSize()+10,30+5*config.getSize(),3*config.getSize(),3*config.getSize());
         rightS.setVisible(true);       //TODO Nur sichtbar wenn Pregame
         rightS.addActionListener(new ActionListener() {
             @Override
@@ -159,7 +156,7 @@ public class Gui extends JFrame{
 //Button Links
         leftS = new JButton();
         leftS.setText("Links");
-        leftS.setBounds(550,270,100,100);
+        leftS.setBounds(30+10*config.getSize()+10,30+5*config.getSize(),3*config.getSize(),3*config.getSize());
         leftS.setVisible(true);       //TODO Nur sichtbar wenn Pregame
         leftS.addActionListener(new ActionListener() {
             @Override
@@ -170,7 +167,7 @@ public class Gui extends JFrame{
 //Vertikal Rotieren
         turnVertikalS = new JButton();
         turnVertikalS.setText("Drehen");
-        turnVertikalS.setBounds(650,270,100,100);
+        turnVertikalS.setBounds(30+13*config.getSize()+10,30+5*config.getSize(),3*config.getSize(),3*config.getSize());
         turnVertikalS.setVisible(true);
         turnVertikalS.addActionListener(new ActionListener() {
             @Override
@@ -178,11 +175,6 @@ public class Gui extends JFrame{
                 strg.switchDirection();
             }
         });
-        /*
-         Positionierung der Buttons geändert
-         fuer rotieren, links, rechts, oben, unten
-        */
-
 //Aktiver Spieler Anzeigen
         cp = getContentPane();
         add(activePlayer);
@@ -220,10 +212,8 @@ public class Gui extends JFrame{
         GuiFeld[][] felder = new GuiFeld[10][10];
         for (int x=0;x<10;x++){
             for (int y=0;y<10;y++){
-
-                // GuiFeld feld = new GuiFeld(x,y,'w');
                 GuiFeld feld = new GuiFeld(strgFelder[x][y]);
-                feld.setBounds(x*strg.getFieldHeight()+30,y*strg.getFieldWidth()+30,strg.getFieldWidth(),strg.getFieldHeight());
+                feld.setBounds(x*config.getSize()+30,y*config.getSize()+30,config.getSize(),config.getSize());
                 feld.addMouseListener(new  MouseAdapter(){
                     @Override
                     public void mousePressed(MouseEvent e) {
@@ -357,4 +347,6 @@ public class Gui extends JFrame{
             }
         }
     }
+
+    //TODO KeyListener
 }

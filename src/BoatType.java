@@ -8,7 +8,7 @@ public enum BoatType {
     FOURBOAT (4),
     FIVEBOAT (5);
     private int value;
-   private BoatType(int value){
+    BoatType(int value){
        this.value = value;
    }
     public int getValue(){

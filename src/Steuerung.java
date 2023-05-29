@@ -58,17 +58,22 @@ public class Steuerung {
 
     private void generateShipsToPlace() {
         shipsToPlace = new BoatType[config.getTotalNumber()];
+        int index =0;
         for (int i = 0; i < config.getFiveBoats(); i++) {
-            shipsToPlace[i] = BoatType.FIVEBOAT;
+            shipsToPlace[index] = BoatType.FIVEBOAT;
+            index++;
         }
         for (int i = 0; i < config.getFourBoats(); i++) {
-            shipsToPlace[i] = BoatType.FOURBOAT;
+            shipsToPlace[index] = BoatType.FOURBOAT;
+            index++;
         }
         for (int i = 0; i < config.getThreeBoats(); i++) {
-            shipsToPlace[i] = BoatType.THREEBOAT;
+            shipsToPlace[index] = BoatType.THREEBOAT;
+            index++;
         }
         for (int i = 0; i < config.getTwoBoats(); i++) {
-            shipsToPlace[i] = BoatType.TWOBOAT;
+            shipsToPlace[index] = BoatType.TWOBOAT;
+            index++;
         }
     }
 

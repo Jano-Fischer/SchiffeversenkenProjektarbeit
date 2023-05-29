@@ -1,5 +1,5 @@
 public class Configuration {
-    private int size = 50;
+    private int size = 80;
     private int totalNumber = 10;
     private int fiveBoats = 0;
     private int fourBoats = 0;
@@ -81,9 +81,9 @@ public class Configuration {
 
     }
 
-    public int calcTotal(){
+    /*public int calcTotal(){
         totalNumber= fiveBoats+fourBoats+threeBoats+twoBoats;
         return totalNumber;
-    }
+   }*/
 
 }
