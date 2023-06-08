@@ -1,10 +1,10 @@
 public class Configuration {
-    private int size = 80;
+    private int size = 40;
     private int totalNumber = 10;
-    private int fiveBoats = 0;
-    private int fourBoats = 0;
-    private int threeBoats = 0;
-    private int twoBoats = 0;
+    private int fiveBoats = 1; //Zahlen beziehen sich auf die Defaulteinstellung des Menüs
+    private int fourBoats = 2;
+    private int threeBoats = 3;
+    private int twoBoats = 4;
 
     public int getSize() {
         return size;

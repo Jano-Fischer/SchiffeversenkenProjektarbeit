@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" name="Changes" comment="Schiffe platzieren fertiggestellt, PlayerTexts eingeführt, Labels verbessert">
+    <list default="true" id="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" name="Changes" comment="Verstellbare FelderGröße mit angepassten Knöpfen(Nicht Final)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BoatType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BoatType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Configuration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Gui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu.java" afterDir="false" />
@@ -94,6 +93,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
@@ -107,7 +107,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.20344828&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;CodeWithMe&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -197,7 +197,13 @@
       <workItem from="1684701257414" duration="754000" />
       <workItem from="1684837494903" duration="852000" />
       <workItem from="1685281300064" duration="62000" />
-      <workItem from="1685352410483" duration="4581000" />
+      <workItem from="1685352410483" duration="7099000" />
+      <workItem from="1685459847140" duration="78000" />
+      <workItem from="1685975436365" duration="46000" />
+      <workItem from="1685986064890" duration="70000" />
+      <workItem from="1686233617752" duration="4222000" />
+      <workItem from="1686244544239" duration="5208000" />
+      <workItem from="1686249825669" duration="2139000" />
     </task>
     <task id="LOCAL-00001" summary="Update">
       <created>1677008707184</created>
@@ -290,7 +296,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683575051143</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Verstellbare FelderGröße mit angepassten Knöpfen(Nicht Final)">
+      <created>1685357280048</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1685357280048</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -319,7 +332,8 @@
     <MESSAGE value="Umschreiben in MVC format." />
     <MESSAGE value="Boote koennen jetzt uebereinander geschoben werden!!" />
     <MESSAGE value="Schiffe platzieren fertiggestellt, PlayerTexts eingeführt, Labels verbessert" />
-    <option name="LAST_COMMIT_MESSAGE" value="Schiffe platzieren fertiggestellt, PlayerTexts eingeführt, Labels verbessert" />
+    <MESSAGE value="Verstellbare FelderGröße mit angepassten Knöpfen(Nicht Final)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Verstellbare FelderGröße mit angepassten Knöpfen(Nicht Final)" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

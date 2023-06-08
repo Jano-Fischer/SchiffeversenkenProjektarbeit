@@ -1,14 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class Menu extends JDialog {
     // Anfang Attribute
     private JButton fertig = new JButton();
     private JTextField jNumberField1 = new JTextField();
     private JSpinner jSpinnerTotalBoats = new JSpinner();
-    private SpinnerNumberModel jSpinnerBoatTotal = new SpinnerNumberModel(0, 0, 10, 1);
+    private SpinnerNumberModel jSpinnerPreset = new SpinnerNumberModel(10, 5, 10, 1);
     private JSpinner jSpinnerFiveBoats = new JSpinner();
     private SpinnerNumberModel jSpinnerBoat5 = new SpinnerNumberModel(0, 0, 10, 1);
     private JSpinner jSpinnerFourBoats = new JSpinner();
@@ -45,7 +43,7 @@ public class Menu extends JDialog {
         jNumberField1.setBounds(72, 72, 113, 49);
         jNumberField1.setText(String.valueOf(config.getSize()));
         cp.add(jNumberField1);
-        jSpinnerTotalBoats.setModel(jSpinnerBoatTotal);
+        jSpinnerTotalBoats.setModel(jSpinnerPreset);
         jSpinnerTotalBoats.setValue(config.getTotalNumber());
         jSpinnerTotalBoats.setBounds(288, 64, 64, 80);
         cp.add(jSpinnerTotalBoats);

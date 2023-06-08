@@ -1,11 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 
-public class Gui extends JFrame{
+public class Gui extends JFrame {
     Configuration config = new Configuration();
     private Steuerung strg; //Verknüpfung mit der Steuerung
     private Container cp;
@@ -19,15 +16,12 @@ public class Gui extends JFrame{
     private JLabel activePlayer;
     private JLabel playerText;
     private JLabel playerSubText;
-
-    public GuiFeld[][] playerFieldPlayer1 = new GuiFeld[10][10];  //Feld für Spieler 1 der Größe 10x10 TODO Private?
-    public GuiFeld[][] playerFieldPlayer2 = new GuiFeld[10][10]; //Feld für Spieler 2 der Größe 10x10  TODO Private? 
-
+    public GuiFeld[][] playerFieldPlayer1 = new GuiFeld[10][10];  //Feld für Spieler 1 der Größe 10x10
+    public GuiFeld[][] playerFieldPlayer2 = new GuiFeld[10][10]; //Feld für Spieler 2 der Größe 10x10
     public Gui() {
+        setFocusable(true);
         Menu menu = new Menu(this,true,config);
-        //int wert = menu.getWert();
         strg = new Steuerung(this,config); //Erstellen der Steuerung mit dem Namen strg
-        //strg.setWert(wert);
         initialize();
     }
 
@@ -70,13 +64,56 @@ public class Gui extends JFrame{
         feld.repaint();
     }
 
-
-
     /**
      * Platzieren der Grafikelemente7
      */
     private void initialize(){
-        
+        setFocusable(true);
+        addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                System.out.println("Presssed:"+e.getKeyCode());
+                System.out.println(e.getKeyCode());
+                System.out.println(e.getKeyChar());
+                switch (e.getKeyCode()) {
+                    case 38:
+                        System.out.println("Hoch");
+                        strg.move(0, -1);
+
+                        break;
+                    case 40:
+                        strg.move(0, 1);
+                        System.out.println("Runter");
+                        break;
+                    case 37:
+                        strg.move(-1, 0);
+                        System.out.println("LEFT");
+                        break;
+                    case 39:
+                        strg.move(1, 0);
+                        System.out.println("RECHTS");
+                        break;
+                    case 17:
+                        strg.switchDirection();
+                        System.out.println("Drehen");
+                        break;
+                    case 10:
+                        strg.placeBoat();
+                        System.out.println("Bestätigen");
+                        break;
+                }
+            }
+        });
         setBounds(100,100,1920,1080);       //Anzeige Position und Größe
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
@@ -100,6 +137,7 @@ public class Gui extends JFrame{
 //Boat Position Set
         shipPlaceButton = new JButton();
         shipPlaceButton.setText("Schiff Bestätigen");
+        shipPlaceButton.setFocusable(false);
         shipPlaceButton.setBounds(15*config.getSize(),config.getSize(),5* config.getSize(),2* config.getSize());
         shipPlaceButton.addActionListener(new ActionListener(){
             @Override
@@ -111,6 +149,7 @@ public class Gui extends JFrame{
         shipPlaceButton.setVisible(true);
 //Button weiter
         weiter = new JButton();
+        weiter.setFocusable(false);
         weiter.setText("Weiter");
         weiter.setBounds(550,75,100,50);
         weiter.addActionListener(new ActionListener() {
@@ -122,9 +161,10 @@ public class Gui extends JFrame{
         weiter.setVisible(false);
 //Button Hoch
         upS = new JButton();
+        upS.setFocusable(false);
         upS.setText("Hoch");
         upS.setBounds(30+13*config.getSize()+10,30+2*config.getSize(),3*config.getSize(),3*config.getSize());
-        upS.setVisible(true);       //TODO Nur sichtbar wenn Pregame
+        upS.setVisible(true);
         upS.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -133,9 +173,10 @@ public class Gui extends JFrame{
         });
 //Button Runter
         downS = new JButton();
+        downS.setFocusable(false);
         downS.setText("Runter");
         downS.setBounds(30+13*config.getSize()+10,30+8*config.getSize(),3*config.getSize(),3*config.getSize());
-        downS.setVisible(true);       //TODO Nur sichtbar wenn Pregame
+        downS.setVisible(true);
         downS.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -144,9 +185,10 @@ public class Gui extends JFrame{
         });
 //Button Rechts
         rightS = new JButton();
+        rightS.setFocusable(false);
         rightS.setText("Rechts");
         rightS.setBounds(30+16*config.getSize()+10,30+5*config.getSize(),3*config.getSize(),3*config.getSize());
-        rightS.setVisible(true);       //TODO Nur sichtbar wenn Pregame
+        rightS.setVisible(true);
         rightS.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -155,9 +197,10 @@ public class Gui extends JFrame{
         });
 //Button Links
         leftS = new JButton();
+        leftS.setFocusable(false);
         leftS.setText("Links");
         leftS.setBounds(30+10*config.getSize()+10,30+5*config.getSize(),3*config.getSize(),3*config.getSize());
-        leftS.setVisible(true);       //TODO Nur sichtbar wenn Pregame
+        leftS.setVisible(true);
         leftS.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -166,6 +209,7 @@ public class Gui extends JFrame{
         });
 //Vertikal Rotieren
         turnVertikalS = new JButton();
+        turnVertikalS.setFocusable(false);
         turnVertikalS.setText("Drehen");
         turnVertikalS.setBounds(30+13*config.getSize()+10,30+5*config.getSize(),3*config.getSize(),3*config.getSize());
         turnVertikalS.setVisible(true);
@@ -192,7 +236,8 @@ public class Gui extends JFrame{
         cp.add(turnVertikalS);
         cp.add(playerText);
         cp.add(playerSubText);
-        
+
+
         activePlayer.setVisible(true);
         playerText.setVisible(true);
         playerSubText.setVisible(true);
@@ -220,6 +265,7 @@ public class Gui extends JFrame{
                         Component comp =e.getComponent();
                         if(comp instanceof GuiFeld) {
                             GuiFeld fe = (GuiFeld) comp;            //Typcast
+
                             strg.click(fe.getXFeldNumber(),fe.getYFeldNumber());
                         }
 
@@ -328,6 +374,7 @@ public class Gui extends JFrame{
             }
         });
     }
+
     public void endPreGame() {
         shipPlaceButton.setVisible(false);
         upS.setVisible(false);

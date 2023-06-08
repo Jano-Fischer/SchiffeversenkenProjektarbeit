@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.event.KeyListener;
 
 public class Steuerung {
     // Anfang Attribute
@@ -81,7 +82,6 @@ public class Steuerung {
         this.gui = gui;
         this.config = config;
        // this.config = config;
-
         playerFieldPlayer1 = createFelder();
         playerFieldPlayer2 = createFelder();
         generateShipsToPlace();
@@ -273,6 +273,7 @@ public class Steuerung {
      * @param y Gibt an um wie viel das Boot in Y-Richtung verschoben wird.
      */
     public void move(int x, int y) {
+        gui.setFocusable(true);
         deleteBoat(posX,posY);
         posX = posX +x;
         posY = posY +y;
