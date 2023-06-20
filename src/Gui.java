@@ -223,8 +223,8 @@ public class Gui extends JFrame {
         cp = getContentPane();
         add(activePlayer);
 //Erstellen der Spielfelder für 2 Spieler
-        Feld[][] fields1 = strg.getPlayerFieldPlayer1();
-        Feld[][] fields2 = strg.getPlayerFieldPlayer2();
+        Spielfeld fields1 = strg.getPlayerFieldPlayer1();
+        Spielfeld fields2 = strg.getPlayerFieldPlayer2();
         playerFieldPlayer1 = createGuiFeld(fields1);
         playerFieldPlayer2 = createGuiFeld(fields2);
         showPlayerField(false);
@@ -340,6 +340,8 @@ public class Gui extends JFrame {
         cp.add(leftS);
         cp.add(rightS);
         cp.add(turnVertikalS);
+        cp.add(playerText);
+        cp.add(playerSubText);
         GuiFeld[][] felder;
         if (spieler1){
             felder= playerFieldPlayer1;
