@@ -4,19 +4,6 @@ public class Feld {
     private Boat[] boat = new Boat[2];
     private int y;
     private char status;
-
-    /**
-     * Status des Feldes setzten
-     * @param x Koordinate
-     * @param y Koordinate
-     * @param status Getroffen, Wasser, Nicht Getroffen...
-     */
-    public Feld(int x, int y, char status) {        //Übergabe der Werte für x&y-koordinate und des status (freies feld, boot platziert, fehlschuss oder getroffenes Boot)
-        this.x=x;                                   //der Konstruktor wird in initialize der GUI aufgerufen, dort wird für jedes Feld der Status water gesetzt
-        this.y=y;
-        this.status =status;
-    }
-
     public int getXFeldNumber() {
         return x;
     }
@@ -29,7 +16,17 @@ public class Feld {
     public void setStatus(char c) {
         this.status = c;
     }
-
+    /**
+     * Status des Feldes setzten
+     * @param x Koordinate
+     * @param y Koordinate
+     * @param status Getroffen, Wasser, Nicht Getroffen...
+     */
+    public Feld(int x, int y, char status) {        //Übergabe der Werte für x&y-koordinate und des status (freies feld, boot platziert, fehlschuss oder getroffenes Boot)
+        this.x=x;                                   //der Konstruktor wird in initialize der GUI aufgerufen, dort wird für jedes Feld der Status water gesetzt
+        this.y=y;
+        this.status =status;
+    }
     public void setBoat(Boat boat, boolean valid) {
         if (status=='p') {
            this.boat[1] = boat;
@@ -57,7 +54,6 @@ public class Feld {
             status = 'w';
         }
     }
-
     public Boat getBoat() {
         if (status == '2') {
             return boat[1];
@@ -65,5 +61,4 @@ public class Feld {
             return boat[0];
         }
     }
-
 }

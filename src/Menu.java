@@ -18,7 +18,6 @@ public class Menu extends JDialog {
     private JLabel jLabelText1 = new JLabel();
     private JSpinner jSpinner6 = new JSpinner();
     private JLabel jLabelPlayFieldSize = new JLabel();
-    private JLabel jLabel3 = new JLabel();
     private JLabel jLabel2Boat = new JLabel();
     private JLabel jLabel3Boat = new JLabel();
     private JLabel jLabel4Boat = new JLabel();
@@ -26,7 +25,6 @@ public class Menu extends JDialog {
     private JLabel jLabelTotalShips = new JLabel();
     // Ende Attribute
     public Menu(JFrame owner, boolean modal,Configuration config) {
-        // Dialog-Initialisierung
         super(owner, modal);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         int frameWidth = 735;
@@ -39,7 +37,6 @@ public class Menu extends JDialog {
         setTitle("Menu");
         Container cp = getContentPane();
         cp.setLayout(null);
-        // Anfang Komponenten
         jNumberField1.setBounds(72, 72, 113, 49);
         jNumberField1.setText(String.valueOf(config.getSize()));
         cp.add(jNumberField1);
@@ -88,7 +85,7 @@ public class Menu extends JDialog {
         fertig.setBounds(400,75,100,50);
         fertig.addActionListener((e ->
         {
-                this.dispose();
+            this.dispose();
         }));
         cp.add(fertig);
         fertig.setText("Fertig");
@@ -124,22 +121,29 @@ public class Menu extends JDialog {
             jSpinnerTotalBoats.setValue(config.getTotalNumber());
             update(config);
         });
-
-
-        // Ende Komponenten
         setResizable(false);
         setVisible(true);
-    } // end of public Menu
-
-    // Anfang Methoden
+    }
+    /**
+     * Updated die Werte der JSpinner
+     * @param config
+     */
     public void update(Configuration config){
+        checkMin(config);
         jSpinnerFiveBoats.setValue(config.getFiveBoats());
         jSpinnerFourBoats.setValue(config.getFourBoats());
         jSpinnerThreeBoats.setValue(config.getThreeBoats());
         jSpinnerTwoBoats.setValue(config.getTwoBoats());
-        //jSpinnerTotalBoats.setValue(config.calcTotal());
     }
 
-    // Ende Methoden
-
-} // end of class Menu
+    /**
+     * Checkt, ob die Mindestanzahl an Schiffen erreicht ist
+     * @param config
+     */
+    public void checkMin(Configuration config){
+        if(config.calcTotal()==0){
+            fertig.disable();
+        }else
+            fertig.enable();
+    }
+}

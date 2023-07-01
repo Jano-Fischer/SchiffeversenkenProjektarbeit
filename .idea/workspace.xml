@@ -6,15 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" name="Changes" comment="Verstellbare FelderGröße mit angepassten Knöpfen(Nicht Final)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Boat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BoatType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BoatType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Configuration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Feld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Feld.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Gui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GuiFeld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GuiFeld.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GuiSpielfeld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GuiSpielfeld.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Spielfeld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Spielfeld.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Steuerung.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Steuerung.java" afterDir="false" />
     </list>
     <list id="a5b1ceac-0b73-40a2-8426-d58fc6b04a33" name="Changes by jano5" comment="" />
+    <list id="f7d4a9fa-b5b3-409c-9281-b996bd4bc477" name="Changes by semjon" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -144,6 +147,7 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Gui" />
         <item itemvalue="Application.Gui" />
       </list>
     </recent_temporary>

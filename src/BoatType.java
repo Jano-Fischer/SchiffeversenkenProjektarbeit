@@ -14,5 +14,4 @@ public enum BoatType {
     public int getValue(){
         return value;
     }
-
 }

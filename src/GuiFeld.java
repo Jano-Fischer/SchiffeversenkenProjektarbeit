@@ -1,12 +1,22 @@
 import java.awt.*;
 import javax.swing.*;
-
 public class GuiFeld extends JComponent {
     private Feld feld;
+    public int getXFeldNumber() {
+        return feld.getXFeldNumber();
+    }
+    public int getYFeldNumber() {
+        return feld.getYFeldNumber();
+    }
+    public void setStatus(char c) {
+        feld.setStatus(c);
+    }
+    public Boat getBoat() {
+        return feld.getBoat();
+    }
     public GuiFeld(Feld feld) {        //Übergabe der Werte für x&y-koordinate und des status (freies feld, boot platziert, fehlschuss oder getroffenes Boot)
       this.feld = feld;
     }
-
     /**
      * Malen in Gui
      * @param g
@@ -38,23 +48,8 @@ public class GuiFeld extends JComponent {
                     g.drawLine(0, 0, this.getWidth(), this.getWidth());
                     g.drawLine(this.getWidth(), 0, 0, this.getWidth());
                 break;
-
             default:
                 break;
         }
     }
-
-    public int getXFeldNumber() {
-        return feld.getXFeldNumber();
-    }
-    public int getYFeldNumber() {
-        return feld.getYFeldNumber();
-    }
-    public void setStatus(char c) {
-        feld.setStatus(c);
-    }
-    public Boat getBoat() {
-      return feld.getBoat();
-    }
-
 }

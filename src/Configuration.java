@@ -5,27 +5,21 @@ public class Configuration {
     private int fourBoats = 2;
     private int threeBoats = 3;
     private int twoBoats = 4;
-
     public int getSize() {
         return size;
     }
-
     public void setSize(int size) {
         this.size = size;
     }
-
     public int getTotalNumber() {
         return totalNumber;
     }
-
     public void setTotalNumber(int totalNumber) {
         this.totalNumber = totalNumber;
     }
-
     public int getFiveBoats() {
         return fiveBoats;
     }
-
     public void setFiveBoats(int fiveBoats) {
         this.fiveBoats = fiveBoats;
     }
@@ -33,7 +27,6 @@ public class Configuration {
     public int getFourBoats() {
         return fourBoats;
     }
-
     public void setFourBoats(int fourBoats) {
         this.fourBoats = fourBoats;
     }
@@ -53,8 +46,6 @@ public class Configuration {
     public void setTwoBoats(int twoBoats) {
         this.twoBoats = twoBoats;
     }
-
-
     public void preset(){
         switch (totalNumber){
 
@@ -80,10 +71,8 @@ public class Configuration {
         }
 
     }
-
-    /*public int calcTotal(){
-        totalNumber= fiveBoats+fourBoats+threeBoats+twoBoats;
+    public int calcTotal() {
+        totalNumber = fiveBoats + fourBoats + threeBoats + twoBoats;
         return totalNumber;
-   }*/
-
+    }
 }

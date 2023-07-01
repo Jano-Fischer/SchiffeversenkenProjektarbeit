@@ -1,8 +1,5 @@
 import java.awt.*;
-
-//TODO Mindestens ein Schiff
 public class Steuerung {
-    // Anfang Attribute
     private final Gui gui;                          //Bekannt machen mit der GUI
     private boolean lock = false;                  //Boolean damit nicht mehrmals geschossen werden kann
     private boolean player1 = true;                //Auswahl des aktuellen Spielers
@@ -12,9 +9,11 @@ public class Steuerung {
     private int player1DestroyedBoats = 0;
     private int player2DestroyedBoats = 0;
     private int arrayPosition=0;
-    private int posX =0;
-    private int posY =0;
+    private final int startwertX =0; //Koordinaten wo das Schiff spawned
+    private final int startwertY =0; //Koordinaten wo das Schiff spawned
     private  BoatType[] shipsToPlace;
+    private int x;
+    private int y;
 
     public boolean isHorizontalDirection() {
         return horizontalDirection;
@@ -30,15 +29,11 @@ public class Steuerung {
     }
     private Spielfeld spielfeld;
     private Configuration config;
-    private boolean pregame =true;
    /* private Feld[][] playerFieldPlayer1 = new Feld[10][10];  //Feld für Spieler 1 der Größe 10x10
     private Feld[][] playerFieldPlayer2 = new Feld[10][10]; //Feld für Spieler 2 der Größe 10x10
     */
     private Spielfeld playerFieldPlayer1 =new StrgSpielfeld();
     private Spielfeld playerFieldPlayer2 =new StrgSpielfeld();
-    // Ende Attribute
-
-    // Anfang Methoden
     public boolean isPlayer1() {
         return player1;
     }
@@ -48,11 +43,6 @@ public class Steuerung {
     public Spielfeld getPlayerFieldPlayer2() {
         return this.playerFieldPlayer2;
     }
-    public boolean isLock() {
-        return lock;
-    }
-
-
     private Feld[][] createFelder() {
         Feld[][] felder = new Feld[10][10];
         for (int x=0;x<10;x++){
@@ -63,8 +53,7 @@ public class Steuerung {
             }
         }
         return felder;
-    } //?????Wichtig????????????
-
+    }
     private void generateShipsToPlace() {
         shipsToPlace = new BoatType[config.getTotalNumber()];
         int index =0;
@@ -85,52 +74,20 @@ public class Steuerung {
             index++;
         }
     }
-
     public Steuerung(Gui gui, Configuration config) {
         this.gui = gui;
         this.config = config;
-       // this.config = config;
-
         generateShipsToPlace();
     }
-
     private class StrgSpielfeld extends Spielfeld {
         public void positionIsInvalid() {
             gui.disable_shipPlace();
             gui.setPlayerText("Position ist ungültig", "Bitte verschiebe das Boot auf eine gültige Position", Color.red, Color.gray);
         }
-
         public void positionIsValid() {
             gui.setPlayerText("platziere das Boot", "ziehe das Boot auf eine beliebige position \n und bestätige dann mit 'Schiff bestätigen' ", Color.black, Color.gray);
         }
     }
-
-    /*
-    public boolean boatAt() {
-        for (int i=0; i==shipsToPlace[arrayPosition].getValue(); i++) {
-            if (player1){
-                if (horizontalDirection) {
-                    if(playerFieldPlayer1[i][posY].getStatus()=='p')
-                        return true;
-                }else{
-                    if(playerFieldPlayer1[posX][i].getStatus()=='p')
-                        return true;
-                }
-            }else{
-                if (horizontalDirection) {
-                    if (playerFieldPlayer2[i][posY].getStatus() == 'p')
-                        return true;
-                }else{
-                    if(playerFieldPlayer2[posX][i].getStatus()=='p')
-                        return true;
-                }
-            }
-        }
-        return false;
-    }
-       TODO Semjon.Braucht man das noch?*/
-
-
     /**
      * Schaut, ob ein Schiff getroffen wurde und ob dieses Zerstört wurde.
      * @param x Koordinate des Feldes welches geklickt wurde
@@ -177,15 +134,12 @@ public class Steuerung {
         lock = false;
     }
     /**
-     * Wird aufgerufen,  wenn ein Spieler Schiff Platzieren drückt.
+     * Wird aufgerufen, wenn ein Spieler Schiff Platzieren drückt.
      * Das Spielfeld wird gewechselt und das nächste Schiff aus dem Array wird ausgewählt.
      * Wenn alle Schiffe aus dem Array platziert wurden, werden alle Schiffe des anderen Spielers platziert.
      */
     public void placeBoat(BoatType boatType) {
-        posX = 0;     //Koordinaten wo das Schiff spawned
-        posY = 0;     //Koordinaten wo das Schiff spawned
-        horizontalDirection = true;
-
+        horizontalDirection = true; //Standartausrichtung ist horizontal
         if (arrayPosition == shipsToPlace.length-1) {
             player1 = !player1;
             gui.setActivePlayerText("Spieler " + ((isPlayer1()) ? 1 : 2));
@@ -202,16 +156,10 @@ public class Steuerung {
             arrayPosition++;
             spielfeld.move(0, 0,boatType, true);
         }
-
-        /*if (spielfeld.isValid()) {
-            placeBoat(posX,posY,true);
+        if (spielfeld.isValid(x,y, boatType, horizontalDirection,getLock())) {
+            spielfeld.placeBoat(startwertX, startwertY,boatType, horizontalDirection,true);
         }else{
-            placeBoat(posX,posY,false);
-        }TODO was macht das?*/
-
-
-
-
+            spielfeld.placeBoat(startwertX, startwertY,boatType, horizontalDirection,false);
+        }
     }
-
 }
