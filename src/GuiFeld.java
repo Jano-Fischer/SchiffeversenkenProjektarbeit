@@ -3,7 +3,7 @@ import javax.swing.*;
 
 public class GuiFeld extends JComponent {
     private Feld feld;
-    public GuiFeld(Feld feld) {        //Übergabe der Werte für x&y-koordinate und des status(freies feld, boot platziert, fehlschuss oder getroffenes Boot)
+    public GuiFeld(Feld feld) {        //Übergabe der Werte für x&y-koordinate und des status (freies feld, boot platziert, fehlschuss oder getroffenes Boot)
       this.feld = feld;
     }
 
@@ -43,7 +43,7 @@ public class GuiFeld extends JComponent {
                 break;
         }
     }
-  
+
     public int getXFeldNumber() {
         return feld.getXFeldNumber();
     }

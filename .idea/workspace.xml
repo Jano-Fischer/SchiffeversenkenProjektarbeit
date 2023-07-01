@@ -5,11 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" name="Changes" comment="Verstellbare FelderGröße mit angepassten Knöpfen(Nicht Final)">
-      <change afterPath="$PROJECT_DIR$/src/GuiSpielfeld.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Spielfeld.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Configuration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Feld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Feld.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Gui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GuiFeld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GuiFeld.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GuiSpielfeld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GuiSpielfeld.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Spielfeld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Spielfeld.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Steuerung.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Steuerung.java" afterDir="false" />
     </list>
     <list id="a5b1ceac-0b73-40a2-8426-d58fc6b04a33" name="Changes by jano5" comment="" />
@@ -206,6 +208,18 @@
       <workItem from="1686244544239" duration="5208000" />
       <workItem from="1686249825669" duration="2139000" />
       <workItem from="1687253881665" duration="4012000" />
+      <workItem from="1687434193970" duration="787000" />
+      <workItem from="1687435004344" duration="123000" />
+      <workItem from="1687435146131" duration="88000" />
+      <workItem from="1687448007489" duration="85000" />
+      <workItem from="1687879645098" duration="517000" />
+      <workItem from="1688063312294" duration="5928000" />
+      <workItem from="1688147593761" duration="400000" />
+      <workItem from="1688205669032" duration="1378000" />
+      <workItem from="1688207147769" duration="388000" />
+      <workItem from="1688207593218" duration="168000" />
+      <workItem from="1688207803267" duration="895000" />
+      <workItem from="1688208720984" duration="1977000" />
     </task>
     <task id="LOCAL-00001" summary="Update">
       <created>1677008707184</created>

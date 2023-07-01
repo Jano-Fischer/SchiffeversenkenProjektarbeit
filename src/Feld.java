@@ -11,8 +11,8 @@ public class Feld {
      * @param y Koordinate
      * @param status Getroffen, Wasser, Nicht Getroffen...
      */
-    public Feld(int x, int y, char status) {        //Übergabe der Werte für x&y-koordinate und des status(freies feld, boot platziert, fehlschuss oder getroffenes Boot)
-        this.x=x;                                   //der Konstruktor wird in initilize der GUI aufgerufen, dort wird für jedes Feld der Status water gesetzt
+    public Feld(int x, int y, char status) {        //Übergabe der Werte für x&y-koordinate und des status (freies feld, boot platziert, fehlschuss oder getroffenes Boot)
+        this.x=x;                                   //der Konstruktor wird in initialize der GUI aufgerufen, dort wird für jedes Feld der Status water gesetzt
         this.y=y;
         this.status =status;
     }
@@ -43,7 +43,7 @@ public class Feld {
                     this.boat[0] = boat;
                     status = 'i';
                 }else {
-                    System.err.println("kein Zulaessiger Wert");
+                    System.err.println("kein Zulässiger Wert");
                 }
             }
         }

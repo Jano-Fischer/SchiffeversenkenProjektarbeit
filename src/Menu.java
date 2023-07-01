@@ -64,10 +64,10 @@ public class Menu extends JDialog {
         jSpinnerTwoBoats.setValue(config.getTwoBoats());
         cp.add(jSpinnerTwoBoats);
         jLabelText1.setBounds(280, 24, 73, 33);
-        jLabelText1.setText("Schiffarten auswaehlen, oder feste Antzahl benutzen ");
+        jLabelText1.setText("Schiff Arten auswählen, oder feste Anzahl benutzen ");
         cp.add(jSpinner6);
         jLabelPlayFieldSize.setBounds(88, 24, 200, 41);
-        jLabelPlayFieldSize.setText("Spielfeldgroeße veraendern:");
+        jLabelPlayFieldSize.setText("Spielfeldgröße verändern:");
         cp.add(jLabelPlayFieldSize);
         jLabel2Boat.setBounds(208, 472, 65, 41);
         jLabel2Boat.setText("2er Boot:");
