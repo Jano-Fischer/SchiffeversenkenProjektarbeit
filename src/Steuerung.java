@@ -27,13 +27,13 @@ public class Steuerung {
     public int getArrayPosition() {
         return arrayPosition;
     }
-    private Spielfeld spielfeld;
+
     private Configuration config;
    /* private Feld[][] playerFieldPlayer1 = new Feld[10][10];  //Feld für Spieler 1 der Größe 10x10
     private Feld[][] playerFieldPlayer2 = new Feld[10][10]; //Feld für Spieler 2 der Größe 10x10
     */
-    private Spielfeld playerFieldPlayer1 =new StrgSpielfeld();
-    private Spielfeld playerFieldPlayer2 =new StrgSpielfeld();
+    private Spielfeld playerFieldPlayer1 =new StrgSpielfeld(this);
+    private Spielfeld playerFieldPlayer2 =new StrgSpielfeld(this);
     public boolean isPlayer1() {
         return player1;
     }
@@ -79,13 +79,33 @@ public class Steuerung {
         this.config = config;
         generateShipsToPlace();
     }
+
+    /**
+     * wird am Ende des GUI-Konstruktors aufgerufen, wenn die GUI bereit ist
+     */
+    public void startGame() {
+        move(0,0,getShipsToPlace(getArrayPosition()),isHorizontalDirection());
+    }
+
+
     private class StrgSpielfeld extends Spielfeld {
+        public StrgSpielfeld(Steuerung strg) {
+            super(strg);
+        }
+
+        @Override
         public void positionIsInvalid() {
             gui.disable_shipPlace();
             gui.setPlayerText("Position ist ungültig", "Bitte verschiebe das Boot auf eine gültige Position", Color.red, Color.gray);
         }
+        @Override
         public void positionIsValid() {
             gui.setPlayerText("platziere das Boot", "ziehe das Boot auf eine beliebige position \n und bestätige dann mit 'Schiff bestätigen' ", Color.black, Color.gray);
+        }
+
+        @Override
+        public void enable_shipPlace() {
+            gui.enable_shipPlace();
         }
     }
     /**
@@ -95,17 +115,21 @@ public class Steuerung {
      */
     public void click(int x, int y) {
         if (lock) return;
+        Spielfeld spielfeld = player1 ? playerFieldPlayer1 : playerFieldPlayer2;
+        Feld feld = spielfeld.getFeld(x,y);
         System.out.println("Feld geklickt: " + x + ":" + y + " Spieler:" + ((player1) ? 1 : 2));
+
         boolean hit = spielfeld.boatExists(x, y);
         if (hit) {
             System.out.println("Treffer bei:"+x+":"+y+" Spieler:" + ((player1) ? 1 : 2));
-            boolean destroyed = gui.hitAtIsDestroyed(x, y, player1);
+            feld.setStatus('h');
+            boolean destroyed = feld.getBoat().isDestroyed();
             if (destroyed) {
                 winChecker();
             }
         } else {
             System.out.println("Nicht getroffen bei: "+x+":"+y+" Spieler:" + ((player1) ? 1 : 2));
-            gui.missAt(x, y, player1);
+            feld.setStatus('m');
             lock = true;
             System.out.println("Nächster Spieler");
         }
@@ -120,6 +144,8 @@ public class Steuerung {
             System.out.println("Spieler 1 Gewonnen");
             gui.setActivePlayerText("Spieler 1 hat gewonnen");
             lock = true;
+        } else{
+            //TODO 2 Spieler
         }
 
     }
@@ -139,6 +165,7 @@ public class Steuerung {
      * Wenn alle Schiffe aus dem Array platziert wurden, werden alle Schiffe des anderen Spielers platziert.
      */
     public void placeBoat(BoatType boatType) {
+        Spielfeld spielfeld = player1 ? playerFieldPlayer1 : playerFieldPlayer2;
         horizontalDirection = true; //Standartausrichtung ist horizontal
         if (arrayPosition == shipsToPlace.length-1) {
             player1 = !player1;
@@ -147,7 +174,7 @@ public class Steuerung {
             if (!player1) {
                 arrayPosition = 0;
                 gui.showOtherPlayerFieldPregame(player1);              //showPlayerField zeigt Spielfeld an, das beschossen wird (Spielfeld des anderen Spielers)
-                spielfeld.move(0, 0,boatType,true);
+                playerFieldPlayer2.move(0, 0,boatType,true);
             } else {
                 gui.endPreGame();
                 goOne();
@@ -161,5 +188,13 @@ public class Steuerung {
         }else{
             spielfeld.placeBoat(startwertX, startwertY,boatType, horizontalDirection,false);
         }
+    }
+    public void move(int x, int y, BoatType boatType, boolean horizontalDirection){
+        Spielfeld spielfeld = player1 ? playerFieldPlayer1 : playerFieldPlayer2;
+        spielfeld.move(x,y,boatType,horizontalDirection);
+    }
+    public void switchDirection(int x, int y, BoatType boatType, Boolean lock, Boolean horizontalDirection) {
+        Spielfeld spielfeld = player1 ? playerFieldPlayer1 : playerFieldPlayer2;
+        spielfeld.switchDirection(x,y,boatType,lock,horizontalDirection);
     }
 }

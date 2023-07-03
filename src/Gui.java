@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 public class Gui extends JFrame {
     Configuration config = new Configuration();
-    private Spielfeld spielfeld;
+
     private Steuerung strg; //Verknüpfung mit der Steuerung
     private Container cp;
     private JButton shipPlaceButton;
@@ -16,8 +16,10 @@ public class Gui extends JFrame {
     private JLabel activePlayer;
     private JLabel playerText;
     private JLabel playerSubText;
-    public GuiSpielfeld playerFieldPlayer1 = new GuiSpielfeld();
-    public GuiFeld[][] playerFieldPlayer2 = new GuiFeld[10][10]; //Feld für Spieler 2 der Größe 10x10
+    public GuiSpielfeld playerFieldPlayer1;
+    public GuiSpielfeld playerFieldPlayer2;
+
+    //private Spielfeld spielfeld;
 
     public void disable_shipPlace(){
         shipPlaceButton.setEnabled(false);
@@ -40,48 +42,13 @@ public class Gui extends JFrame {
         strg = new Steuerung(this,config); //Erstellen der Steuerung mit dem Namen strg
         initialize();   //Platzieren der Grafikelemente
     }
-    /**
-     * Wird ausgeführt bei Treffer.
-     * Auswahl des aktuellen Spielers und setzt den Status des Feldes auf hit. Danach Repaint des Feldes.
-     * Abfrage, ob das Schiff durch den Treffer zerstört wurde. Wenn Ja, dann rückgabewert true.
-     * @param x Beschossene Stelle
-     * @param y Beschossene Stelle
-     * @param spieler1  Auswahl des Spielers
-     * @return ob das Schiff zerstört wurde
-     */
-    public boolean hitAtIsDestroyed(int x, int y, boolean spieler1) {
-        GuiFeld feld;
-        if (spieler1){
-            feld = playerFieldPlayer2[x][y];
-        } else{
-            feld = playerFieldPlayer1[x][y];
-        }
-        feld.setStatus('h');
-        feld.repaint();
-        return feld.getBoat().isDestroyed();
-    }
-    /**
-     * Ausgabe an welcher Stelle man nicht getroffen hat, sowie zustandsänderung des Feldes auf miss
-     * @param x Beschossene Stelle
-     * @param y Beschossene Stelle
-     * @param spieler1 Aktueller Spieler
-     */
-    //TODO In Steuerung auslagern
-    public void missAt(int x, int y, boolean spieler1) {
-        GuiFeld feld;
-        if (spieler1){
-            feld= playerFieldPlayer2[x][y];
-        } else{
-            feld= playerFieldPlayer1[x][y];
-        }
-        feld.setStatus('m');
-        feld.repaint();
-    }
+
     /**
      * Platzieren der Grafikelemente
      */
     private void initialize(){
         setFocusable(true);
+        setLayout(null);
         addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -101,22 +68,22 @@ public class Gui extends JFrame {
                 switch (e.getKeyCode()) {
                     case 38:
                         System.out.println("Hoch"); //Debug
-                        spielfeld.move(0, -1,strg.getShipsToPlace(strg.getArrayPosition()),strg.isHorizontalDirection());
+                        strg.move(0, -1,strg.getShipsToPlace(strg.getArrayPosition()),strg.isHorizontalDirection());
                         break;
                     case 40:
-                        spielfeld.move(0, 1,strg.getShipsToPlace(strg.getArrayPosition()),strg.isHorizontalDirection());
+                        strg.move(0, 1,strg.getShipsToPlace(strg.getArrayPosition()),strg.isHorizontalDirection());
                         System.out.println("Runter");
                         break;
                     case 37:
-                        spielfeld.move(-1, 0,strg.getShipsToPlace(strg.getArrayPosition()),strg.isHorizontalDirection());
+                        strg.move(-1, 0,strg.getShipsToPlace(strg.getArrayPosition()),strg.isHorizontalDirection());
                         System.out.println("Links");
                         break;
                     case 39:
-                        spielfeld.move(1, 0,strg.getShipsToPlace(strg.getArrayPosition()),strg.isHorizontalDirection());
+                        strg.move(1, 0,strg.getShipsToPlace(strg.getArrayPosition()),strg.isHorizontalDirection());
                         System.out.println("Rechts");
                         break;
                     case 17:
-                        spielfeld.switchDirection(getX(), getY(),strg.getShipsToPlace(strg.getArrayPosition()),strg.getLock(),strg.isHorizontalDirection());
+                        strg.switchDirection(getX(), getY(),strg.getShipsToPlace(strg.getArrayPosition()),strg.getLock(),strg.isHorizontalDirection());
                         System.out.println("Drehen");
                         break;
                     case 10:
@@ -124,6 +91,7 @@ public class Gui extends JFrame {
                         System.out.println("Bestätigen");
                         break;
                 }
+                Gui.this.repaint();
             }
         });
         setBounds(100,100,1920,1080);       //Anzeige Position und Größe des Fensters
@@ -151,7 +119,7 @@ public class Gui extends JFrame {
         shipPlaceButton.setText("Schiff Bestätigen");
         shipPlaceButton.setFocusable(false);
         shipPlaceButton.setBounds(15*config.getSize(),config.getSize(),5* config.getSize(),2* config.getSize());
-        shipPlaceButton.addActionListener(e -> strg.placeBoat(strg.getShipsToPlace(strg.getArrayPosition())));
+        shipPlaceButton.addActionListener(e -> keyPressed('p'));
         shipPlaceButton.setVisible(true);
 //Button weiter
         weiter = new JButton();
@@ -166,43 +134,51 @@ public class Gui extends JFrame {
         upS.setText("Hoch");
         upS.setBounds(30+13*config.getSize()+10,30+2*config.getSize(),3*config.getSize(),3*config.getSize());
         upS.setVisible(true);
-        upS.addActionListener(e -> spielfeld.move(0,-1,strg.getShipsToPlace(strg.getArrayPosition()),strg.isHorizontalDirection()));
+        upS.addActionListener(e -> keyPressed('u'));
 //Button Runter
         downS = new JButton();
         downS.setFocusable(false);
         downS.setText("Runter");
         downS.setBounds(30+13*config.getSize()+10,30+8*config.getSize(),3*config.getSize(),3*config.getSize());
         downS.setVisible(true);
-        downS.addActionListener(e -> spielfeld.move(0,1,strg.getShipsToPlace(strg.getArrayPosition()),strg.isHorizontalDirection()));
+        downS.addActionListener(e -> keyPressed('d'));
 //Button Rechts
         rightS = new JButton();
         rightS.setFocusable(false);
         rightS.setText("Rechts");
         rightS.setBounds(30+16*config.getSize()+10,30+5*config.getSize(),3*config.getSize(),3*config.getSize());
         rightS.setVisible(true);
-        rightS.addActionListener(e -> spielfeld.move(1,0,strg.getShipsToPlace(strg.getArrayPosition()),strg.isHorizontalDirection()));
+        rightS.addActionListener(e -> keyPressed('r'));
 //Button Links
         leftS = new JButton();
         leftS.setFocusable(false);
         leftS.setText("Links");
         leftS.setBounds(30+10*config.getSize()+10,30+5*config.getSize(),3*config.getSize(),3*config.getSize());
         leftS.setVisible(true);
-        leftS.addActionListener(e -> spielfeld.move(-1,0,strg.getShipsToPlace(strg.getArrayPosition()),strg.isHorizontalDirection()));
+        leftS.addActionListener(e -> keyPressed('l'));
 //Vertikal Rotieren
         turnVertikalS = new JButton();
         turnVertikalS.setFocusable(false);
         turnVertikalS.setText("Drehen");
         turnVertikalS.setBounds(30+13*config.getSize()+10,30+5*config.getSize(),3*config.getSize(),3*config.getSize());
         turnVertikalS.setVisible(true);
-        turnVertikalS.addActionListener(e -> spielfeld.switchDirection(getX(), getY(),strg.getShipsToPlace(strg.getArrayPosition()),strg.getLock(),strg.isHorizontalDirection()));
+        turnVertikalS.addActionListener(e -> keyPressed('o'));
 //Aktiver Spieler Anzeigen
         cp = getContentPane();
         cp.add(activePlayer);
+
         Spielfeld fields1 = strg.getPlayerFieldPlayer1();
+        playerFieldPlayer1 = new GuiSpielfeld(fields1,config.getSize());
+        playerFieldPlayer1.setLocation(30,30);
+        cp.add(playerFieldPlayer1);
+
         Spielfeld fields2 = strg.getPlayerFieldPlayer2();
-        playerFieldPlayer1 = createGuiFeld(fields1);
-        playerFieldPlayer2 = createGuiFeld(fields2);
+        playerFieldPlayer2 = new GuiSpielfeld(fields2,config.getSize());
+        playerFieldPlayer2.setLocation(30,30);
+        cp.add(playerFieldPlayer2);
+
         showPlayerField(false);
+
         cp.add(upS);
         cp.add(downS);
         cp.add(leftS);
@@ -214,36 +190,26 @@ public class Gui extends JFrame {
         activePlayer.setVisible(true);
         playerText.setVisible(true);
         playerSubText.setVisible(true);
-        spielfeld.move(0,0,strg.getShipsToPlace(strg.getArrayPosition()),strg.isHorizontalDirection());
+        strg.startGame();
+        cp.setVisible(true);
     }
-    /**
-     * Erstellen eines Spielfeldes mit der Festen Größe von 10x10 und jedem Feld den Zustand water geben.
-     *Jedes Feld erhält einen Mouse Listener
-     * @return
-     */
-    private GuiFeld[][] createGuiFeld(Spielfeld strgFelder) {
-        GuiFeld[][] felder = new GuiFeld[10][10];
-        for (int x=0;x<10;x++){
-            for (int y=0;y<10;y++){
-                GuiFeld feld = new GuiFeld(new Feld(x,y,'?'));
-                feld.setBounds(x*config.getSize()+30,y*config.getSize()+30,config.getSize(),config.getSize());
-                feld.addMouseListener(new  MouseAdapter(){
-                    @Override
-                    public void mousePressed(MouseEvent e) {
-                        Component comp =e.getComponent();
-                        if(comp instanceof GuiFeld) {
-                            GuiFeld fe = (GuiFeld) comp;            //Typecast
 
-                            strg.click(fe.getXFeldNumber(),fe.getYFeldNumber());
-                        }
+    public void keyPressed(char c) {
 
-                    }
-                });
-                felder[x][y] = feld;
-            }
+        switch (c) {
+            case 'u': strg.move(0,-1,strg.getShipsToPlace(strg.getArrayPosition()),strg.isHorizontalDirection()); break;
+            case 'd': strg.move(0,1,strg.getShipsToPlace(strg.getArrayPosition()),strg.isHorizontalDirection()); break;
+            case 'r':strg.move(1,0,strg.getShipsToPlace(strg.getArrayPosition()),strg.isHorizontalDirection()); break;
+            case 'l': strg.move(-1,0,strg.getShipsToPlace(strg.getArrayPosition()),strg.isHorizontalDirection()); break;
+            case 'o': strg.switchDirection(getX(), getY(),strg.getShipsToPlace(strg.getArrayPosition()),strg.getLock(),strg.isHorizontalDirection()); break;
+            case 'p': strg.placeBoat(strg.getShipsToPlace(strg.getArrayPosition())); break;
         }
-        return felder;
+
+        this.repaint();
+        GuiSpielfeld guiSpielfeld = playerFieldPlayer1.isVisible() ? playerFieldPlayer1 : playerFieldPlayer2;
+        guiSpielfeld.setFocusable(true);    // for keyListener ...
     }
+
     /**
      * Anzeigen des Spielfeldes welches beschossen wird
      * @param spieler1
@@ -252,20 +218,19 @@ public class Gui extends JFrame {
         cp.removeAll();
         cp.add(weiter);
         cp.add(activePlayer);
-        GuiFeld[][] felder;
+
         if (spieler1){
-            felder= playerFieldPlayer2;
+            playerFieldPlayer1.setVisible(true);
+            playerFieldPlayer2.setVisible(false);
         }else{
+            playerFieldPlayer2.setVisible(true);
+            playerFieldPlayer1.setVisible(false);
             setActivePlayerText("Spieler " + ((strg.isPlayer1()) ? 1 : 2));
-            felder= playerFieldPlayer1;
         }
-        for (int x=0;x<10;x++) {
-            for (int y = 0; y < 10; y++) {
-                cp.add(felder[x][y]);
-                felder[x][y].repaint();
-            }
-        }
+
     }
+
+
     public void showOtherPlayerFieldPregame(boolean spieler1){
         cp.removeAll();
         cp.add(activePlayer);
@@ -277,19 +242,14 @@ public class Gui extends JFrame {
         cp.add(turnVertikalS);
         cp.add(playerText);
         cp.add(playerSubText);
-        GuiFeld[][] felder;
-        if (spieler1){
-            felder= playerFieldPlayer1;
-        }else{
-            setActivePlayerText("Spieler " + ((strg.isPlayer1()) ? 1 : 2));
-            felder= playerFieldPlayer2;
+        if (spieler1) {
+            playerFieldPlayer1.setVisible(true);
+            playerFieldPlayer2.setVisible(false);
+        } else {
+            playerFieldPlayer1.setVisible(false);
+            playerFieldPlayer2.setVisible(true);
         }
-        for (int x=0;x<10;x++) {
-            for (int y = 0; y < 10; y++) {
-                cp.add(felder[x][y]);
-                felder[x][y].repaint();
-            }
-        }
+        setActivePlayerText("Spieler " + ((strg.isPlayer1()) ? 1 : 2));
     }
     /**
      * Ausgabe des Spielers der am Zug ist
@@ -310,6 +270,8 @@ public class Gui extends JFrame {
         rightS.setVisible(false);
         turnVertikalS.setVisible(false);
         weiter.setVisible(true);
+        /*
+        // TODO: herausfinden, wozu das gut war! Warum 'Ü'???
         for (GuiFeld[] row : playerFieldPlayer1) {
             for (GuiFeld feld : row) {
                 feld.setStatus('ü');
@@ -320,6 +282,7 @@ public class Gui extends JFrame {
                 feld.setStatus('ü');
             }
         }
+         */
     }
 
     /**

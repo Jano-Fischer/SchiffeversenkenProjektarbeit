@@ -1,13 +1,33 @@
 public abstract class Spielfeld {
     private Feld[][] playerField = new Feld[10][10];  //Feld für Spieler 1 der Größe 10x10
-    private GuiSpielfeld guiSpielfeld;
     private Gui gui;    //Wird nur einmal genutzt. Geht das auch anderst?
     private Steuerung strg; //Verweis auf Steuerung
     protected abstract void positionIsValid();
     protected abstract void positionIsInvalid();
-    public void setGuiSpielfeld(GuiSpielfeld guiSpielfeld) {
-        this.guiSpielfeld = guiSpielfeld;
+    protected abstract void enable_shipPlace();
+
+
+    public Spielfeld(Steuerung strg){
+       this.strg=strg;
+       for (int y=0;y<playerField[0].length; y++) {
+           for (int x=0;x<playerField.length; x++) {
+               playerField[x][y] = new Feld(x,y,'?');
+           }
+       }
     }
+
+    public int getSize(){
+        return playerField.length;
+    }
+
+    public Feld getFeld(int x, int y) {
+        if ((x >= 0) && (x < playerField.length) && (y >= 0) && (y < playerField.length)) {
+            return playerField[x][y];
+        } else {
+            return null;
+        }
+    }
+
     /**
      * Platziert ein Boot, je nach ausrichtung.
      *
@@ -28,9 +48,6 @@ public abstract class Spielfeld {
                 playerField[x][i].setBoat(boat, valid);
             }
         }
-        if (guiSpielfeld != null) {
-            guiSpielfeld.repaint();
-        }
     }
     /**
      * Löscht das Boot, wenn es verschoben wird vom alten Feld
@@ -50,7 +67,6 @@ public abstract class Spielfeld {
                 playerField[x][i].removeBoat();
             }
         }
-        guiSpielfeld.repaint();
     }
     /**
      * Wird aufgerufen, wenn ein Knopf zum Verschieben gedrückt wurde. Ruft zuerst deleteBoat() auf, und verschiebt das Boot je nach eingabe des Spielers.
@@ -58,7 +74,6 @@ public abstract class Spielfeld {
      * @param y Gibt an um wie viel das Boot in Y-Richtung verschoben wird.
      */
     public void move(int x, int y, BoatType boatType, boolean horizontalDirection) {
-        guiSpielfeld.setFocusable(true);
         deleteBoat(x, y, boatType, horizontalDirection);
         x = x + x;
         y = y + y;
@@ -101,7 +116,7 @@ public abstract class Spielfeld {
             }
         }
         if (!lock) {
-            gui.enable_shipPlace();
+            enable_shipPlace();
         }
         return true;
     }
@@ -146,4 +161,11 @@ public abstract class Spielfeld {
             horizontalDirection = !horizontalDirection;
         }
     }
+    public void click(int xFeldNumber, int yFeldNumber) {
+        strg.click(xFeldNumber,yFeldNumber);
+    }
+    public void setStatus(int x, int y, char h) {
+       playerField[x][y].setStatus(h);
+    }
 }
+

@@ -10,6 +10,7 @@ public class GuiFeld extends JComponent {
     }
     public void setStatus(char c) {
         feld.setStatus(c);
+        repaint();
     }
     public Boat getBoat() {
         return feld.getBoat();
