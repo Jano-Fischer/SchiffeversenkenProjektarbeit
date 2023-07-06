@@ -4,7 +4,6 @@ import java.awt.*;
 public class Menu extends JDialog {
     // Anfang Attribute
     private JButton fertig = new JButton();
-    private JTextField jNumberField1 = new JTextField();
     private JSpinner jSpinnerTotalBoats = new JSpinner();
     private SpinnerNumberModel jSpinnerPreset = new SpinnerNumberModel(10, 5, 10, 1);
     private JSpinner jSpinnerFiveBoats = new JSpinner();
@@ -24,6 +23,12 @@ public class Menu extends JDialog {
     private JLabel jLabel4Boat = new JLabel();
     private JLabel jLabel5Boat = new JLabel();
     private JLabel jLabelTotalShips = new JLabel();
+    private String valueSize = "Klein";
+    private String playfieldsizes[] = {"Klein", "Mittel", "Groß"};
+    private JComboBox sizeselecten = new JComboBox(playfieldsizes);
+    public String getValueSize() {
+        return valueSize;
+    }
     // Ende Attribute
     public Menu(JFrame owner, boolean modal,Configuration config) {
         // Dialog-Initialisierung
@@ -40,9 +45,6 @@ public class Menu extends JDialog {
         Container cp = getContentPane();
         cp.setLayout(null);
         // Anfang Komponenten
-        jNumberField1.setBounds(72, 72, 113, 49);
-        jNumberField1.setText(String.valueOf(config.getSize()));
-        cp.add(jNumberField1);
         jSpinnerTotalBoats.setModel(jSpinnerPreset);
         jSpinnerTotalBoats.setValue(config.getTotalNumber());
         jSpinnerTotalBoats.setBounds(288, 64, 64, 80);
@@ -66,7 +68,10 @@ public class Menu extends JDialog {
         jLabelText1.setBounds(280, 24, 73, 33);
         jLabelText1.setText("Schiffarten auswaehlen, oder feste Antzahl benutzen ");
         cp.add(jSpinner6);
-        jLabelPlayFieldSize.setBounds(88, 24, 200, 41);
+        sizeselecten.setBounds(72, 70, 113, 50);
+        sizeselecten.setBackground(Color.WHITE);
+        cp.add(sizeselecten);
+        jLabelPlayFieldSize.setBounds(70, 24, 200, 40);
         jLabelPlayFieldSize.setText("Spielfeldgroeße veraendern:");
         cp.add(jLabelPlayFieldSize);
         jLabel2Boat.setBounds(208, 472, 65, 41);
@@ -93,7 +98,24 @@ public class Menu extends JDialog {
         cp.add(fertig);
         fertig.setText("Fertig");
         fertig.setVisible(true);
-
+        config.setSize(30); //Dient als Default Wert, falls nichts ausgewählt wird
+        sizeselecten.addActionListener(e -> {
+            valueSize = (String) sizeselecten.getSelectedItem();
+            switch (valueSize) {
+                case "Klein": {
+                    config.setSize(30);
+                    break;
+                }
+                case "Mittel": {
+                    config.setSize(40);
+                    break;
+                }
+                case "Groß": {
+                    config.setSize(50);
+                    break;
+                }
+            }
+        });
         jSpinnerTotalBoats.addChangeListener(e -> {
             config.setTotalNumber((int) jSpinnerTotalBoats.getValue());
             config.preset();
@@ -119,13 +141,6 @@ public class Menu extends JDialog {
             jSpinnerTotalBoats.setValue(config.getTotalNumber());
             update(config);
         });
-        jNumberField1.addActionListener(e -> {
-            config.setSize(Integer.parseInt(jNumberField1.getText()));
-            jSpinnerTotalBoats.setValue(config.getTotalNumber());
-            update(config);
-        });
-
-
         // Ende Komponenten
         setResizable(false);
         setVisible(true);

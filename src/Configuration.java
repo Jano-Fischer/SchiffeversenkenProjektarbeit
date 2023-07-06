@@ -1,5 +1,5 @@
 public class Configuration {
-    private int size = 40;
+    private int size;
     private int totalNumber = 10;
     private int fiveBoats = 1; //Zahlen beziehen sich auf die Defaulteinstellung des Menüs
     private int fourBoats = 2;

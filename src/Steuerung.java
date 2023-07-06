@@ -4,8 +4,6 @@ import java.awt.event.KeyListener;
 public class Steuerung {
     // Anfang Attribute
     private final Gui gui;                          //Bekannt machen mit der GUI
-
-
     private boolean lock = false;                  //Boolean damit nicht mehrmals geschossen werden kann
     private boolean player1 = true;                //Auswahl des aktuellen Spielers
     private boolean horizontalDirection =true;      //Speichert die Ausrichtung des Schiffes
@@ -114,7 +112,7 @@ public class Steuerung {
     }
 
     public void positionIsValid() {
-        gui.setPlayerText("platziere das Boot","ziehe das Boot auf eine beliebige position \n und bestätige dann mit 'Schiff bestätigen' ", Color.black,Color.gray);
+        gui.setPlayerText("Platziere das Boot","<html><body>ziehe das Boot auf eine beliebige position<br>und bestätige dann mit 'Schiff bestätigen'</body></html>", Color.black,Color.gray);
     }
     public boolean boatAt() {
         for (int i=0; i==shipsToPlace[arrayPosition].getValue(); i++) {
