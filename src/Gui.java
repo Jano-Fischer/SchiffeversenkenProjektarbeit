@@ -155,9 +155,14 @@ public class Gui extends JFrame {
                         System.out.println("Drehen");
                         break;
                     case 10:
-                        strg.placeBoat();
-                        System.out.println("Bestätigen");
-                        break;
+                        if (strg.isLock()) {
+                            System.out.println("Nicht bestätigt");
+                            break;
+                        }else{
+                            strg.placeBoat();
+                            System.out.println("Bestätigen");
+                            break;
+                        }
                 }
             }
         });

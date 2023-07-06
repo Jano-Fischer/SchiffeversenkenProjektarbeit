@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" name="Changes" comment="Verstellbare FelderGröße mit angepassten Knöpfen(Nicht Final)">
+    <list default="true" id="aec91e8f-b0a7-40f2-bd6a-6194fc923b39" name="Changes" comment="3 Verschiedene Größeneinstellungen, sowie Versuche mit Hintergründen">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Boat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Boat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BoatType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BoatType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Configuration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Configuration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Feld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Feld.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Gui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gui.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Steuerung.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Steuerung.java" afterDir="false" />
@@ -107,7 +110,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.20344828&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.uml&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -204,7 +207,9 @@
       <workItem from="1686233617752" duration="4222000" />
       <workItem from="1686244544239" duration="5208000" />
       <workItem from="1686249825669" duration="2139000" />
-      <workItem from="1688630798938" duration="4121000" />
+      <workItem from="1688630798938" duration="4317000" />
+      <workItem from="1688638501001" duration="6239000" />
+      <workItem from="1688647810049" duration="5401000" />
     </task>
     <task id="LOCAL-00001" summary="Update">
       <created>1677008707184</created>
@@ -304,7 +309,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685357280048</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="3 Verschiedene Größeneinstellungen, sowie Versuche mit Hintergründen">
+      <created>1688635028111</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1688635028111</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -334,7 +346,8 @@
     <MESSAGE value="Boote koennen jetzt uebereinander geschoben werden!!" />
     <MESSAGE value="Schiffe platzieren fertiggestellt, PlayerTexts eingeführt, Labels verbessert" />
     <MESSAGE value="Verstellbare FelderGröße mit angepassten Knöpfen(Nicht Final)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Verstellbare FelderGröße mit angepassten Knöpfen(Nicht Final)" />
+    <MESSAGE value="3 Verschiedene Größeneinstellungen, sowie Versuche mit Hintergründen" />
+    <option name="LAST_COMMIT_MESSAGE" value="3 Verschiedene Größeneinstellungen, sowie Versuche mit Hintergründen" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

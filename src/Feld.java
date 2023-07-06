@@ -43,7 +43,7 @@ public class Feld {
                     this.boat[0] = boat;
                     status = 'i';
                 }else {
-                    System.err.println("kein Zulaessiger Wert");
+                    System.err.println("kein Zulässiger Wert");
                 }
             }
         }

@@ -92,12 +92,11 @@ public class Menu extends JDialog {
 
         fertig.setBounds(400,75,100,50);
         fertig.addActionListener((e ->
-        {
-                this.dispose();
-        }));
+                dispose()));
         cp.add(fertig);
         fertig.setText("Fertig");
         fertig.setVisible(true);
+        fertig.setToolTipText("Bitte Mindestens ein Schiff auswählen");
         config.setSize(30); //Dient als Default Wert, falls nichts ausgewählt wird
         sizeselecten.addActionListener(e -> {
             valueSize = (String) sizeselecten.getSelectedItem();
@@ -125,28 +124,35 @@ public class Menu extends JDialog {
             config.setFiveBoats((int) jSpinnerFiveBoats.getValue());
             jSpinnerTotalBoats.setValue(config.getTotalNumber());
             update(config);
+            isNotNull(config);
         });
         jSpinnerFourBoats.addChangeListener(e -> {
             config.setFourBoats((int) jSpinnerFourBoats.getValue());
             jSpinnerTotalBoats.setValue(config.getTotalNumber());
             update(config);
+            isNotNull(config);
         });
         jSpinnerThreeBoats.addChangeListener(e -> {
             config.setThreeBoats((int) jSpinnerThreeBoats.getValue());
             jSpinnerTotalBoats.setValue(config.getTotalNumber());
             update(config);
+            isNotNull(config);
         });
         jSpinnerTwoBoats.addChangeListener(e -> {
             config.setTwoBoats((int) jSpinnerTwoBoats.getValue());
             jSpinnerTotalBoats.setValue(config.getTotalNumber());
             update(config);
+            isNotNull(config);
         });
         // Ende Komponenten
         setResizable(false);
         setVisible(true);
     } // end of public Menu
 
-    // Anfang Methoden
+
+    /**
+     * Aktualisiert die Werte auf den Anzeigefeldern
+     */
     public void update(Configuration config){
         jSpinnerFiveBoats.setValue(config.getFiveBoats());
         jSpinnerFourBoats.setValue(config.getFourBoats());
@@ -154,7 +160,16 @@ public class Menu extends JDialog {
         jSpinnerTwoBoats.setValue(config.getTwoBoats());
         //jSpinnerTotalBoats.setValue(config.calcTotal());
     }
-
+    /**
+     *Schaut das mindestens ein Schiff ausgewählt wurde
+     */
+    public boolean isNotNull(Configuration config){
+        if(config.getFiveBoats() == 0 && config.getFourBoats() == 0 && config.getThreeBoats() == 0 && config.getTwoBoats() == 0){
+            fertig.setEnabled(false);
+            return false;
+        }
+            fertig.setEnabled(true);
+            return true;
+    }
     // Ende Methoden
-
 } // end of class Menu

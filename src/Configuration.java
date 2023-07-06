@@ -5,7 +5,6 @@ public class Configuration {
     private int fourBoats = 2;
     private int threeBoats = 3;
     private int twoBoats = 4;
-
     public int getSize() {
         return size;
     }
@@ -76,14 +75,7 @@ public class Configuration {
             case 10:
                 fiveBoats=1;fourBoats=2;threeBoats=3;twoBoats=4;
                 break;
-           // default: fiveBoats=1;fourBoats=2;threeBoats=3;twoBoats=4;
         }
 
     }
-
-    /*public int calcTotal(){
-        totalNumber= fiveBoats+fourBoats+threeBoats+twoBoats;
-        return totalNumber;
-   }*/
-
 }
