@@ -45,28 +45,28 @@ public class Gui extends JFrame {
                 activePlayer.setBounds(340, 30, 180, 90);
                 playerSubText.setBounds(350, 300, 350, 90);
                 playerText.setBounds(350, 270, 270, 90);
-            }
+               }
             case "Mittel" -> {
-                rightS.setBounds(670, 150, 120, 120);
-                leftS.setBounds(430, 150, 120, 120);
-                downS.setBounds(550, 270, 120, 120);
-                upS.setBounds(550, 30, 120, 120);
-                shipPlaceButton.setBounds(670, 270, 120, 120);
-                turnVertikalS.setBounds(550, 150, 120, 120);
-                activePlayer.setBounds(450, 30, 120, 120);
-                playerSubText.setBounds(450, 390, 350, 90);
-                playerText.setBounds(450, 360, 270, 90);
+                rightS.setBounds(610, 210, 90, 90);
+                leftS.setBounds(430, 210, 90, 90);
+                downS.setBounds(520, 300, 90, 90);
+                upS.setBounds(520, 120, 90, 90);
+                turnVertikalS.setBounds(520, 210, 90, 90);
+                shipPlaceButton.setBounds(460, 470, 180, 90);
+                activePlayer.setBounds(520, 30, 180, 90);
+                playerSubText.setBounds(440, 390, 350, 90);
+                playerText.setBounds(440, 360, 270, 90);
             }
             case "Groß" -> {
-                rightS.setBounds(830, 180, 150, 150);
-                leftS.setBounds(530, 180, 150, 150);
-                downS.setBounds(680, 330, 150, 150);
-                upS.setBounds(680, 30, 150, 150);
-                shipPlaceButton.setBounds(830, 330, 150, 150);
-                turnVertikalS.setBounds(680, 180, 150, 150);
-                activePlayer.setBounds(570, 30, 150, 150);
-                playerSubText.setBounds(570, 490, 350, 90);
-                playerText.setBounds(570, 450, 270, 90);
+                rightS.setBounds(690, 120, 90, 90);
+                leftS.setBounds(510, 120, 90, 90);
+                downS.setBounds(600, 210, 90, 90);
+                upS.setBounds(600, 30, 90, 90);
+                shipPlaceButton.setBounds(690, 210, 90, 90);
+                turnVertikalS.setBounds(600, 120, 90, 90);
+                activePlayer.setBounds(520, 30, 180, 90);
+                playerSubText.setBounds(440, 300, 350, 90);
+                playerText.setBounds(440, 270, 270, 90);
             }
         }
 

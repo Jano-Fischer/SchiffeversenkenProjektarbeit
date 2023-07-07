@@ -44,7 +44,7 @@ public class Steuerung {
         return felder;
     }
     private void generateShipsToPlace() {
-        shipsToPlace = new BoatType[config.getTotalNumber()];
+        shipsToPlace = new BoatType[12]; //Magic Number für die Größe des Arrays
         int index =0;
         for (int i = 0; i < config.getFiveBoats(); i++) {
             shipsToPlace[index] = BoatType.FIVEBOAT;
@@ -197,13 +197,13 @@ public class Steuerung {
             if (horizontalDirection){
                 for (int i = x; i<x+ shipsToPlace[arrayPosition].getValue(); i++){
                     playerFieldPlayer1[i][y].removeBoat();
-                    if ((shipsToPlace.length) == arrayPosition)
+                    if ((shipsToPlace.length-1) == arrayPosition)
                         break;
                 }
             } else {
                 for (int i = y; i<y+ shipsToPlace[arrayPosition].getValue(); i++){
                     playerFieldPlayer1[x][i].removeBoat();
-                    if ((shipsToPlace.length) == arrayPosition)
+                    if ((shipsToPlace.length-1) == arrayPosition)
                         break;
                 }
             }
@@ -211,13 +211,13 @@ public class Steuerung {
             if (horizontalDirection){
                 for (int i = x; i<x+ shipsToPlace[arrayPosition].getValue(); i++){
                     playerFieldPlayer2[i][y].removeBoat();
-                    if ((shipsToPlace.length) == arrayPosition)
+                    if ((shipsToPlace.length-1) == arrayPosition)
                         break;
                 }
             } else {
                 for (int i = y; i<y+ shipsToPlace[arrayPosition].getValue(); i++){
                     playerFieldPlayer2[x][i].removeBoat();
-                    if ((shipsToPlace.length) == arrayPosition)
+                    if ((shipsToPlace.length-1) == arrayPosition)
                         break;
                 }
             }

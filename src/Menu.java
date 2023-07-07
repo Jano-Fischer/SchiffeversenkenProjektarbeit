@@ -66,13 +66,13 @@ public class Menu extends JDialog {
         jSpinnerTwoBoats.setValue(config.getTwoBoats());
         cp.add(jSpinnerTwoBoats);
         jLabelText1.setBounds(280, 24, 73, 33);
-        jLabelText1.setText("Schiffarten auswaehlen, oder feste Antzahl benutzen ");
+        jLabelText1.setText("Schiffarten auswählen, oder feste Anzahl benutzen ");
         cp.add(jSpinner6);
         sizeselecten.setBounds(72, 70, 113, 50);
         sizeselecten.setBackground(Color.WHITE);
         cp.add(sizeselecten);
         jLabelPlayFieldSize.setBounds(70, 24, 200, 40);
-        jLabelPlayFieldSize.setText("Spielfeldgroeße veraendern:");
+        jLabelPlayFieldSize.setText("Spielfeldgröße verändern:");
         cp.add(jLabelPlayFieldSize);
         jLabel2Boat.setBounds(208, 472, 65, 41);
         jLabel2Boat.setText("2er Boot:");
@@ -124,25 +124,25 @@ public class Menu extends JDialog {
             config.setFiveBoats((int) jSpinnerFiveBoats.getValue());
             jSpinnerTotalBoats.setValue(config.getTotalNumber());
             update(config);
-            isNotNull(config);
+            isNotNullandMax(config);
         });
         jSpinnerFourBoats.addChangeListener(e -> {
             config.setFourBoats((int) jSpinnerFourBoats.getValue());
             jSpinnerTotalBoats.setValue(config.getTotalNumber());
             update(config);
-            isNotNull(config);
+            isNotNullandMax(config);
         });
         jSpinnerThreeBoats.addChangeListener(e -> {
             config.setThreeBoats((int) jSpinnerThreeBoats.getValue());
             jSpinnerTotalBoats.setValue(config.getTotalNumber());
             update(config);
-            isNotNull(config);
+            isNotNullandMax(config);
         });
         jSpinnerTwoBoats.addChangeListener(e -> {
             config.setTwoBoats((int) jSpinnerTwoBoats.getValue());
             jSpinnerTotalBoats.setValue(config.getTotalNumber());
             update(config);
-            isNotNull(config);
+            isNotNullandMax(config);
         });
         // Ende Komponenten
         setResizable(false);
@@ -163,12 +163,15 @@ public class Menu extends JDialog {
     /**
      *Schaut das mindestens ein Schiff ausgewählt wurde
      */
-    public boolean isNotNull(Configuration config){
+    public boolean isNotNullandMax(Configuration config){
         if(config.getFiveBoats() == 0 && config.getFourBoats() == 0 && config.getThreeBoats() == 0 && config.getTwoBoats() == 0){
             fertig.setEnabled(false);
             return false;
+        } else if (config.getFiveBoats()+config.getFourBoats()+config.getThreeBoats()+config.getTwoBoats() >=12) {
+            fertig.setEnabled(false);
+            return false;
         }
-            fertig.setEnabled(true);
+        fertig.setEnabled(true);
             return true;
     }
     // Ende Methoden
