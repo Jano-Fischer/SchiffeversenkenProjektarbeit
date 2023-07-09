@@ -1,5 +1,4 @@
 import java.awt.*;
-import java.awt.event.KeyListener;
 
 public class Steuerung {
     // Anfang Attribute
@@ -14,7 +13,6 @@ public class Steuerung {
     private int posX =0;
     private int posY =0;
     private Configuration config;
-    private boolean pregame =true;
     private Feld[][] playerFieldPlayer1 = new Feld[10][10];  //Feld für Spieler 1 der Größe 10x10
     private Feld[][] playerFieldPlayer2 = new Feld[10][10]; //Feld für Spieler 2 der Größe 10x10
     // Ende Attribute
@@ -43,7 +41,14 @@ public class Steuerung {
         }
         return felder;
     }
-    private void generateShipsToPlace() {
+    public Steuerung(Gui gui, Configuration config) {
+        this.gui = gui;
+        this.config = config;
+        playerFieldPlayer1 = createFelder();
+        playerFieldPlayer2 = createFelder();
+        generateShipsToPlace();
+    }
+    public void generateShipsToPlace() {
         shipsToPlace = new BoatType[12]; //Magic Number für die Größe des Arrays
         int index =0;
         for (int i = 0; i < config.getFiveBoats(); i++) {
@@ -63,14 +68,6 @@ public class Steuerung {
             index++;
         }
     }
-    public Steuerung(Gui gui, Configuration config) {
-        this.gui = gui;
-        this.config = config;
-        playerFieldPlayer1 = createFelder();
-        playerFieldPlayer2 = createFelder();
-        generateShipsToPlace();
-    }
-
     /**
      * Greift das Feld bei X und Y an. Wenn kein Boot getroffen wurde, ist attack false
      * @param x Beschossene Stelle
@@ -113,9 +110,10 @@ public class Steuerung {
             System.out.println("Treffer bei:"+x+":"+y+" Spieler:" + ((player1) ? 1 : 2));
             boolean destroyed = gui.hitAtIsDestroyed(x, y, player1);
             if (destroyed) {
-                winChecker();
+                winChecker(x,y);
             }
         } else {
+            gui.clearPlayerTexts();
             System.out.println("Nicht getroffen bei: "+x+":"+y+" Spieler:" + ((player1) ? 1 : 2));
             gui.missAt(x, y, player1);
             lock = true;
@@ -136,17 +134,19 @@ public class Steuerung {
     /**
      * Schaut, ob die Anzahl zerstörter Schiffe genauso groß ist wie die der gesamten Schiffe
      */
-    public void winChecker() {
+    public void winChecker(int x,int y) {
         if (player1) {
             player2DestroyedBoats++;
-            if (player2DestroyedBoats == shipsToPlace.length) {
+            gui.setPlayerText(playerFieldPlayer1[x][y].getBoat().getBoatType().getValue()+"er Boot versenkt","Noch zu zerstörende Boote: "+boatsToDestroyLeft(!player1),Color.black,Color.gray);
+            if (player2DestroyedBoats == config.getTotalNumber()) {
                 System.out.println("Spieler 1 Gewonnen");
                 gui.setActivePlayerText("Spieler 1 hat gewonnen");
                 lock = true;
             }
         } else {
             player1DestroyedBoats++;
-            if (player1DestroyedBoats == shipsToPlace.length) {
+            gui.setPlayerText(playerFieldPlayer1[x][y].getBoat().getBoatType().getValue()+"er Boot versenkt","Noch zu zerstörende Boote: "+boatsToDestroyLeft(player1),Color.red,Color.gray);
+            if (player1DestroyedBoats == config.getTotalNumber()) {
                 System.out.println("Spieler 2 Gewonnen");
                 gui.setActivePlayerText("Spieler 2 hat gewonnen");
                 lock = true;
@@ -154,6 +154,12 @@ public class Steuerung {
             }
         }
     }
+
+    private Object boatsToDestroyLeft(boolean player1) {
+        if (this.player1) return config.getTotalNumber()-player2DestroyedBoats;
+        else return config.getTotalNumber()-player1DestroyedBoats;
+    }
+
     /**
      * Platziert ein Boot, je nach ausrichtung.
      * @param x Koordinate des Boots
@@ -195,30 +201,26 @@ public class Steuerung {
     public void deleteBoat(int x,int y){
         if(player1){
             if (horizontalDirection){
-                for (int i = x; i<x+ shipsToPlace[arrayPosition].getValue(); i++){
+                for (int i = x; i<x+shipsToPlace[arrayPosition].getValue(); i++){
                     playerFieldPlayer1[i][y].removeBoat();
-                    if ((shipsToPlace.length-1) == arrayPosition)
-                        break;
+                    if ((config.getTotalNumber()) == arrayPosition) break;
                 }
             } else {
                 for (int i = y; i<y+ shipsToPlace[arrayPosition].getValue(); i++){
                     playerFieldPlayer1[x][i].removeBoat();
-                    if ((shipsToPlace.length-1) == arrayPosition)
-                        break;
+                    if ((config.getTotalNumber()) == arrayPosition) break;
                 }
             }
         }else {
             if (horizontalDirection){
                 for (int i = x; i<x+ shipsToPlace[arrayPosition].getValue(); i++){
                     playerFieldPlayer2[i][y].removeBoat();
-                    if ((shipsToPlace.length-1) == arrayPosition)
-                        break;
+                    if ((config.getTotalNumber()) == arrayPosition) break;
                 }
             } else {
                 for (int i = y; i<y+ shipsToPlace[arrayPosition].getValue(); i++){
                     playerFieldPlayer2[x][i].removeBoat();
-                    if ((shipsToPlace.length-1) == arrayPosition)
-                        break;
+                    if ((config.getTotalNumber()) == arrayPosition) break;
                 }
             }
          }
@@ -232,21 +234,21 @@ public class Steuerung {
      */
     public void move(int x, int y) {
         gui.setFocusable(true);
-        deleteBoat(posX,posY);
-        posX = posX +x;
-        posY = posY +y;
-        if(posX<0||posY<0||!inField()){                 //if(posX<0||posY<0||!inField()||!isValid()){
-            posX = posX -x;
-            posY = posY -y;
-        }
-        if (isValid()) {
-            placeBoat(posX, posY, true);
-            positionIsValid();
-        }else{
-            positionIsInvalid();
-            placeBoat(posX,posY, false);
+            deleteBoat(posX,posY);
+            posX = posX + x;
+            posY = posY + y;
+            if (posX < 0 || posY < 0 || !inField()) {                 //if(posX<0||posY<0||!inField()||!isValid()){
+                posX = posX - x;
+                posY = posY - y;
+            }
+            if (isValid()) {
+                placeBoat(posX, posY, true);
+                positionIsValid();
+            } else {
+                positionIsInvalid();
+                placeBoat(posX, posY, false);
 
-        }
+            }
 
     }
 
@@ -324,7 +326,7 @@ public class Steuerung {
         posY = 0;     //Koordianten wo das Schiff spawned
         horizontalDirection = true;
 
-        if (arrayPosition == shipsToPlace.length-1) {
+        if (arrayPosition == config.getTotalNumber()-1) {
             player1 = !player1;
             gui.setActivePlayerText("Spieler " + ((isPlayer1()) ? 1 : 2));
             gui.clearPlayerTexts();
@@ -360,5 +362,8 @@ public class Steuerung {
 
 
 
+    }
+    public int getSize() {
+        return config.getSize();
     }
 }

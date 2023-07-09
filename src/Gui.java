@@ -7,6 +7,7 @@ public class Gui extends JFrame {
     private Steuerung strg; //Verknüpfung mit der Steuerung
     private Menu menu;
     private Container cp;
+    boolean pregame = true;
     private JButton shipPlaceButton;
     private JButton weiter;
     private JButton upS;
@@ -42,7 +43,7 @@ public class Gui extends JFrame {
                 upS.setBounds(430, 60, 90, 90);
                 shipPlaceButton.setBounds(380, 430, 180, 90);
                 turnVertikalS.setBounds(430, 150, 90, 90);
-                activePlayer.setBounds(430, 0, 180, 90);
+                activePlayer.setBounds(430, 0, 270, 90);
                 playerSubText.setBounds(350, 350, 350, 90);
                 playerText.setBounds(350, 320, 270, 90);
                }
@@ -53,7 +54,7 @@ public class Gui extends JFrame {
                 upS.setBounds(520, 80, 90, 90);
                 turnVertikalS.setBounds(520, 170, 90, 90);
                 shipPlaceButton.setBounds(460, 430, 180, 90);
-                activePlayer.setBounds(520, 0, 180, 90);
+                activePlayer.setBounds(520, 0, 270, 90);
                 playerSubText.setBounds(440, 350, 350, 90);
                 playerText.setBounds(440, 320, 270, 90);
             }
@@ -64,7 +65,7 @@ public class Gui extends JFrame {
                 upS.setBounds(600, 30, 90, 90);
                 shipPlaceButton.setBounds(690, 210, 90, 90);
                 turnVertikalS.setBounds(600, 120, 90, 90);
-                activePlayer.setBounds(520, 30, 180, 90);
+                activePlayer.setBounds(520, 30, 270, 90);
                 playerSubText.setBounds(440, 300, 350, 90);
                 playerText.setBounds(440, 270, 270, 90);
 
@@ -74,7 +75,7 @@ public class Gui extends JFrame {
                 upS.setBounds(620, 80, 90, 90);
                 turnVertikalS.setBounds(620, 170, 90, 90);
                 shipPlaceButton.setBounds(540, 430, 180, 90);
-                activePlayer.setBounds(620, 0, 180, 90);
+                activePlayer.setBounds(620, 0, 270, 90);
                 playerSubText.setBounds(540, 350, 350, 90);
                 playerText.setBounds(530, 320, 270, 90);
             }
@@ -96,12 +97,25 @@ public class Gui extends JFrame {
         GuiFeld feld;
         if (spieler1) {
             feld = playerFieldPlayer2[x][y];
+            feld.setStatus('h');
+            feld.repaint();
+            if (playerFieldPlayer2[x][y].getBoat().isDestroyed()) {
+                return true;
+            } else {
+                return false;
+            }
         } else {
             feld = playerFieldPlayer1[x][y];
+            feld.setStatus('h');
+            feld.repaint();
+            if (playerFieldPlayer1[x][y].getBoat().isDestroyed()) {
+                return true;
+            } else {
+                return false;
+            }
         }
-        feld.setStatus('h');
-        feld.repaint();
-        return feld.getBoat().isDestroyed();
+
+
     }
 
     /**
@@ -142,37 +156,39 @@ public class Gui extends JFrame {
                 System.out.println("Pressed:" + e.getKeyCode());
                 System.out.println(e.getKeyCode());
                 System.out.println(e.getKeyChar());
-                switch (e.getKeyCode()) {
-                    case 38:
-                        System.out.println("Hoch");
-                        strg.move(0, -1);
+                if (pregame) {
+                    switch (e.getKeyCode()) {
+                        case 38:
+                            System.out.println("Hoch");
+                            strg.move(0, -1);
 
-                        break;
-                    case 40:
-                        strg.move(0, 1);
-                        System.out.println("Runter");
-                        break;
-                    case 37:
-                        strg.move(-1, 0);
-                        System.out.println("LEFT");
-                        break;
-                    case 39:
-                        strg.move(1, 0);
-                        System.out.println("RECHTS");
-                        break;
-                    case 17:
-                        strg.switchDirection();
-                        System.out.println("Drehen");
-                        break;
-                    case 10:
-                        if (strg.isLock()) {
-                            System.out.println("Nicht bestätigt");
                             break;
-                        }else{
-                            strg.placeBoat();
-                            System.out.println("Bestätigen");
+                        case 40:
+                            strg.move(0, 1);
+                            System.out.println("Runter");
                             break;
-                        }
+                        case 37:
+                            strg.move(-1, 0);
+                            System.out.println("LEFT");
+                            break;
+                        case 39:
+                            strg.move(1, 0);
+                            System.out.println("RECHTS");
+                            break;
+                        case 17:
+                            strg.switchDirection();
+                            System.out.println("Drehen");
+                            break;
+                        case 10:
+                            if (strg.isLock()) {
+                                System.out.println("Nicht bestätigt");
+                                break;
+                            } else {
+                                strg.placeBoat();
+                                System.out.println("Bestätigen");
+                                break;
+                            }
+                    }
                 }
             }
         });
@@ -200,7 +216,7 @@ public class Gui extends JFrame {
         shipPlaceButton.setText("Schiff Bestätigen");
         shipPlaceButton.setFocusable(false);
         shipPlaceButton.setBackground(Color.RED);
-        //shipPlaceButton.setBounds(15 * config.getSize(), config.getSize(), 5 * config.getSize(), 2 * config.getSize());
+
         shipPlaceButton.addActionListener(e -> strg.placeBoat());
         shipPlaceButton.setVisible(true);
 //Button weiter
@@ -264,6 +280,7 @@ public class Gui extends JFrame {
         playerSubText.setVisible(true);
 //platzieren des ersten Bootes    
         strg.move(0, 0);
+        pregame = true;
     }
     /**
      * Erstellen eines Spielfeldes mit der Festen Größe von 10x10 und jedem Feld den Zustand water geben.
@@ -276,7 +293,7 @@ public class Gui extends JFrame {
         for (int x = 0; x < 10; x++) {
             for (int y = 0; y < 10; y++) {
                 GuiFeld feld = new GuiFeld(strgFelder[x][y]);
-                feld.setBounds(x * config.getSize() + 30, y * config.getSize() + 30, config.getSize(), config.getSize());
+                feld.setBounds(x * strg.getSize() + 30, y * strg.getSize() + 30, strg.getSize(), strg.getSize());
                 feld.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mousePressed(MouseEvent e) {
@@ -329,9 +346,14 @@ public class Gui extends JFrame {
      * @param spieler1
      */
     public void showPlayerField(boolean spieler1) {
+        pregame = false;
         cp.removeAll();
         cp.add(weiter);
         cp.add(activePlayer);
+        cp.add(playerText);
+        cp.add(playerSubText);
+        playerText.setText("");
+        playerSubText.setText("");
         GuiFeld[][] felder;
         if (spieler1) {
             felder = playerFieldPlayer2;
@@ -351,7 +373,6 @@ public class Gui extends JFrame {
      * @param spieler1
      */
     public void showOtherPlayerFieldPregame(boolean spieler1) {
-
         cp.removeAll();
         cp.add(activePlayer);
         cp.add(shipPlaceButton);
@@ -360,6 +381,8 @@ public class Gui extends JFrame {
         cp.add(leftS);
         cp.add(rightS);
         cp.add(turnVertikalS);
+        cp.add(playerText);
+        cp.add(playerSubText);
         GuiFeld[][] felder;
         if (spieler1) {
             felder = playerFieldPlayer1;
@@ -394,6 +417,31 @@ public class Gui extends JFrame {
         rightS.setVisible(false);
         turnVertikalS.setVisible(false);
         weiter.setVisible(true);
+        playerText.setVisible(true);
+        playerText.setForeground(Color.red);
+        playerText.setText("");
+        playerSubText.setVisible(true);
+        switch (menu.getValueSize()) {
+            case "Klein":
+                weiter.setBounds(350, 60, 90, 60);
+                activePlayer.setBounds(350, 10, 250, 60);
+                playerSubText.setBounds(350, 160, 180, 60);
+                playerText.setBounds(350, 130, 180, 60);
+                break;
+            case "Mittel":
+                activePlayer.setBounds(450, 10, 250, 60);
+                weiter.setBounds(450, 60, 90, 60);
+                playerSubText.setBounds(450, 160, 180, 60);
+                playerText.setBounds(450, 130, 180, 60);
+                break;
+            case "Groß":
+                activePlayer.setBounds(550, 10, 250, 60);
+                weiter.setBounds(550, 60, 90, 60);
+                playerSubText.setBounds(550, 160, 180, 60);
+                playerText.setBounds(550, 130, 180, 60);
+                break;
+        }
+
         for (GuiFeld[] row : playerFieldPlayer1) {
             for (GuiFeld feld : row) {
                 feld.setStatus('ü');

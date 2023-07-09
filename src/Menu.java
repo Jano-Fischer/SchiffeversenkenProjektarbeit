@@ -24,7 +24,7 @@ public class Menu extends JDialog {
     private JLabel jLabel5Boat = new JLabel();
     private JLabel jLabelTotalShips = new JLabel();
     private String valueSize = "Klein";
-    private final String[] playerfieldsizes = {"Klein", "Mittel", "Groß"};
+    private String[] playerfieldsizes = {"Klein", "Mittel", "Groß"};
     private JComboBox sizeselecten = new JComboBox(playerfieldsizes);
     public String getValueSize() {
         return valueSize;
@@ -91,8 +91,10 @@ public class Menu extends JDialog {
         cp.add(jLabelTotalShips);
 
         fertig.setBounds(400,75,100,50);
-        fertig.addActionListener((e ->
-                dispose()));
+        fertig.addActionListener(e -> {
+            dispose();
+           // strg.generateShipsToPlace();
+        });
         cp.add(fertig);
         fertig.setText("Fertig");
         fertig.setVisible(true);

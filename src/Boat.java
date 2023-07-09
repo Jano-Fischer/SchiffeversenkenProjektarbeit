@@ -1,5 +1,9 @@
 public class Boat {
     private int lenght;
+
+    public int getLenght() {
+        return lenght;
+    }
     public BoatType boatType;
     public Boat(BoatType boatType){
         this.boatType = boatType;
@@ -14,7 +18,7 @@ public class Boat {
      */
     public boolean isDestroyed(){           //name sehr verwirrend
         lenght--;
-        if(lenght<=0){
+        if(lenght==0){
             return true;
         } else {
             return false;
