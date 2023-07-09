@@ -36,26 +36,26 @@ public class Gui extends JFrame {
     public void setBoundSize() {
         switch (menu.getValueSize()) {
             case "Klein" -> {
-                rightS.setBounds(520, 120, 90, 90);
-                leftS.setBounds(340, 120, 90, 90);
-                downS.setBounds(430, 210, 90, 90);
-                upS.setBounds(430, 30, 90, 90);
-                shipPlaceButton.setBounds(520, 210, 90, 90);
-                turnVertikalS.setBounds(430, 120, 90, 90);
-                activePlayer.setBounds(340, 30, 180, 90);
-                playerSubText.setBounds(350, 300, 350, 90);
-                playerText.setBounds(350, 270, 270, 90);
+                rightS.setBounds(520, 150, 90, 90);
+                leftS.setBounds(340, 150, 90, 90);
+                downS.setBounds(430, 240, 90, 90);
+                upS.setBounds(430, 60, 90, 90);
+                shipPlaceButton.setBounds(380, 430, 180, 90);
+                turnVertikalS.setBounds(430, 150, 90, 90);
+                activePlayer.setBounds(430, 0, 180, 90);
+                playerSubText.setBounds(350, 350, 350, 90);
+                playerText.setBounds(350, 320, 270, 90);
                }
             case "Mittel" -> {
-                rightS.setBounds(610, 210, 90, 90);
-                leftS.setBounds(430, 210, 90, 90);
-                downS.setBounds(520, 300, 90, 90);
-                upS.setBounds(520, 120, 90, 90);
-                turnVertikalS.setBounds(520, 210, 90, 90);
-                shipPlaceButton.setBounds(460, 470, 180, 90);
-                activePlayer.setBounds(520, 30, 180, 90);
-                playerSubText.setBounds(440, 390, 350, 90);
-                playerText.setBounds(440, 360, 270, 90);
+                rightS.setBounds(610, 170, 90, 90);
+                leftS.setBounds(430, 170, 90, 90);
+                downS.setBounds(520, 260, 90, 90);
+                upS.setBounds(520, 80, 90, 90);
+                turnVertikalS.setBounds(520, 170, 90, 90);
+                shipPlaceButton.setBounds(460, 430, 180, 90);
+                activePlayer.setBounds(520, 0, 180, 90);
+                playerSubText.setBounds(440, 350, 350, 90);
+                playerText.setBounds(440, 320, 270, 90);
             }
             case "Groß" -> {
                 rightS.setBounds(690, 120, 90, 90);
@@ -67,6 +67,16 @@ public class Gui extends JFrame {
                 activePlayer.setBounds(520, 30, 180, 90);
                 playerSubText.setBounds(440, 300, 350, 90);
                 playerText.setBounds(440, 270, 270, 90);
+
+                rightS.setBounds(710, 170, 90, 90);
+                leftS.setBounds(530, 170, 90, 90);
+                downS.setBounds(620, 260, 90, 90);
+                upS.setBounds(620, 80, 90, 90);
+                turnVertikalS.setBounds(620, 170, 90, 90);
+                shipPlaceButton.setBounds(540, 430, 180, 90);
+                activePlayer.setBounds(620, 0, 180, 90);
+                playerSubText.setBounds(540, 350, 350, 90);
+                playerText.setBounds(530, 320, 270, 90);
             }
         }
 
@@ -129,7 +139,7 @@ public class Gui extends JFrame {
 
             @Override
             public void keyReleased(KeyEvent e) {
-                System.out.println("Presssed:" + e.getKeyCode());
+                System.out.println("Pressed:" + e.getKeyCode());
                 System.out.println(e.getKeyCode());
                 System.out.println(e.getKeyChar());
                 switch (e.getKeyCode()) {
@@ -166,13 +176,11 @@ public class Gui extends JFrame {
                 }
             }
         });
-        setBounds(100, 100, 1920, 1080);       //Anzeige Position und Größe
+        setBounds(100, 100, 850, 1000);       //Anzeige Position und Größe
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
 //active player label
-
         activePlayer = new JLabel();
-        //activePlayer.setBounds(30 + 10 * config.getSize(), config.getSize() - 5, 5 * config.getSize(), 2 * config.getSize());
         activePlayer.setFont(new Font("title", 1, 22));
         activePlayer.setText("Spieler 1");
 //playerText label                                                        //gibt aktuelle informationen an den Spieler weiter
@@ -193,13 +201,7 @@ public class Gui extends JFrame {
         shipPlaceButton.setFocusable(false);
         shipPlaceButton.setBackground(Color.RED);
         //shipPlaceButton.setBounds(15 * config.getSize(), config.getSize(), 5 * config.getSize(), 2 * config.getSize());
-        shipPlaceButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                strg.placeBoat();
-            }
-        });
+        shipPlaceButton.addActionListener(e -> strg.placeBoat());
         shipPlaceButton.setVisible(true);
 //Button weiter
         weiter = new JButton();
@@ -263,9 +265,8 @@ public class Gui extends JFrame {
 //platzieren des ersten Bootes    
         strg.move(0, 0);
     }
-
     /**
-     * Erstellen eines Spielfeldes mit der Festen Größe von 10·10 und jedem Feld den Zustand water geben.
+     * Erstellen eines Spielfeldes mit der Festen Größe von 10x10 und jedem Feld den Zustand water geben.
      * Jedes Feld erhält einen Mouse Listener
      *
      * @return
@@ -281,7 +282,7 @@ public class Gui extends JFrame {
                     public void mousePressed(MouseEvent e) {
                         Component comp = e.getComponent();
                         if (comp instanceof GuiFeld) {
-                            GuiFeld fe = (GuiFeld) comp;            //Typcast
+                            GuiFeld fe = (GuiFeld) comp;            //Typecast
 
                             strg.click(fe.getXFeldNumber(), fe.getYFeldNumber());
                         }
@@ -293,27 +294,35 @@ public class Gui extends JFrame {
         }
         return felder;
     }
-
+    /**
+     * Deaktivieren des Buttons zum Platzieren der Schiffe
+     */
     public void disable_shipPlace() {
         shipPlaceButton.setEnabled(false);
     }
-
+    /**
+     * Aktivieren des Buttons zum Platzieren der Schiffe
+     */
     public void enable_shipPlace() {
         shipPlaceButton.setEnabled(true);
     }
-
+    /**
+     * Setzt den Text für die Player Tags
+     * @param playerTxt
+     * @param subTxt
+     * @param Txt
+     * @param SubTxt
+     */
     public void setPlayerText(String playerTxt, String subTxt, Color Txt, Color SubTxt) {
         playerText.setText(playerTxt);
         playerText.setForeground(Txt);
         playerSubText.setText(subTxt);
         playerSubText.setForeground(SubTxt);
     }
-
     public void clearPlayerTexts() {
         playerText.setText("");
         playerSubText.setText("");
     }
-
     /**
      * Anzeigen des Spielfeldes welches beschossen wird
      *
@@ -337,7 +346,10 @@ public class Gui extends JFrame {
             }
         }
     }
-
+    /**
+     * Wechselt das Player-Feld im Pregame
+     * @param spieler1
+     */
     public void showOtherPlayerFieldPregame(boolean spieler1) {
 
         cp.removeAll();
@@ -362,7 +374,6 @@ public class Gui extends JFrame {
             }
         }
     }
-
     /**
      * Ausgabe des Spielers der am Zug ist
      *
@@ -371,18 +382,10 @@ public class Gui extends JFrame {
     public void setActivePlayerText(String text) {
         activePlayer.setText(text);
     }
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    Gui window = new Gui();
-                    window.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
+
+    /**
+     * Entfernt die Knöpfe zum Platzieren der Schiffe
+     */
     public void endPreGame() {
         shipPlaceButton.setVisible(false);
         upS.setVisible(false);
@@ -401,5 +404,17 @@ public class Gui extends JFrame {
                 feld.setStatus('ü');
             }
         }
+    }
+    public static void main(String[] args) {
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    Gui window = new Gui();
+                    window.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 }

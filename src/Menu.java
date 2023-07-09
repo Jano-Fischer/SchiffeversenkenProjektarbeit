@@ -24,8 +24,8 @@ public class Menu extends JDialog {
     private JLabel jLabel5Boat = new JLabel();
     private JLabel jLabelTotalShips = new JLabel();
     private String valueSize = "Klein";
-    private String playfieldsizes[] = {"Klein", "Mittel", "Groß"};
-    private JComboBox sizeselecten = new JComboBox(playfieldsizes);
+    private final String[] playerfieldsizes = {"Klein", "Mittel", "Groß"};
+    private JComboBox sizeselecten = new JComboBox(playerfieldsizes);
     public String getValueSize() {
         return valueSize;
     }
@@ -66,7 +66,7 @@ public class Menu extends JDialog {
         jSpinnerTwoBoats.setValue(config.getTwoBoats());
         cp.add(jSpinnerTwoBoats);
         jLabelText1.setBounds(280, 24, 73, 33);
-        jLabelText1.setText("Schiffarten auswählen, oder feste Anzahl benutzen ");
+        jLabelText1.setText("Schiff arten auswählen, oder feste Anzahl benutzen ");
         cp.add(jSpinner6);
         sizeselecten.setBounds(72, 70, 113, 50);
         sizeselecten.setBackground(Color.WHITE);
@@ -161,18 +161,17 @@ public class Menu extends JDialog {
         //jSpinnerTotalBoats.setValue(config.calcTotal());
     }
     /**
-     *Schaut das mindestens ein Schiff ausgewählt wurde
+     * Schaut das mindestens ein Schiff ausgewählt wurde
      */
-    public boolean isNotNullandMax(Configuration config){
+    public void isNotNullandMax(Configuration config){
         if(config.getFiveBoats() == 0 && config.getFourBoats() == 0 && config.getThreeBoats() == 0 && config.getTwoBoats() == 0){
             fertig.setEnabled(false);
-            return false;
+            return;
         } else if (config.getFiveBoats()+config.getFourBoats()+config.getThreeBoats()+config.getTwoBoats() >=12) {
             fertig.setEnabled(false);
-            return false;
+            return;
         }
         fertig.setEnabled(true);
-            return true;
     }
     // Ende Methoden
 } // end of class Menu

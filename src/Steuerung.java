@@ -274,7 +274,7 @@ public class Steuerung {
                     if (horizontalDirection) {
                         if (!(posX+i < 0 ||posY+j < 0 || posX+i > playerFieldPlayer1.length-1 || posY+j > playerFieldPlayer1.length-1)) {
                             if (playerFieldPlayer1[posX + i][posY + j].getStatus() == 'p') {      //if (playerFieldPlayer1[posX + i][posY+j].getStatus() == 'p') {
-                                lock = true;                                                      //sperrt den Bestaetigen Knopf
+                                lock = true;                                                      //sperrt den Bestätigen-Knopf
                                 return false;
                             }
                         }
